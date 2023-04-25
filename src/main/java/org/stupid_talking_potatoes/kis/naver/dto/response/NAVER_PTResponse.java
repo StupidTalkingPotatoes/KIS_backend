@@ -1,10 +1,10 @@
 package org.stupid_talking_potatoes.kis.naver.dto.response;
 
-/**
- * package :  org.stupid_talking_potatoes.kis.naver.dto.response
- * fileName : NAVER_PTResponse
- * author :  ShinYeaChan
- * date : 2023-04-23
- */
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class NAVER_PTResponse {
+    Res res;
 }
