@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * date : 2023-04-23
  */
 @Data
-public class RealtimeBusLocationResponse {
+public class RealtimeBusLocationInfo {
     private Route route;
     private ArrayList<PassingNode> passingNodeList;
 }
