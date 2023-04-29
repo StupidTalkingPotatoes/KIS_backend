@@ -2,7 +2,7 @@ package org.stupid_talking_potatoes.kis.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.stupid_talking_potatoes.kis.dto.path.repository.RouteRepository;
+import org.stupid_talking_potatoes.kis.repository.RouteRepository;
 import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
 import org.stupid_talking_potatoes.kis.entity.Route;

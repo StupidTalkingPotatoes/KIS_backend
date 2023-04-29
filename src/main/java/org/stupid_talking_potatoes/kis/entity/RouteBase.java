@@ -17,6 +17,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class RouteBase {
     @Id
-    private String id;
-    private String no;
+    private String routeId;
+    private String routeNo;
 }

@@ -1,6 +1,5 @@
 package org.stupid_talking_potatoes.kis.entity;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -12,7 +11,6 @@ import lombok.Getter;
  * date : 2023-04-23
  */
 @Getter
-@Entity
 @MappedSuperclass
 public class NodeBase {
     @Id

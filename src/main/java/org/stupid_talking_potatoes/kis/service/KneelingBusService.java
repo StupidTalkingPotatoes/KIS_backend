@@ -2,7 +2,7 @@ package org.stupid_talking_potatoes.kis.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.stupid_talking_potatoes.kis.dto.path.repository.KneelingBusRepository;
+import org.stupid_talking_potatoes.kis.repository.KneelingBusRepository;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.route.service
