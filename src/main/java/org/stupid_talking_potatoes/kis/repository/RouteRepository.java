@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface RouteRepository extends JpaRepository<Route, String> {
     Optional<Route> findByRouteId(String routeId);
     
-    List<Route> findByNoNotContains(String no);
+    List<Route> findByRouteNo(String routeNo);
     
     Optional<Route> findByNaverRouteId(String naverRouteId);
     
