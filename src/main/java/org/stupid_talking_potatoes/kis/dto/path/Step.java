@@ -1,6 +1,7 @@
 package org.stupid_talking_potatoes.kis.dto.path;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 
 import java.util.ArrayList;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
  * author :  ShinYeaChan
  * date : 2023-04-23
  */
-@Data
+@Getter
+@Setter
 public class Step {
-    private Integer type;
+    private String type;
     private Integer duration;
     private String departure;
     private String arrival;
