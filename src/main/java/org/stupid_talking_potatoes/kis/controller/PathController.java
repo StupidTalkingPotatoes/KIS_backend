@@ -2,6 +2,7 @@ package org.stupid_talking_potatoes.kis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.stupid_talking_potatoes.kis.dto.path.Path;
 import org.stupid_talking_potatoes.kis.service.PathService;
@@ -15,10 +16,11 @@ import java.util.ArrayList;
  * date : 2023-04-23
  */
 @RestController
+@RequestMapping("/paths")
 public class PathController {
     @Autowired
     PathService pathService;
-    @GetMapping()
+    @GetMapping("")
     public ArrayList<Path> getPathInfo(Double departureLongitude, Double departureLatitude, Double arrivalLongitude, Double arrivalLatitude){
         return null;
     }
