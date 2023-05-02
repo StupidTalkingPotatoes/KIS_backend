@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.stupid_talking_potatoes.kis.repository.KneelingBusRepository;
 
+
 /**
  * package :  org.stupid_talking_potatoes.kis.route.service
  * fileName : KneelingBusService

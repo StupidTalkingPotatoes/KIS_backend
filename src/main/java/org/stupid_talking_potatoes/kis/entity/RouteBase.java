@@ -19,4 +19,5 @@ public class RouteBase {
     @Id
     private String routeId;
     private String routeNo;
+
 }

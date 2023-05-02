@@ -1,7 +1,9 @@
 package org.stupid_talking_potatoes.kis.dto.path;
 
+
 import lombok.Getter;
 import lombok.Setter;
+
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 
 import java.util.ArrayList;

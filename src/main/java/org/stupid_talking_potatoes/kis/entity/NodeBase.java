@@ -1,5 +1,6 @@
 package org.stupid_talking_potatoes.kis.entity;
 
+
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;

@@ -1,8 +1,10 @@
 package org.stupid_talking_potatoes.kis.entity;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
+
 
 import java.util.List;
 
