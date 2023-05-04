@@ -1,7 +1,8 @@
 package org.stupid_talking_potatoes.kis.entity;
 
 import jakarta.persistence.Entity;
-import lombok.Getter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.node.domain.base
@@ -11,6 +12,9 @@ import lombok.Getter;
  */
 @Getter
 @Entity
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Node extends NodeBase {
     private Double longitude;
     private Double latitude;

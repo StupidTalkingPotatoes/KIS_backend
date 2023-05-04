@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    generate-unique-name: false
+    username: sa
+    driverClassName: org.h2.Driver
+    password:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  h2:
+    console:
+      enabled: true

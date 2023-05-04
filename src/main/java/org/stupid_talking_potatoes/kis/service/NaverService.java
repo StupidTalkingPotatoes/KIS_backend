@@ -1,6 +1,7 @@
 package org.stupid_talking_potatoes.kis.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.stupid_talking_potatoes.kis.dto.path.Path;
@@ -27,7 +28,10 @@ import java.util.List;
 public class NaverService {
     public ArrayList<Path> getTransportationInfo(Double departureLongitude, Double departureLatitude, Double arrivalLongitude, Double arrivalLatitude){
         JSONObject ptMapJSON = getPtMapJSON(departureLongitude, departureLatitude, arrivalLongitude, arrivalLatitude);
-        return jsonToDto(ptMapJSON);
+        JSONArray paths = ptMapJSON.getJSONObject("res").getJSONArray("paths");
+        ArrayList<Path> pathList=new ArrayList<>();
+        setPathProperty(paths,pathList);
+        return pathList;
     }
     
     private ArrayList<Path> jsonToDto(JSONObject json) {
@@ -71,15 +75,65 @@ public class NaverService {
     
     private String buildUrl(Double departureLongitude, Double departureLatitude, Double arrivalLongitude, Double arrivalLatitude) {
         String baseUrl = "https://pt.map.naver.com/api/pubtrans-search";
-        StringBuilder urlBuilder = new StringBuilder(baseUrl);
-        urlBuilder.append("?");
-        urlBuilder.append("&mode=TIME");
-        urlBuilder.append("&departureTime=").append(LocalDateTime.now());
-        urlBuilder.append("&departure=").append(departureLongitude).append(",").append(departureLatitude);
-        urlBuilder.append("&arrival=").append(arrivalLongitude).append(",").append(arrivalLatitude);
-        return urlBuilder.toString();
+        return baseUrl + "?" +
+                "&mode=TIME" +
+                "&departureTime=" + LocalDateTime.now() +
+                "&departure=" + departureLongitude + "," + departureLatitude +
+                "&arrival=" + arrivalLongitude + "," + arrivalLatitude;
     }
-
+    
+    void setPathProperty(JSONArray paths, ArrayList<Path> pathDtos) {
+        for (int i=0;i<paths.length();i++) {
+            Object path=paths.get(i);
+            JSONObject pathObj = (JSONObject) path;
+            
+            Integer duration = Integer.parseInt(pathObj.get("duration").toString());
+            pathDtos.get(i).setDuration(duration);
+            
+            JSONArray legs = pathObj.getJSONArray("legs");
+            appendLegs(legs,pathDtos.get(i).getStepList());
+        }
+    }
+    
+    void appendLegs(JSONArray legs, ArrayList<Step> stepList) {
+        for (Object leg : legs) {
+            JSONObject legObj = (JSONObject) leg;
+            JSONArray steps = legObj.getJSONArray("steps");
+            setStepProperties(steps,stepList);
+        }
+    }
+    
+    
+    void setStepProperties(JSONArray steps, ArrayList<Step> stepList){
+        for (int i=0;i<steps.length();i++) {
+            Object step=steps.get(i);
+            JSONObject stepObj = (JSONObject) step;
+            String stepType = stepObj.get("type").toString();
+            
+            if (stepType.equals("BUS")) {
+                Integer duration = Integer.parseInt(stepObj.get("duration").toString());
+                String departureTime = stepObj.get("departureTime").toString();
+                String arrivalTime = stepObj.get("arrivalTime").toString();
+                stepList.get(i).setType(stepType);
+                stepList.get(i).setDuration(duration);
+                stepList.get(i).setArrival(arrivalTime);
+                stepList.get(i).setDeparture(departureTime);
+                JSONArray stations=stepObj.getJSONArray("stations");
+                setArrivalRouteProperties(stations,stepList.get(i).getArrivalRouteList());
+            }
+        }
+    }
+    
+    void setArrivalRouteProperties(JSONArray stations, ArrayList<ArrivalRoute> arrivalRouteList) {
+        for (int i=0;i<stations.length();i++) {
+            Object station=stations.get(i);
+            JSONObject stationObj = (JSONObject) station;
+            //TODO: ArrivalRoute 받아와서 Path 마무리짓기
+//            arrivalRouteList.get(i).setPrevNodeCnt();
+//            arrivalRouteList.get(i).setArrTime();
+//            arrivalRouteList.get(i).setDepartureName();
+        }
+    }
     private  ArrayList<Path> filterPath(List<ArrivalRoute> arrivalRouteList){
         return null;
     }

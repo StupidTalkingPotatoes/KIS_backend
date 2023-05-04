@@ -1,4 +1,4 @@
-package org.stupid_talking_potatoes.kis.dto.path.repository;
+package org.stupid_talking_potatoes.kis.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.stupid_talking_potatoes.kis.entity.Node;
@@ -12,9 +12,9 @@ import java.util.Optional;
  * author :  ShinYeaChan
  * date : 2023-04-23
  */
-public interface NodeRepository extends JpaRepository<String, Node> {
+public interface NodeRepository extends JpaRepository<Node,String > {
     Optional<Node> findById(String nodeId);
-    List<Node> findByNameContaining(String nodeName);
-    Optional<Node> findByNo(String nodeNo);
+    List<Node> findByNodeNameContaining(String nodeName);
+    Optional<Node> findByNodeNo(String nodeNo);
     //Optional<Node> findByNaverId(String naverNodeId);//Node에는 NaberId라는 필드를 갖고 있지않음
 }
