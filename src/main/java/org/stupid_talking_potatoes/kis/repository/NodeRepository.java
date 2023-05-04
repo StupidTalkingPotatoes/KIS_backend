@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 public interface NodeRepository extends JpaRepository<Node,String > {
     Optional<Node> findById(String nodeId);
-    List<Node> findByNameContaining(String nodeName);
-    Optional<Node> findByNo(String nodeNo);
+    List<Node> findByNodeNameContaining(String nodeName);
+    Optional<Node> findByNodeNo(String nodeNo);
     //Optional<Node> findByNaverId(String naverNodeId);//Node에는 NaberId라는 필드를 갖고 있지않음
 }

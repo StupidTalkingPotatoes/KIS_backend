@@ -1,9 +1,9 @@
 package org.stupid_talking_potatoes.kis.entity;
 
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
@@ -14,10 +14,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  */
 @Getter
 @MappedSuperclass
+@SuperBuilder
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class RouteBase {
+public abstract class RouteBase {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String routeId;
     private String routeNo;
-
 }

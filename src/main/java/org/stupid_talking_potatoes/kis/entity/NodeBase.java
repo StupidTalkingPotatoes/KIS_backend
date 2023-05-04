@@ -1,9 +1,10 @@
 package org.stupid_talking_potatoes.kis.entity;
 
-
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.node.domain.base
@@ -12,10 +13,12 @@ import lombok.Getter;
  * date : 2023-04-23
  */
 @Getter
+@SuperBuilder
 @MappedSuperclass
-public class NodeBase {
+@NoArgsConstructor
+public abstract class NodeBase {
     @Id
-    private String id;
-    private String name;
-    private String no;
+    private String nodeId;
+    private String nodeName;
+    private String nodeNo;
 }
