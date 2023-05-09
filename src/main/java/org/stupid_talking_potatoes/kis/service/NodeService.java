@@ -31,17 +31,20 @@ public class NodeService {
 
     public ArrayList<NodeDto> getNodeList(String nodeNo, String nodeName){
         ArrayList<NodeDto> nodeList = new ArrayList<>();
+
         if (nodeNo != null) {
             Optional<Node> node = nodeRepository.findByNodeNo(nodeNo);
             if (node.isPresent()) { // if node exists
                 nodeList.add(new NodeDto(node.get()));
             } // else, not error but empty list
-        } else if (nodeName != null) {
+        }
+        else if (nodeName != null) {
             List<Node> nodes = nodeRepository.findByNodeNameContaining(nodeName);
             for (Node node : nodes) {
                 nodeList.add(new NodeDto(node));
             }
         }
+
         return nodeList;
     }
     
