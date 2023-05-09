@@ -2,6 +2,7 @@ package org.stupid_talking_potatoes.kis.entity;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -15,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @SuperBuilder
 @MappedSuperclass
-@NoArgsConstructor
+@AllArgsConstructor
 public abstract class NodeBase {
     @Id
     private String nodeId;

@@ -13,9 +13,13 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Entity
 @SuperBuilder
-@NoArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Node extends NodeBase {
     private Double longitude;
     private Double latitude;
+
+    public Node(String nodeId, String nodeName, String nodeNo, Double longitude, Double latitude) {
+        super(nodeId, nodeName, nodeNo);
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
 }
