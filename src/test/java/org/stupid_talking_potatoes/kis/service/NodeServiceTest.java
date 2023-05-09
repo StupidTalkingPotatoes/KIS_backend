@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
+import org.stupid_talking_potatoes.kis.dto.node.RealtimeBusArrivalInfo;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @Slf4j
@@ -26,11 +28,16 @@ public class NodeServiceTest {
 
     private static NodeRepository nodeRepository;
 
+    private static RouteService routeService;
+
+    private static TAGOService tagoService;
+
     @BeforeAll
     public static void set() {
         nodeRepository = Mockito.mock(NodeRepository.class);
-        TAGOService tagoService = new TAGOService();
-        nodeService = new NodeService(nodeRepository, tagoService);
+        tagoService = Mockito.mock(TAGOService.class);
+        routeService = Mockito.mock(RouteService.class);
+        nodeService = new NodeService(nodeRepository, tagoService, routeService);
     }
 
     @Nested
@@ -63,7 +70,7 @@ public class NodeServiceTest {
             String no = "10131";
             Node node = new Node("1", "옥계중학교건너", "10131", 1.1, 1.1);
 
-            when(nodeRepository.findByNodeNo(no)).thenReturn(Optional.of(node));
+            when (nodeRepository.findByNodeNo(no)).thenReturn(Optional.of(node));
 
             // when
             ArrayList<NodeDto> response = nodeService.getNodeList(no, null);
@@ -82,11 +89,23 @@ public class NodeServiceTest {
         void getInfoById() {
             // given
             String id = "GMB131";
-            ArrivalRoute arrivalRoute1 = new ArrivalRoute();
+            Node node = new Node("GMB131", "옥계중학교건너", "10131", 1.1, 1.1);
+            ArrivalRoute arrivalRoute1 = new ArrivalRoute("1", "190", 3, 180);
+            ArrivalRoute arrivalRoute2 = new ArrivalRoute("2", "195", 10, 600);
+
+            ArrayList<ArrivalRoute> routes = new ArrayList<ArrivalRoute>();
+            routes.add(arrivalRoute1); routes.add(arrivalRoute2);
+
+            when (nodeRepository.findById(id)).thenReturn(Optional.of(node));
+            when (tagoService.requestRealtimeBusArrivalInfo(id)).thenReturn(routes);
+            when (routeService.getDeparture(any(String.class))).thenReturn("구미역");
 
             // when
+            RealtimeBusArrivalInfo response = nodeService.getRealtimeBusArrivalInfo(id);
 
             // then
+            assertEquals(2, response.getArrivalRouteList().size());
+
         }
 
         @Test
