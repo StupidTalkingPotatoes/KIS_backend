@@ -13,6 +13,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Entity
 @SuperBuilder
+@NoArgsConstructor
 public class Node extends NodeBase {
     private Double longitude;
     private Double latitude;

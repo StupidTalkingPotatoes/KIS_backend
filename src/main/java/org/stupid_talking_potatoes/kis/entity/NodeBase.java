@@ -16,7 +16,8 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @SuperBuilder
 @MappedSuperclass
-@AllArgsConstructor
+@AllArgsConstructor // super로 field set 하기 위해 추가
+@NoArgsConstructor
 public abstract class NodeBase {
     @Id
     private String nodeId;

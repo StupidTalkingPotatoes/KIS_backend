@@ -5,9 +5,6 @@ spring:
     username: root
     password: '0000'
   jpa:
-    properties:
-      hibernate:
-        format_sql: true
     generate-ddl: true
     hibernate:
       ddl-auto: none

@@ -15,11 +15,13 @@ import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
 public class NodeServiceTest {
     private static NodeService nodeService;
+
     private static NodeRepository nodeRepository;
 
     @BeforeAll
@@ -38,16 +40,17 @@ public class NodeServiceTest {
             String name = "옥계중학교";
             Node node1 = new Node("1", "옥계중학교건너", "1", 1.1, 1.1);
             Node node2 = new Node("2", "옥계중학교앞", "2", 1.1, 1.1);
-            Node node3 = new Node("3", "옥계중중중", "3", 1.1, 1.1);
-            nodeRepository.save(node1);
-            nodeRepository.save(node2);
-            nodeRepository.save(node3);
+
+            ArrayList<Node> nodes = new ArrayList<Node>();
+            nodes.add(node1); nodes.add(node2);;
+
+            when(nodeRepository.findByNodeNameContaining(name)).thenReturn(nodes);
 
             // when
-            ArrayList<NodeDto> nodes = nodeService.getNodeList(null, name);
+            ArrayList<NodeDto> response = nodeService.getNodeList(null, name);
 
             // then
-            assertEquals(2, nodes.size());
+            assertEquals(2, response.size());
         }
 
         @Test
