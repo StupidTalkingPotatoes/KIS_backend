@@ -16,6 +16,6 @@ public class TAGO_BusArrivalInfo {
     private String routeNo;
     private String routeTp;
     private String arrPrevStationCnt;
-    private Integer vehicleTp;
+    private String vehicleTp;
     private Integer arrTime;
 }
