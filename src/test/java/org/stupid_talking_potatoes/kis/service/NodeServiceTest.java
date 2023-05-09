@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
+import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 
@@ -28,7 +29,8 @@ public class NodeServiceTest {
     @BeforeAll
     public static void set() {
         nodeRepository = Mockito.mock(NodeRepository.class);
-        nodeService = new NodeService(nodeRepository);
+        TAGOService tagoService = new TAGOService();
+        nodeService = new NodeService(nodeRepository, tagoService);
     }
 
     @Nested
@@ -69,6 +71,28 @@ public class NodeServiceTest {
             // then
             assertEquals(1, response.size());
             assertEquals("10131", response.get(0).getNo());
+        }
+    }
+
+    @Nested
+    @DisplayName("getRealtimeBusArrivalInfo 메서드")
+    class getRealtimeBusArrivalInfo {
+        @Test
+        @DisplayName("getRealtimeBusArrivalInfo 테스트 - 성공")
+        void getInfoById() {
+            // given
+            String id = "GMB131";
+            ArrivalRoute arrivalRoute1 = new ArrivalRoute();
+
+            // when
+
+            // then
+        }
+
+        @Test
+        @DisplayName("getRealtimeBusArrivalInfo 테스트 - 실패 (Invalid ID)")
+        void getInfoWithInvalidId() {
+
         }
     }
 }

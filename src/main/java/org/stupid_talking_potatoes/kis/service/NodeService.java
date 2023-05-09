@@ -2,12 +2,11 @@ package org.stupid_talking_potatoes.kis.service;
 
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
+import org.stupid_talking_potatoes.kis.dto.node.RealtimeBusArrivalInfo;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
-import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +23,7 @@ import java.util.Optional;
 public class NodeService {
 
     private final NodeRepository nodeRepository;
+    private final TAGOService tagoService;
 
     public ArrayList<NodeDto> getNodeList(String nodeNo, String nodeName){
         ArrayList<NodeDto> nodeList = new ArrayList<>();
@@ -41,7 +41,8 @@ public class NodeService {
         return nodeList;
     }
     
-    public RealtimeBusLocationInfo getRealtimeBusArrivalInfo(String nodeId){
+    public RealtimeBusArrivalInfo getRealtimeBusArrivalInfo(String nodeId){
+
         return null;
     }
 

@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 @Service
 public class TAGOService {
-    private String serviceKey;//각각의 요청 dto에 serviceKey가 있던데 얘는 어떤 용도??
+    private String serviceKey;
     public ArrayList<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId){
         return null;
     }
