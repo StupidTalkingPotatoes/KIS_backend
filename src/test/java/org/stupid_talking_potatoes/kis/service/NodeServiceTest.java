@@ -13,6 +13,7 @@ import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -57,9 +58,17 @@ public class NodeServiceTest {
         @DisplayName("getNodeList 테스트 - no로 검색 - 성공")
         void getNodeByNo() {
             // given
+            String no = "10131";
+            Node node = new Node("1", "옥계중학교건너", "10131", 1.1, 1.1);
+
+            when(nodeRepository.findByNodeNo(no)).thenReturn(Optional.of(node));
 
             // when
+            ArrayList<NodeDto> response = nodeService.getNodeList(no, null);
+
             // then
+            assertEquals(1, response.size());
+            assertEquals("10131", response.get(0).getNo());
         }
     }
 }
