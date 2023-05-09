@@ -29,7 +29,10 @@ public class NodeController {
     private final NodeService nodeService;
 
     @GetMapping("/search")
-    public ResponseEntity getNodeList(@RequestParam String nodeNo, @RequestParam String nodeName) {
+    public ResponseEntity getNodeList(
+            @RequestParam(name="no", required = false) String nodeNo,
+            @RequestParam(name="name", required = false) String nodeName
+    ) {
         List<NodeDto> response = nodeService.getNodeList(nodeNo, nodeName);
         return ResponseEntity
                 .status(HttpStatus.OK)
