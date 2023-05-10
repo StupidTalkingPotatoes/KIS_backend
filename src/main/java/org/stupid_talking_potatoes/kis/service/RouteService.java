@@ -8,6 +8,7 @@ import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
 import org.stupid_talking_potatoes.kis.entity.Route;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.route.service
@@ -33,5 +34,11 @@ public class RouteService {
     
     public Route getRouteByNaverId(String naverRouteId){
         return null;
+    }
+
+    public Route getRouteById(String routeId) {
+        // Optional<Route> byRouteId = routeRepository.findByRouteId(routeId);
+        // return byRouteId.get();
+        return routeRepository.findByRouteId(routeId).get();
     }
 }
