@@ -26,7 +26,7 @@ import java.util.List;
 public class Route extends RouteBase {
     @OneToMany(mappedBy = "nodeId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Node> nodeList;
-    
+
     private String naverRouteId;
     
     @PostConstruct
