@@ -1,7 +1,12 @@
 package org.stupid_talking_potatoes.kis.entity;
 
 import jakarta.persistence.Entity;
-import lombok.*;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -18,4 +23,7 @@ import lombok.experimental.SuperBuilder;
 public class Node extends NodeBase {
     private Double longitude;
     private Double latitude;
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private Route route;
 }
