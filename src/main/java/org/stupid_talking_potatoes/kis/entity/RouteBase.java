@@ -20,9 +20,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public abstract class RouteBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "routeId")
     private String routeId;
-
-    @Column(name = "routeNo")
     private String routeNo;
 }
