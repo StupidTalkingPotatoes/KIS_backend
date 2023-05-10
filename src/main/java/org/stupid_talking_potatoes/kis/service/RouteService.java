@@ -35,10 +35,4 @@ public class RouteService {
     public Route getRouteByNaverId(String naverRouteId){
         return null;
     }
-
-    public Route getRouteById(String routeId) {
-        // Optional<Route> byRouteId = routeRepository.findByRouteId(routeId);
-        // return byRouteId.get();
-        return routeRepository.findByRouteId(routeId).get();
-    }
 }

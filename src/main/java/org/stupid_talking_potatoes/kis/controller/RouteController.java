@@ -33,9 +33,4 @@ public class RouteController {
     public ArrayList<SearchedRoute> getRouteList(String routeNo){
         return null;
     }
-
-    @GetMapping("/getRoute/{routeId}")
-    public Route getRoute(@PathVariable String routeId) {
-        return routeService.getRouteById(routeId);
-    }
 }
