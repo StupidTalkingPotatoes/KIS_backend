@@ -2,6 +2,7 @@ package org.stupid_talking_potatoes.kis.entity;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,8 @@ import java.util.List;
 public class Route extends RouteBase {
     @OneToMany(mappedBy = "nodeId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Node> nodeList;
-    
+
+    @Column(name = "naverRouteId")
     private String naverRouteId;
     
     @PostConstruct
