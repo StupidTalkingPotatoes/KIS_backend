@@ -1,17 +1,16 @@
 spring:
   datasource:
     generate-unique-name: false
-    username: sa
-    driverClassName: org.h2.Driver
-    password:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: alfud1004
+    url: jdbc:mysql://localhost:3306/kis_db
   jpa:
     properties:
       hibernate:
         format_sql: true
-    generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
-  h2:
-    console:
-      enabled: true
