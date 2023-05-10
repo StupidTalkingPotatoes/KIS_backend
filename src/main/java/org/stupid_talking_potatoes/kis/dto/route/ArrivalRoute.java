@@ -1,5 +1,7 @@
 package org.stupid_talking_potatoes.kis.dto.route;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.stupid_talking_potatoes.kis.entity.RouteBase;
@@ -12,8 +14,21 @@ import org.stupid_talking_potatoes.kis.entity.RouteBase;
  */
 @Getter
 @Setter
+@AllArgsConstructor
 public class ArrivalRoute extends RouteBase {
     private Integer prevNodeCnt;
     private Integer arrTime;
-    private String departureName;
+    private String departureName; // 객체 생성 시 정해지지 않고 추후 업데이트되는 필드
+
+    @Builder
+    public ArrivalRoute(
+            String routeId,
+            String routeNo,
+            Integer prevNodeCnt,
+            Integer arrTime
+    ) {
+        super(routeId, routeNo);
+        this.prevNodeCnt = prevNodeCnt;
+        this.arrTime = arrTime;
+    }
 }

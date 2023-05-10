@@ -1,6 +1,8 @@
 package org.stupid_talking_potatoes.kis.dto.tago;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
@@ -11,6 +13,8 @@ import java.util.ArrayList;
  * date : 2023-04-23
  */
 @Data
+@Getter
+@Setter
 public class TAGO_BusArrivalInfoResponse {
     private Integer nomOfRows;
     private Integer pageNo;
