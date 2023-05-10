@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.json.BasicJsonTester;
+import org.stupid_talking_potatoes.kis.service.NaverService;
 
 import java.io.IOException;
 import java.nio.file.Files;
