@@ -13,6 +13,6 @@ import java.util.ArrayList;
  */
 @Data
 public class RealtimeBusArrivalInfo {
-    private NodeDto nodeDto;//데이터 전송을 위한 요소로 판단되어 DTO로 변경
+    private NodeDto nodeDto;
     private ArrayList<ArrivalRoute> arrivalRouteList;
 }
