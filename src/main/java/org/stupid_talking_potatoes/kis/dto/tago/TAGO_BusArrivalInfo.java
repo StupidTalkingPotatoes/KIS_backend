@@ -1,7 +1,11 @@
 package org.stupid_talking_potatoes.kis.dto.tago;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.tago.dto
@@ -11,6 +15,8 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@JsonNaming(PropertyNamingStrategy.LowerCaseStrategy.class)
 public class TAGO_BusArrivalInfo {
     private String nodeId;
     private String nodeNm;
