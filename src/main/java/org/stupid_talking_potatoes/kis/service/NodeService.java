@@ -1,6 +1,5 @@
 package org.stupid_talking_potatoes.kis.service;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
@@ -29,6 +28,15 @@ public class NodeService {
 
     private final RouteService routeService;
 
+    /**
+     * nodeNo와 nodeName을 기준으로 node테이블의 요소를 NodeDto에 담아 리스트형태로 반환
+     *
+     * @param nodeNo nodeNo
+     * @param nodeName nodeName
+     * @return {@link ArrayList}
+     * @see ArrayList
+     * @see NodeDto
+     */
     public ArrayList<NodeDto> getNodeList(String nodeNo, String nodeName){
         ArrayList<NodeDto> nodeList = new ArrayList<>();
 
