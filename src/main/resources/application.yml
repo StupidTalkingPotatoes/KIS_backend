@@ -1,11 +1,13 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/kis
+    url: jdbc:mysql://localhost:3306/kis_db
     username: root
     password: '0000'
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: none
-    show-sql: true
+      ddl-auto: update
+    show-sql: false
+
+
