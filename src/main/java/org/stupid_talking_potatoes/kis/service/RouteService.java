@@ -2,13 +2,11 @@ package org.stupid_talking_potatoes.kis.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.stupid_talking_potatoes.kis.repository.RouteRepository;
 import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
-import org.stupid_talking_potatoes.kis.entity.Route;
+import org.stupid_talking_potatoes.kis.repository.RouteRepository;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.route.service
@@ -32,7 +30,4 @@ public class RouteService {
         return null;
     }
     
-    public Route getRouteByNaverId(String naverRouteId){
-        return null;
-    }
 }
