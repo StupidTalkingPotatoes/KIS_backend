@@ -1,9 +1,6 @@
 package org.stupid_talking_potatoes.kis.dto.route;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.stupid_talking_potatoes.kis.entity.RouteBase;
 
 /**
@@ -14,6 +11,8 @@ import org.stupid_talking_potatoes.kis.entity.RouteBase;
  */
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
 @AllArgsConstructor
 public class ArrivalRoute extends RouteBase {
     private Integer prevNodeCnt;
