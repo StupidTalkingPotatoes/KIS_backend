@@ -24,12 +24,42 @@ public class TAGOServiceTest {
     }
 
     @Nested
-    @DisplayName("requestRealtimeBusArrivalInfo 메서드")
-    class requestRealtimeBusArrivalInfo {
+    @DisplayName("convert 메서드")
+    class convert {
         @Test
-        @DisplayName("requestRealtimeBusArrivalInfo 테스트")
-        void requestRealtimeBusArrivalInfoTest() {
+        @DisplayName("convert 테스트 - 성공 (resultCode가 00인 경우)")
+        void convert() {
+            // given
+            String jsonBody = "{\"response\":{\"header\":{\"resultCode\":\"00\",\"resultMsg\":\"NORMAL SERVICE.\"},\"body\":{\"items\":[{\"nodeid\":\"1\",\"nodenm\":\"name\",\"routeid\":\"1\",\"routetp\":\"마을버스\",\"arrprevstationcnt\":5,\"vehicletp\":\"저상버스\",\"arrtime\":5}],\"numOfRows\":100,\"pageNo\":1,\"totalCount\":1}}}";
 
+            // when
+            ArrayList<TAGO_BusArrivalInfo> list = tagoService.convert(jsonBody);
+
+            // then
+            assertEquals(1, list.size());
+        }
+
+        @Test
+        @DisplayName("convert 테스트 - 성공 (items가 빈 경우)")
+        void convertWithNoItem() {
+            // given
+            String jsonBody = "{\"response\":{\"header\":{\"resultCode\":\"00\",\"resultMsg\":\"NORMAL SERVICE.\"},\"body\":{\"items\":\"\",\"numOfRows\":100,\"pageNo\":1,\"totalCount\":0}}}";
+
+            // when
+            ArrayList<TAGO_BusArrivalInfo> list = tagoService.convert(jsonBody);
+
+            // then
+            assertEquals(0, list.size());
+        }
+
+        @Test
+        @DisplayName("convert 테스트 - 실패 (resultCode가 00이 아닌 경우)")
+        void convertWithErrorResult() {
+            // given
+            String jsonBody = "{\"response\":{\"header\":{\"resultCode\":\"30\",\"resultMsg\":\"SERVICE_KEY_IS_NOT_REGISTERED_ERROR.\"},\"body\":{\"items\":[{\"nodeid\":\"1\",\"nodenm\":\"name\",\"routeid\":\"1\",\"routetp\":\"마을버스\",\"arrprevstationcnt\":5,\"vehicletp\":\"저상버스\",\"arrtime\":5}],\"numOfRows\":100,\"pageNo\":1,\"totalCount\":1}}}";
+
+            // when & then
+            RuntimeException exception = assertThrows(RuntimeException.class, () -> tagoService.convert(jsonBody));
         }
     }
 
