@@ -9,8 +9,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.json.JSONObject;
 import org.json.XML;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
@@ -21,7 +20,9 @@ import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusArrivalInfo;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusLocationInfo;
 import org.stupid_talking_potatoes.kis.entity.Node;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.tago.service
@@ -36,6 +37,11 @@ public class TAGOService {
 
     public int convertSecToMin(int min) {
         return Math.round((float)min/60);
+    }
+
+    public String encodeToUTF8(String rawString) {
+        byte[] bytes = rawString.getBytes(StandardCharsets.ISO_8859_1);
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 
     public ArrayList<TAGO_BusArrivalInfo> convert(String body) {
@@ -86,9 +92,16 @@ public class TAGOService {
                 .queryParam("nodeId", nodeId)
                 .build();
 
+        // set header
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(new MediaType[] {MediaType.APPLICATION_JSON}));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> entity = new HttpEntity<String>("", headers);
+
         // request
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.getForEntity(uriComponents.toString(), String.class);
+//        ResponseEntity<String> response = restTemplate.getForEntity(uriComponents.toString(), String.class);
+        ResponseEntity<String> response = restTemplate.exchange(uriComponents.toString(), HttpMethod.GET, entity, String.class);
 
         // check status code
         if (response.getStatusCode() != HttpStatusCode.valueOf(200)) {
@@ -119,7 +132,11 @@ public class TAGOService {
     public ArrayList<ArrivalRoute> filterBusArrivalInfo(ArrayList<TAGO_BusArrivalInfo> busArrivalInfoList){
         ArrayList<ArrivalRoute> arrivalRoutes = new ArrayList<>();
         for (TAGO_BusArrivalInfo busArrivalInfo: busArrivalInfoList) {
-            if (busArrivalInfo.getVehicleTp().equals("저상버스")) {
+            // encode vehicleTp to utf-8
+            String encodedVehicleTp = this.encodeToUTF8(busArrivalInfo.getVehicleTp());
+
+            // check kneeling bus
+            if (encodedVehicleTp.equals("저상버스")) {
                 // convert time from sec to min
                 int arrTimeSec = busArrivalInfo.getArrTime();
                 int arrTimeMin = this.convertSecToMin(arrTimeSec);
