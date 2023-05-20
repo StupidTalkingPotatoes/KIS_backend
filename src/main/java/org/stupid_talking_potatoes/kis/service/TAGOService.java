@@ -19,11 +19,9 @@ import org.stupid_talking_potatoes.kis.dto.node.PassingNode;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusArrivalInfo;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusLocationInfo;
-import org.stupid_talking_potatoes.kis.dto.tago.TAGO_Response;
 import org.stupid_talking_potatoes.kis.entity.Node;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.tago.service
@@ -35,6 +33,10 @@ import java.util.List;
 public class TAGOService {
     private final String serviceKey = "1XxfhSdKbDyiLDzEHz5mnkYKHAfpwM9SBibMSvTaXf4ybFVKHkQbzGUM1PSPWVTNKK5tG8T9oepg4NcTjgmjGA==";
     private final String cityCode = "37050"; // Gumi City Code
+
+    public int convertSecToMin(int min) {
+        return Math.round((float)min/60);
+    }
 
     public ArrayList<TAGO_BusArrivalInfo> convert(String body) {
         ObjectMapper objectMapper = new ObjectMapper()
@@ -94,7 +96,8 @@ public class TAGOService {
         }
 
         // convert from xml to object
-        JSONObject responseBody = XML.toJSONObject(response.getBody()); // xml to json
+        String responseXmlBody = response.getBody(); // get xml body
+        JSONObject responseBody = XML.toJSONObject(responseXmlBody); // xml to json
         ArrayList<TAGO_BusArrivalInfo> arrivalInfoList = this.convert(responseBody.toString()); // json to object
 
         // Filtering and return
@@ -117,12 +120,17 @@ public class TAGOService {
         ArrayList<ArrivalRoute> arrivalRoutes = new ArrayList<>();
         for (TAGO_BusArrivalInfo busArrivalInfo: busArrivalInfoList) {
             if (busArrivalInfo.getVehicleTp().equals("저상버스")) {
+                // convert time from sec to min
+                int arrTimeSec = busArrivalInfo.getArrTime();
+                int arrTimeMin = this.convertSecToMin(arrTimeSec);
+
+                // build object and add to list
                 arrivalRoutes.add(
                         ArrivalRoute.builder()
                                 .routeId(busArrivalInfo.getRouteId())
                                 .routeNo(busArrivalInfo.getRouteNo())
                                 .prevNodeCnt(busArrivalInfo.getArrPrevStationCnt())
-                                .arrTime(busArrivalInfo.getArrTime())
+                                .arrTime(arrTimeMin)
                                 .build()
                 );
             }

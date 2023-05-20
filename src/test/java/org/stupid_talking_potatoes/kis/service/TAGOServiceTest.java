@@ -24,6 +24,18 @@ public class TAGOServiceTest {
     }
 
     @Nested
+    @DisplayName("convertSecToMin 메서드")
+    class convertSecToMin {
+        @Test
+        @DisplayName("convertSecToMin 테스트 - 성공")
+        void convertSetToMin() {
+            assertEquals(10, tagoService.convertSecToMin(600));
+            assertEquals(10, tagoService.convertSecToMin(620));
+            assertEquals(11, tagoService.convertSecToMin(640));
+        }
+    }
+
+    @Nested
     @DisplayName("convert 메서드")
     class convert {
         @Test
