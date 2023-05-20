@@ -64,7 +64,7 @@ public class NodeService {
 
         // set name of departure
         for (ArrivalRoute arrivalRoute: arrivalRoutes) {
-            String departureName = routeService.getDeparture(arrivalRoute.getRouteId());
+            String departureName = routeService.getArrivalName(arrivalRoute.getRouteId());
             arrivalRoute.setDepartureName(departureName);
         }
 
