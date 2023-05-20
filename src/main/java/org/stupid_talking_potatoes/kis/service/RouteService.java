@@ -7,7 +7,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.stupid_talking_potatoes.kis.repository.RouteRepository;
 import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
-import org.stupid_talking_potatoes.kis.entity.Route;
+import org.stupid_talking_potatoes.kis.repository.RouteRepository;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -66,8 +66,5 @@ public class RouteService {
     public ArrayList<SearchedRoute> getRouteList(String routeNo){
         return null;
     }
-    
-    public Route getRouteByNaverId(String naverRouteId){
-        return null;
-    }
+
 }

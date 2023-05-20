@@ -1,16 +1,11 @@
 package org.stupid_talking_potatoes.kis.entity;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.route.domain
@@ -18,19 +13,16 @@ import java.util.List;
  * author :  ShinYeaChan
  * date : 2023-04-23
  */
-@Entity
 @Getter
+@Setter
+@Entity
+@ToString(callSuper = true)
 @SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
 public class Route extends RouteBase {
-    @OneToMany(mappedBy = "nodeId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Node> nodeList;
-
-    private String naverRouteId;
-    
-    @PostConstruct
-    private void init() {
-        this.nodeList = builder().nodeList(new ArrayList<>()).build().getNodeList();
-    }
+    private String startNodeName;
+    private String endNodeName;
+    @OneToMany(mappedBy = "route")
+    @ToString.Exclude
+    private Set<RouteSeq> routeNodes = new HashSet<>();
 }

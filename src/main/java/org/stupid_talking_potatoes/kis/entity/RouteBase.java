@@ -1,11 +1,9 @@
 package org.stupid_talking_potatoes.kis.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.route.domain.base
@@ -14,11 +12,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * date : 2023-04-23
  */
 @Getter
-@MappedSuperclass
+@Setter
+@ToString
 @SuperBuilder
-@NoArgsConstructor
+@MappedSuperclass
 @AllArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
 public abstract class RouteBase {
     @Id
     private String routeId;

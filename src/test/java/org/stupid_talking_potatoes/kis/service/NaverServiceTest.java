@@ -28,7 +28,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 @ExtendWith(MockitoExtension.class)
 class NaverServiceTest {
-    private final NaverService naverService = new NaverService();
     private final BasicJsonTester json = new BasicJsonTester(getClass());
     JSONObject res;
     
