@@ -30,7 +30,7 @@ public class TAGOServiceTest {
         @DisplayName("convert 테스트 - 성공 (resultCode가 00인 경우)")
         void convert() {
             // given
-            String jsonBody = "{\"response\":{\"header\":{\"resultCode\":\"00\",\"resultMsg\":\"NORMAL SERVICE.\"},\"body\":{\"items\":[{\"nodeid\":\"1\",\"nodenm\":\"name\",\"routeid\":\"1\",\"routetp\":\"마을버스\",\"arrprevstationcnt\":5,\"vehicletp\":\"저상버스\",\"arrtime\":5}],\"numOfRows\":100,\"pageNo\":1,\"totalCount\":1}}}";
+            String jsonBody = "{\"response\":{\"header\":{\"resultCode\":\"00\",\"resultMsg\":\"NORMAL SERVICE.\"},\"body\":{\"items\": {\"item\": [{\"nodeid\":\"1\",\"nodenm\":\"name\",\"routeid\":\"1\",\"routetp\":\"마을버스\",\"arrprevstationcnt\":5,\"vehicletp\":\"저상버스\",\"arrtime\":5}]},\"numOfRows\":100,\"pageNo\":1,\"totalCount\":1}}}";
 
             // when
             ArrayList<TAGO_BusArrivalInfo> list = tagoService.convert(jsonBody);
