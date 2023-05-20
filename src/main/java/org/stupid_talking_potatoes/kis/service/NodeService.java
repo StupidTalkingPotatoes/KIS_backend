@@ -28,6 +28,7 @@ public class NodeService {
 
     private final RouteService routeService;
 
+
     /**
      * nodeNo와 nodeName을 기준으로 node테이블의 요소를 NodeDto에 담아 리스트형태로 반환
      *
@@ -67,6 +68,8 @@ public class NodeService {
             String departureName = routeService.getArrivalName(arrivalRoute.getRouteId());
             arrivalRoute.setDepartureName(departureName);
         }
+
+        arrivalRoutes.sort(ArrivalRoute::compareTo);
 
         // set response
         RealtimeBusArrivalInfo response = new RealtimeBusArrivalInfo();
