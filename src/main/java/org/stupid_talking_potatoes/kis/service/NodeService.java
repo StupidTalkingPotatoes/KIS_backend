@@ -69,6 +69,7 @@ public class NodeService {
             arrivalRoute.setDepartureName(departureName);
         }
 
+        // sort by arrTime
         arrivalRoutes.sort(ArrivalRoute::compareTo);
 
         // set response
