@@ -58,7 +58,7 @@ public class TAGOService {
             }
 
             // convert items to object list & return
-            ArrayNode arrayNode = (ArrayNode) responseBody.get("items");
+            ArrayNode arrayNode = (ArrayNode) responseBody.get("items").get("item");
             ArrayList<TAGO_BusArrivalInfo> busArrivalInfoList = objectMapper.convertValue(arrayNode, new TypeReference<ArrayList<TAGO_BusArrivalInfo>>() {});
             return busArrivalInfoList;
 
