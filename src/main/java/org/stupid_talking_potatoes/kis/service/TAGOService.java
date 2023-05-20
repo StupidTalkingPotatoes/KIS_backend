@@ -92,16 +92,9 @@ public class TAGOService {
                 .queryParam("nodeId", nodeId)
                 .build();
 
-        // set header
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(new MediaType[] {MediaType.APPLICATION_JSON}));
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> entity = new HttpEntity<String>("", headers);
-
         // request
         RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<String> response = restTemplate.getForEntity(uriComponents.toString(), String.class);
-        ResponseEntity<String> response = restTemplate.exchange(uriComponents.toString(), HttpMethod.GET, entity, String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(uriComponents.toString(), String.class);
 
         // check status code
         if (response.getStatusCode() != HttpStatusCode.valueOf(200)) {
