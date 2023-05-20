@@ -1,8 +1,15 @@
 package org.stupid_talking_potatoes.kis.entity;
 
 import jakarta.persistence.Entity;
-import lombok.*;
+import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.node.domain.base
@@ -11,12 +18,18 @@ import lombok.experimental.SuperBuilder;
  * date : 2023-04-23
  */
 @Getter
+@Setter
 @Entity
+@ToString(callSuper = true)
 @SuperBuilder
 @NoArgsConstructor
 public class Node extends NodeBase {
     private Double longitude;
     private Double latitude;
+    
+    @OneToMany(mappedBy = "node")
+    @ToString.Exclude
+    private Set<RouteSeq> routeNodes=new HashSet<>();
 
     public Node(String nodeId, String nodeName, String nodeNo, Double longitude, Double latitude) {
         super(nodeId, nodeName, nodeNo);

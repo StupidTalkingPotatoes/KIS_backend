@@ -2,9 +2,7 @@ package org.stupid_talking_potatoes.kis.entity;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -14,6 +12,7 @@ import lombok.experimental.SuperBuilder;
  * date : 2023-04-23
  */
 @Getter
+@ToString
 @SuperBuilder
 @MappedSuperclass
 @AllArgsConstructor // super로 field set 하기 위해 추가

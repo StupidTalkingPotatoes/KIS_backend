@@ -13,5 +13,5 @@ import java.util.ArrayList;
 @Data
 public class Path {
     private Integer duration;
-    private ArrayList<Step> stepList;
+    private ArrayList<Step> stepList=new ArrayList<>();
 }
