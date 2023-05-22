@@ -1,18 +1,18 @@
 package org.stupid_talking_potatoes.kis.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mysql.cj.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.stupid_talking_potatoes.kis.dto.node.PassingNode;
+import org.stupid_talking_potatoes.kis.dto.tago.TAGO_RealTimeBusLocationInfo;
+import org.stupid_talking_potatoes.kis.entity.Route;
 import org.stupid_talking_potatoes.kis.repository.RouteRepository;
 import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
-import org.stupid_talking_potatoes.kis.repository.RouteRepository;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.route.service
@@ -23,47 +23,73 @@ import java.util.ArrayList;
 @Service
 @RequiredArgsConstructor
 public class RouteService {
-    public static final String JSON = "json";
-    public static final String GUMI_CITY_CODE = "37050";
-    public static final String ONE_HUNDRED = "100";
-    public static final String SERVICE_KEY = "serviceKey";
-    public static final String TYPE = "_type";
-    public static final String CITY_CODE = "cityCode";
-    public static final String ROUTE_ID = "routeId";
-    public static final String NUM_OF_ROWS = "numOfRows";
-    private static final String SERVICE_KEY_VALUE = "xglcv%2F478Ggh0VzLUayLaKypd86Zoh0WYYjKLN5WOWUWvfaBjt%2FLjP46Nxx1lH2DmhmGNkN%2Fe8rBvQ62C5ljpg%3D%3D";
 
-    private final RestTemplate restTemplate;
     private final RouteRepository routeRepository;
 
-    public RealtimeBusLocationInfo getBusRouteInfo(String routeId) throws UnsupportedEncodingException {
-        String uri = UriComponentsBuilder.fromHttpUrl("http://apis.data.go.kr/1613000/BusRouteInfoInqireService/getRouteAcctoThrghSttnList")
-                .queryParam(URLEncoder.encode(SERVICE_KEY, StandardCharsets.UTF_8), SERVICE_KEY_VALUE)
-                .queryParam(URLEncoder.encode(TYPE, StandardCharsets.UTF_8), URLEncoder.encode(JSON, StandardCharsets.UTF_8))
-                .queryParam(URLEncoder.encode(CITY_CODE, StandardCharsets.UTF_8), URLEncoder.encode(GUMI_CITY_CODE, StandardCharsets.UTF_8))
-                .queryParam(URLEncoder.encode(ROUTE_ID, StandardCharsets.UTF_8), URLEncoder.encode(routeId, StandardCharsets.UTF_8))
-                .queryParam(URLEncoder.encode(NUM_OF_ROWS, StandardCharsets.UTF_8), URLEncoder.encode(ONE_HUNDRED, StandardCharsets.UTF_8))
-                .toUriString();
+    private final KneelingBusService kneelingBusService;
 
-        return new RealtimeBusLocationInfo();
+    private final TAGOService tagoService;
+
+    /**
+     * searchApi: keyword를 가지고 Route 검색
+     * @param keyword 검색하고자 하는 keyword(RouteNo)
+     * @return SearchedRouteList
+     */
+    public List<SearchedRoute> getRouteList(String keyword){
+        if (StringUtils.isNullOrEmpty(keyword)) {
+            return Collections.emptyList();
+        }
+
+        List<Route> routes = routeRepository.findAllByRouteNoContaining(keyword);
+
+        List<SearchedRoute> searchedRoutes = new ArrayList<>();
+        for (Route route : routes) {
+            SearchedRoute searchedRoute = SearchedRoute.fromEntity(route);
+            searchedRoutes.add(searchedRoute);
+        }
+
+        return searchedRoutes;
     }
 
-    public RealtimeBusLocationInfo getRealtimeBusLocationInfo(String routeId) throws UnsupportedEncodingException {
-        String uri = UriComponentsBuilder.fromHttpUrl("http://apis.data.go.kr/1613000/BusLcInfoInqireService/getRouteAcctoBusLcList")
-                .queryParam(URLEncoder.encode(SERVICE_KEY, StandardCharsets.UTF_8), SERVICE_KEY_VALUE)
-                .queryParam(URLEncoder.encode(TYPE, StandardCharsets.UTF_8), URLEncoder.encode(JSON, StandardCharsets.UTF_8))
-                .queryParam(URLEncoder.encode(CITY_CODE, StandardCharsets.UTF_8), URLEncoder.encode(GUMI_CITY_CODE, StandardCharsets.UTF_8))
-                .queryParam(URLEncoder.encode(ROUTE_ID, StandardCharsets.UTF_8), URLEncoder.encode(routeId, StandardCharsets.UTF_8))
-                .toUriString();
+    /**
+     * routeId에 해당하는 경로 조회 및 경로 상에 있는 실시간 저상버스 위치 정보
+     * @param routeId routeId
+     * @return RealtimeBusLocationInfo
+     */
+    public RealtimeBusLocationInfo getBusRouteInfo(String routeId) {
 
-        return null;
+        List<PassingNode> passingNodeList = tagoService.getPassingNodeList(routeId);
+
+        Optional<Route> routeOp = routeRepository.findByRouteId(routeId);
+
+        Route route = routeOp.orElseThrow(()-> new NoSuchElementException(routeId + "에 해당하는 노선을 찾을 수 없습니다"));
+
+        List<TAGO_RealTimeBusLocationInfo> realTimeBusLocationInfoList = tagoService.requestRealTimeBusLocationInfo(routeId);
+
+        // 저상버스 필터링
+        List<Integer> realtimeNodeOrderList = getFilteredNodeOrderList(realTimeBusLocationInfoList);
+
+        return RealtimeBusLocationInfo.of(route, passingNodeList,realtimeNodeOrderList );
+    }
+
+    /**
+     * 현재 운행 중인 저상버스 필터링
+     * @param realTimeBusLocationInfoList realTimeBusLocationInfoList(현재 운행 중인 버스 정보)
+     * @return realtimeNodeOrderList(현재 운행 중인 저상버스 위치 리스트)
+     */
+    private List<Integer> getFilteredNodeOrderList(List<TAGO_RealTimeBusLocationInfo> realTimeBusLocationInfoList) {
+        List<Integer> realtimeNodeOrderList = new ArrayList<>();
+
+        for (TAGO_RealTimeBusLocationInfo realTimeBusLocationInfo : realTimeBusLocationInfoList) {
+            String vehicleNo = realTimeBusLocationInfo.getVehicleNo();
+            if (kneelingBusService.isKneelingBus(vehicleNo)) {
+                realtimeNodeOrderList.add(realTimeBusLocationInfo.getNodeOrd());
+            }
+        }
+        return realtimeNodeOrderList;
     }
 
     public String getDeparture(String routeId){
-        return null;
-    }
-    
-    public ArrayList<SearchedRoute> getRouteList(String routeNo){
         return null;
     }
 

@@ -8,8 +8,14 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RouteRepository extends JpaRepository<Route, String> {
-    Optional<Route> findByRouteId(String routeId);
-    
     List<Route> findByRouteNo(@NonNull String routeNo);
-    
+
+    /**
+     * 검색하고자 하는 keyword를 사용하여 RouteNo 기준으로 Like 검색
+     * @param keyword routeNo 검색어
+     * @return RouteNo에 keyword가 포함된 RouteList
+     */
+    List<Route> findAllByRouteNoContaining(String keyword);
+
+    Optional<Route> findByRouteId(String routeId);
 }

@@ -1,5 +1,6 @@
 package org.stupid_talking_potatoes.kis.dto.tago;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
@@ -10,12 +11,18 @@ import lombok.Data;
  */
 @Data
 public class TAGO_BusLocationInfo {
-    private String routeNm;
+    @JsonProperty("routeid")
+    private String routeId;
+    @JsonProperty("gpslati")
     private Double gpsLati;
+    @JsonProperty("gpslong")
     private Double gpsLong;
-    private Integer nodeOrd; //이거 Integer로하는게 맞는가??? 순행 역행 따져서 Integer한거같긴한데 어떤게 순행인지 정하는것도 일일거같아서 문자열이 더 편할거같아서
+    @JsonProperty("nodeord")
+    private Integer nodeOrd;
+    @JsonProperty("nodenm")
     private String nodeNm;
+    @JsonProperty("nodeid")
     private String nodeId;
-    private String routeTp;
-    private String vehicleNo;
+    @JsonProperty("nodeno")
+    private String nodeNo;
 }
