@@ -12,6 +12,7 @@ import org.stupid_talking_potatoes.kis.dto.tago.TAGO_AroundNodeInfo;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusArrivalInfo;
 import org.stupid_talking_potatoes.kis.entity.Node;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -82,7 +83,7 @@ public class TAGOServiceTest {
     class filterKneelingBus {
         @Test
         @DisplayName("filterKneelingBus 테스트")
-        void filterKneelingBusTest() {
+        void filterKneelingBusTest() throws UnsupportedEncodingException {
             // given
             ArrayList<TAGO_BusArrivalInfo> items = new ArrayList<>();
             int i = 0;
@@ -94,7 +95,7 @@ public class TAGOServiceTest {
                         String.valueOf(i),
                         "마을버스",
                         i*5,
-                        "저상버스",
+                        new String( "저상버스".getBytes("utf-8"), "iso-8859-1"),
                         i*5*2
                 );
                 items.add(info);
@@ -106,7 +107,7 @@ public class TAGOServiceTest {
                     String.valueOf(i),
                     "좌석버스",
                     i*5,
-                    "일반차량",
+                    new String( "일반차량".getBytes("utf-8"), "iso-8859-1"),
                     i*5*2
             );
             items.add(info);
