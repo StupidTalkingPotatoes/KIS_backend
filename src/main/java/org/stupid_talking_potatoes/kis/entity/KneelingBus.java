@@ -14,6 +14,5 @@ import lombok.Getter;
 @Getter
 public class KneelingBus {
     @Id
-    private String busNo;//얘를 ID로 둬야할거같아서 ㅎㅎ
     private String vehicleNo;
 }
