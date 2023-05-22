@@ -8,7 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
+import org.stupid_talking_potatoes.kis.dto.tago.TAGO_AroundNodeInfo;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusArrivalInfo;
+import org.stupid_talking_potatoes.kis.entity.Node;
 
 import java.util.ArrayList;
 
@@ -117,5 +119,26 @@ public class TAGOServiceTest {
 
         }
 
+    }
+
+    @Nested
+    @DisplayName("filterArroundNodeInfo 메서드")
+    class filterArroundNodeInfo {
+        @Test
+        @DisplayName("filterArroundNodeInfo 테스트")
+        void filterArroundNodeInfo() {
+            // given
+            ArrayList<TAGO_AroundNodeInfo> aroundNodeList = new ArrayList<>();
+            aroundNodeList.add(new TAGO_AroundNodeInfo(37050, 36.13948442, 128.3967393,"GMB131", "금오공대입구(옥계중학교방면)", 10131));
+            aroundNodeList.add(new TAGO_AroundNodeInfo(37390, 36.13948442, 128.3967393,"GMB131", "금오공대입구(옥계중학교방면)", 10131));
+            aroundNodeList.add(new TAGO_AroundNodeInfo(37050, 36.13948442, 128.3967393,"GMB131", "금오공대입구(옥계중학교방면)", 10131));
+            aroundNodeList.add(new TAGO_AroundNodeInfo(37390, 36.13948442, 128.3967393,"GMB131", "금오공대입구(옥계중학교방면)", 10131));
+
+            // when
+            ArrayList<Node> nodeList = tagoService.filterArroundNodeInfo(aroundNodeList);
+
+            // then
+            assertEquals(2, nodeList.size());
+        }
     }
 }
