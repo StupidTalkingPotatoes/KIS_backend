@@ -4,6 +4,7 @@ import lombok.Data;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.node.dto
@@ -14,5 +15,5 @@ import java.util.ArrayList;
 @Data
 public class RealtimeBusArrivalInfo {
     private NodeDto nodeDto;
-    private ArrayList<ArrivalRoute> arrivalRouteList;
+    private List<ArrivalRoute> arrivalRouteList;
 }
