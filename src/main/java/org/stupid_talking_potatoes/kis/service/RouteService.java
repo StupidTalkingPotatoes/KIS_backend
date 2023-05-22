@@ -1,9 +1,6 @@
 package org.stupid_talking_potatoes.kis.service;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
@@ -20,7 +17,7 @@ import java.util.NoSuchElementException;
  * date : 2023-04-23
  */
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RouteService {
     private final RouteRepository routeRepository;
 
