@@ -8,10 +8,7 @@ import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.node.service
@@ -27,6 +24,7 @@ public class NodeService {
     private final TAGOService tagoService;
 
     private final RouteService routeService;
+
 
     /**
      * nodeNo와 nodeName을 기준으로 node테이블의 요소를 NodeDto에 담아 리스트형태로 반환
@@ -60,13 +58,16 @@ public class NodeService {
         Node node = nodeRepository.findById(nodeId).orElseThrow(()-> new NoSuchElementException());
 
         // get response from tago service
-        ArrayList<ArrivalRoute> arrivalRoutes = tagoService.requestRealtimeBusArrivalInfo(nodeId);
+        List<ArrivalRoute> arrivalRoutes = tagoService.requestRealtimeBusArrivalInfo(nodeId);
 
         // set name of departure
         for (ArrivalRoute arrivalRoute: arrivalRoutes) {
-            String departureName = routeService.getDeparture(arrivalRoute.getRouteId());
+            String departureName = routeService.getArrivalName(arrivalRoute.getRouteId());
             arrivalRoute.setDepartureName(departureName);
         }
+
+        // sort by arrTime
+        arrivalRoutes.sort(Comparator.comparing(ArrivalRoute::getArrTime));
 
         // set response
         RealtimeBusArrivalInfo response = new RealtimeBusArrivalInfo();

@@ -98,14 +98,14 @@ public class NodeServiceTest {
 
             when (nodeRepository.findById(id)).thenReturn(Optional.of(node));
             when (tagoService.requestRealtimeBusArrivalInfo(id)).thenReturn(routes);
-            when (routeService.getDeparture(any(String.class))).thenReturn("구미역");
+            when (routeService.getArrivalName(any(String.class))).thenReturn("구미역");
 
             // when
             RealtimeBusArrivalInfo response = nodeService.getRealtimeBusArrivalInfo(id);
 
             // then
             assertEquals(2, response.getArrivalRouteList().size());
-
+            assertEquals(180, response.getArrivalRouteList().get(0).getArrTime()); // sorting test
         }
 
         @Test

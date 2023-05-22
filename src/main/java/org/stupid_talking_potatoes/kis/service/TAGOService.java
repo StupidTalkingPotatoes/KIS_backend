@@ -9,8 +9,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.json.JSONObject;
 import org.json.XML;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
@@ -19,11 +18,11 @@ import org.stupid_talking_potatoes.kis.dto.node.PassingNode;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusArrivalInfo;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusLocationInfo;
-import org.stupid_talking_potatoes.kis.dto.tago.TAGO_Response;
 import org.stupid_talking_potatoes.kis.entity.Node;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.tago.service
@@ -35,6 +34,15 @@ import java.util.List;
 public class TAGOService {
     private final String serviceKey = "1XxfhSdKbDyiLDzEHz5mnkYKHAfpwM9SBibMSvTaXf4ybFVKHkQbzGUM1PSPWVTNKK5tG8T9oepg4NcTjgmjGA==";
     private final String cityCode = "37050"; // Gumi City Code
+
+    public int convertSecToMin(int min) {
+        return Math.round((float)min/60);
+    }
+
+    public String encodeToUTF8(String rawString) {
+        byte[] bytes = rawString.getBytes(StandardCharsets.ISO_8859_1);
+        return new String(bytes, StandardCharsets.UTF_8);
+    }
 
     public ArrayList<TAGO_BusArrivalInfo> convert(String body) {
         ObjectMapper objectMapper = new ObjectMapper()
@@ -58,7 +66,7 @@ public class TAGOService {
             }
 
             // convert items to object list & return
-            ArrayNode arrayNode = (ArrayNode) responseBody.get("items");
+            ArrayNode arrayNode = (ArrayNode) responseBody.get("items").get("item");
             ArrayList<TAGO_BusArrivalInfo> busArrivalInfoList = objectMapper.convertValue(arrayNode, new TypeReference<ArrayList<TAGO_BusArrivalInfo>>() {});
             return busArrivalInfoList;
 
@@ -94,7 +102,8 @@ public class TAGOService {
         }
 
         // convert from xml to object
-        JSONObject responseBody = XML.toJSONObject(response.getBody()); // xml to json
+        String responseXmlBody = response.getBody(); // get xml body
+        JSONObject responseBody = XML.toJSONObject(responseXmlBody); // xml to json
         ArrayList<TAGO_BusArrivalInfo> arrivalInfoList = this.convert(responseBody.toString()); // json to object
 
         // Filtering and return
@@ -116,13 +125,22 @@ public class TAGOService {
     public ArrayList<ArrivalRoute> filterBusArrivalInfo(ArrayList<TAGO_BusArrivalInfo> busArrivalInfoList){
         ArrayList<ArrivalRoute> arrivalRoutes = new ArrayList<>();
         for (TAGO_BusArrivalInfo busArrivalInfo: busArrivalInfoList) {
-            if (busArrivalInfo.getVehicleTp().equals("저상버스")) {
+            // encode vehicleTp to utf-8
+            String encodedVehicleTp = this.encodeToUTF8(busArrivalInfo.getVehicleTp());
+
+            // check kneeling bus
+            if (encodedVehicleTp.equals("저상버스")) {
+                // convert time from sec to min
+                int arrTimeSec = busArrivalInfo.getArrTime();
+                int arrTimeMin = this.convertSecToMin(arrTimeSec);
+
+                // build object and add to list
                 arrivalRoutes.add(
                         ArrivalRoute.builder()
                                 .routeId(busArrivalInfo.getRouteId())
                                 .routeNo(busArrivalInfo.getRouteNo())
                                 .prevNodeCnt(busArrivalInfo.getArrPrevStationCnt())
-                                .arrTime(busArrivalInfo.getArrTime())
+                                .arrTime(arrTimeMin)
                                 .build()
                 );
             }
