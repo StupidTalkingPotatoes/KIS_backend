@@ -114,28 +114,10 @@ public class TAGOService {
         }
     }
 
-    public ArrayList<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId, String routeId) {
-        return requestRealtimeBusArrivalInfo(nodeId, null);
-    }
-
-    public List<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
-        // set url
-        UriComponents uriComponents = UriComponentsBuilder.newInstance()
-                .scheme("https")
-                .host("apis.data.go.kr")
-                .path("/1613000/ArvlInfoInqireService/getSttnAcctoArvlPrearngeInfoList")
-                .queryParam("serviceKey", this.serviceKey)
-                // if there is error, return type is always xml.
-                .queryParam("_type", "xml")
-                .queryParam("cityCode", this.cityCode)
-                .queryParam("pageNo", 1)
-                .queryParam("numOfRows", 100)
-                .queryParam("nodeId", nodeId)
-                .build();
-
+    public List<ArrivalRoute> requestAndFilterBusArrivalInfo(UriComponents uri) {
         // request
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.getForEntity(uriComponents.toString(), String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(uri.toString(), String.class);
 
         // check status code
         if (response.getStatusCode() != HttpStatusCode.valueOf(200)) {
@@ -149,6 +131,41 @@ public class TAGOService {
 
         // Filtering and return
         return this.filterBusArrivalInfo(arrivalInfoList);
+    }
+
+    public List<ArrivalRoute> requestRealtimeSpecificBusArrivalInfo(String nodeId, String routeId) {
+        // set url
+        UriComponents uri = UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("apis.data.go.kr")
+                .path("/1613000/ArvlInfoInqireService/getSttnAcctoSpcifyRouteBusArvlPrearngeInfoList")
+                .queryParam("serviceKey", this.serviceKey)
+                // if there is error, return type is always xml.
+                .queryParam("_type", "xml")
+                .queryParam("cityCode", this.cityCode)
+                .queryParam("pageNo", 1)
+                .queryParam("numOfRows", 100)
+                .queryParam("nodeId", nodeId)
+                .queryParam("routeId", routeId)
+                .build();
+        return this.requestAndFilterBusArrivalInfo(uri);
+    }
+
+    public List<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
+        // set url
+        UriComponents uri = UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("apis.data.go.kr")
+                .path("/1613000/ArvlInfoInqireService/getSttnAcctoArvlPrearngeInfoList")
+                .queryParam("serviceKey", this.serviceKey)
+                // if there is error, return type is always xml.
+                .queryParam("_type", "xml")
+                .queryParam("cityCode", this.cityCode)
+                .queryParam("pageNo", 1)
+                .queryParam("numOfRows", 100)
+                .queryParam("nodeId", nodeId)
+                .build();
+        return this.requestAndFilterBusArrivalInfo(uri);
     }
 
     public ArrayList<Node> requestAroundNodeInfo(Double longitude, Double latitude){
