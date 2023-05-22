@@ -8,7 +8,10 @@ import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.node.service
@@ -24,7 +27,6 @@ public class NodeService {
     private final TAGOService tagoService;
 
     private final RouteService routeService;
-
 
     /**
      * nodeNo와 nodeName을 기준으로 node테이블의 요소를 NodeDto에 담아 리스트형태로 반환
@@ -58,32 +60,23 @@ public class NodeService {
         Node node = nodeRepository.findById(nodeId).orElseThrow(()-> new NoSuchElementException());
 
         // get response from tago service
-        List<ArrivalRoute> arrivalRoutes = tagoService.requestRealtimeBusArrivalInfo(nodeId);
+        ArrayList<ArrivalRoute> arrivalRoutes = tagoService.requestRealtimeBusArrivalInfo(nodeId);
 
         // set name of departure
         for (ArrivalRoute arrivalRoute: arrivalRoutes) {
-            String departureName = routeService.getArrivalName(arrivalRoute.getRouteId());
+            String departureName = routeService.getDeparture(arrivalRoute.getRouteId());
             arrivalRoute.setDepartureName(departureName);
         }
 
-        // sort by arrTime
-        arrivalRoutes.sort(Comparator.comparing(ArrivalRoute::getArrTime));
-
         // set response
-        RealtimeBusArrivalInfo response = new RealtimeBusArrivalInfo(new NodeDto(node), arrivalRoutes);
+        RealtimeBusArrivalInfo response = new RealtimeBusArrivalInfo();
+        response.setNodeDto(new NodeDto(node));
+        response.setArrivalRouteList(arrivalRoutes);
         return response;
     }
 
-    public List<NodeDto> getAroundNodeInfo(Double longitude, Double latitude){
-        // get response from tago service
-        List<Node> aroundNodes = tagoService.requestAroundNodeInfo(longitude, latitude);
-
-        // map to NodeDto
-        List<NodeDto> aroundNodeDtos = new ArrayList<NodeDto>();
-        for (Node node: aroundNodes)
-            aroundNodeDtos.add(new NodeDto(node));
-
-        return aroundNodeDtos;
+    public ArrayList<NodeDto> getAroundNodeInfo(Double longitude, Double latitude){
+        return null;
     }
 
     public  NodeDto getNodeByNaverId(String naverNodeId){

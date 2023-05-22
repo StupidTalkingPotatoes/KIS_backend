@@ -1,10 +1,9 @@
 package org.stupid_talking_potatoes.kis.dto.node;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.node.dto
@@ -13,8 +12,7 @@ import java.util.List;
  * date : 2023-04-23
  */
 @Data
-@AllArgsConstructor
 public class RealtimeBusArrivalInfo {
     private NodeDto nodeDto;
-    private List<ArrivalRoute> arrivalRouteList;
+    private ArrayList<ArrivalRoute> arrivalRouteList;
 }
