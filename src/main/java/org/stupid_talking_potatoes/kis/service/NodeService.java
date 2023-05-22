@@ -70,14 +70,20 @@ public class NodeService {
         arrivalRoutes.sort(Comparator.comparing(ArrivalRoute::getArrTime));
 
         // set response
-        RealtimeBusArrivalInfo response = new RealtimeBusArrivalInfo();
-        response.setNodeDto(new NodeDto(node));
-        response.setArrivalRouteList(arrivalRoutes);
+        RealtimeBusArrivalInfo response = new RealtimeBusArrivalInfo(new NodeDto(node), arrivalRoutes);
         return response;
     }
 
-    public ArrayList<NodeDto> getAroundNodeInfo(Double longitude, Double latitude){
-        return null;
+    public List<NodeDto> getAroundNodeInfo(Double longitude, Double latitude){
+        // get response from tago service
+        List<Node> aroundNodes = tagoService.requestAroundNodeInfo(longitude, latitude);
+
+        // map to NodeDto
+        List<NodeDto> aroundNodeDtos = new ArrayList<NodeDto>();
+        for (Node node: aroundNodes)
+            aroundNodeDtos.add(new NodeDto(node));
+
+        return aroundNodeDtos;
     }
 
     public  NodeDto getNodeByNaverId(String naverNodeId){

@@ -14,7 +14,9 @@ import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -112,6 +114,49 @@ public class NodeServiceTest {
         @DisplayName("getRealtimeBusArrivalInfo 테스트 - 실패 (Invalid ID)")
         void getInfoWithInvalidId() {
 
+        }
+    }
+
+    @Nested
+    @DisplayName("getAroundNodeInfo 메서드")
+    class getAroundNodeInfo {
+        @Test
+        @DisplayName("getAroundNodeInfo 테스트 - 성공 (주변 정류장이 있는 경우)")
+        void getNodes() {
+            // given
+            Double latitude = 36.140382;
+            Double longitude = 128.3964849;
+
+            ArrayList<Node> nodes = new ArrayList<>();
+            nodes.add(new Node("GMB131", "금오공대입구(옥계중학교방면)", "10131", 128.3967393, 36.13948442));
+            nodes.add(new Node("GMB130", "금오공대입구(금오공대종점방면)", "10130", 128.3971135, 36.13929449));
+            nodes.add(new Node("GMB132", "금오공대종점", "10132", 128.394333, 36.142569));
+
+            when (tagoService.requestAroundNodeInfo(longitude, latitude)).thenReturn(nodes);
+
+            // when
+            List<NodeDto> response = nodeService.getAroundNodeInfo(longitude, latitude);
+
+            // then
+            assertEquals(3, response.size());
+        }
+
+        @Test
+        @DisplayName("getAroundNodeInfo 테스트 - 성공 (주변 정류장이 없는 경우)")
+        void noAroundNode() {
+            // given
+            Double latitude = 36.1702;
+            Double longitude = 128.3903;
+
+            ArrayList<Node> nodes = new ArrayList<>();
+
+            when (tagoService.requestAroundNodeInfo(longitude, latitude)).thenReturn(nodes);
+
+            // when
+            List<NodeDto> response = nodeService.getAroundNodeInfo(longitude, latitude);
+
+            // then
+            assertEquals(0, response.size());
         }
     }
 }
