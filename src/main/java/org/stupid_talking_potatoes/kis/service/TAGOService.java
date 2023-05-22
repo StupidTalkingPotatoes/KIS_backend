@@ -81,7 +81,7 @@ public class TAGOService {
         }
     }
 
-    public ArrayList<TAGO_BusArrivalInfo> convert(String body) {
+    public ArrayList<TAGO_BusArrivalInfo> convertArrivalInfo(String body) {
         ObjectMapper objectMapper = new ObjectMapper()
                 // fields of dto are camelCase, but fields of TAGO api are lowercase
                 .setPropertyNamingStrategy(PropertyNamingStrategy.LOWER_CASE);
@@ -141,7 +141,7 @@ public class TAGOService {
         // convert from xml to object
         String responseXmlBody = response.getBody(); // get xml body
         JSONObject responseBody = XML.toJSONObject(responseXmlBody); // xml to json
-        ArrayList<TAGO_BusArrivalInfo> arrivalInfoList = this.convert(responseBody.toString()); // json to object
+        ArrayList<TAGO_BusArrivalInfo> arrivalInfoList = this.convertArrivalInfo(responseBody.toString()); // json to object
 
         // Filtering and return
         return this.filterBusArrivalInfo(arrivalInfoList);
