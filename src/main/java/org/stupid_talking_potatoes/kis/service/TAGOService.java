@@ -114,7 +114,11 @@ public class TAGOService {
         }
     }
 
-    public ArrayList<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
+    public ArrayList<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId, String routeId) {
+        return requestRealtimeBusArrivalInfo(nodeId, null);
+    }
+
+    public List<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
         // set url
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .scheme("https")
