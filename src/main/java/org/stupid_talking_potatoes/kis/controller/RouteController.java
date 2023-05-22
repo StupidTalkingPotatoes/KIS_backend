@@ -1,5 +1,6 @@
 package org.stupid_talking_potatoes.kis.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.stupid_talking_potatoes.kis.service.RouteService;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.route.controller
@@ -25,14 +27,12 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class RouteController {
     private final RouteService routeService;
-
-    @GetMapping("/location")
-    public RealtimeBusLocationInfo getRealtimeBusLocationInfo(String routeId) throws UnsupportedEncodingException {
-        return routeService.getBusRouteInfo(routeId);
+    @GetMapping("/search")
+    public List<SearchedRoute> getRouteList(String keyword){
+        return routeService.getRouteList(keyword);
     }
-    
-    @GetMapping("/arrive-info")
-    public ArrayList<SearchedRoute> getRouteList(String routeNo){
-        return null;
+    @GetMapping("/location")
+    public RealtimeBusLocationInfo getRealtimeBusLocationInfo(String routeId) {
+        return routeService.getBusRouteInfo(routeId);
     }
 }
