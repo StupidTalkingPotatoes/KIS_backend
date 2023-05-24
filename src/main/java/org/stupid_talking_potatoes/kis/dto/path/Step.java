@@ -14,7 +14,6 @@ import java.util.List;
  */
 @Getter
 @ToString
-@Setter
 @NoArgsConstructor
 public class Step {
     private String type;
