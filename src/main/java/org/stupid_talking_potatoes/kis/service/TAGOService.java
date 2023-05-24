@@ -81,7 +81,7 @@ public class TAGOService {
         }
     }
 
-    public ArrayList<TAGO_BusArrivalInfo> convert(String body) {
+    public ArrayList<TAGO_BusArrivalInfo> convertArrivalInfo(String body) {
         ObjectMapper objectMapper = new ObjectMapper()
                 // fields of dto are camelCase, but fields of TAGO api are lowercase
                 .setPropertyNamingStrategy(PropertyNamingStrategy.LOWER_CASE);
@@ -114,9 +114,46 @@ public class TAGOService {
         }
     }
 
-    public ArrayList<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
+    public List<ArrivalRoute> requestAndFilterBusArrivalInfo(UriComponents uri) {
+        // request
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.getForEntity(uri.toString(), String.class);
+
+        // check status code
+        if (response.getStatusCode() != HttpStatusCode.valueOf(200)) {
+            throw new RuntimeException(); // TODO: Exception Handling
+        }
+
+        // convert from xml to object
+        String responseXmlBody = response.getBody(); // get xml body
+        JSONObject responseBody = XML.toJSONObject(responseXmlBody); // xml to json
+        ArrayList<TAGO_BusArrivalInfo> arrivalInfoList = this.convertArrivalInfo(responseBody.toString()); // json to object
+
+        // Filtering and return
+        return this.filterBusArrivalInfo(arrivalInfoList);
+    }
+
+    public List<ArrivalRoute> requestRealtimeSpecificBusArrivalInfo(String nodeId, String routeId) {
         // set url
-        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+        UriComponents uri = UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("apis.data.go.kr")
+                .path("/1613000/ArvlInfoInqireService/getSttnAcctoSpcifyRouteBusArvlPrearngeInfoList")
+                .queryParam("serviceKey", this.serviceKey)
+                // if there is error, return type is always xml.
+                .queryParam("_type", "xml")
+                .queryParam("cityCode", this.cityCode)
+                .queryParam("pageNo", 1)
+                .queryParam("numOfRows", 100)
+                .queryParam("nodeId", nodeId)
+                .queryParam("routeId", routeId)
+                .build();
+        return this.requestAndFilterBusArrivalInfo(uri);
+    }
+
+    public List<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
+        // set url
+        UriComponents uri = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("apis.data.go.kr")
                 .path("/1613000/ArvlInfoInqireService/getSttnAcctoArvlPrearngeInfoList")
@@ -128,23 +165,7 @@ public class TAGOService {
                 .queryParam("numOfRows", 100)
                 .queryParam("nodeId", nodeId)
                 .build();
-
-        // request
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.getForEntity(uriComponents.toString(), String.class);
-
-        // check status code
-        if (response.getStatusCode() != HttpStatusCode.valueOf(200)) {
-            throw new RuntimeException(); // TODO: Exception Handling
-        }
-
-        // convert from xml to object
-        String responseXmlBody = response.getBody(); // get xml body
-        JSONObject responseBody = XML.toJSONObject(responseXmlBody); // xml to json
-        ArrayList<TAGO_BusArrivalInfo> arrivalInfoList = this.convert(responseBody.toString()); // json to object
-
-        // Filtering and return
-        return this.filterBusArrivalInfo(arrivalInfoList);
+        return this.requestAndFilterBusArrivalInfo(uri);
     }
 
     public ArrayList<Node> requestAroundNodeInfo(Double longitude, Double latitude){

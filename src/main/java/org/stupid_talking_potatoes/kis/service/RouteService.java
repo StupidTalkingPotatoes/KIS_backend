@@ -59,16 +59,19 @@ public class RouteService {
         List<PassingNode> passingNodeList = tagoService.getPassingNodeList(routeId);
     
         Optional<Route> routeOp = routeRepository.findByRouteId(routeId);
-    
+
+
         Route route = routeOp.orElseThrow(() -> new NoSuchElementException(routeId + "에 해당하는 노선을 찾을 수 없습니다"));
-    
+
         List<TAGO_RealTimeBusLocationInfo> realTimeBusLocationInfoList = tagoService.requestRealTimeBusLocationInfo(routeId);
     
         // 저상버스 필터링
         List<Integer> realtimeNodeOrderList = getFilteredNodeOrderList(realTimeBusLocationInfoList);
-    
+
+
         return RealtimeBusLocationInfo.of(route, passingNodeList, realtimeNodeOrderList);
     }
+
     public String getArrivalName(String routeId){
         Route route = routeRepository.findByRouteId(routeId).orElseThrow(()-> new NoSuchElementException());
         return route.getEndNodeName();
