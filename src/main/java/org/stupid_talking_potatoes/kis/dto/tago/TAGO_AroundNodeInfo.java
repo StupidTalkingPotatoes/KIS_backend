@@ -10,9 +10,10 @@ import lombok.Data;
  */
 @Data
 public class TAGO_AroundNodeInfo {
+    private Integer cityCode;
     private Double gpsLati;
     private Double gpsLong;
     private String nodeId;
     private String nodeNm;
-    private Integer cityCode;
+    private Integer nodeNo;
 }
