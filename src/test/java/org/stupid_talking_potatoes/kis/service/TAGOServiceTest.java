@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusArrivalInfo;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,7 +34,7 @@ public class TAGOServiceTest {
             String jsonBody = "{\"response\":{\"header\":{\"resultCode\":\"00\",\"resultMsg\":\"NORMAL SERVICE.\"},\"body\":{\"items\":[{\"nodeid\":\"1\",\"nodenm\":\"name\",\"routeid\":\"1\",\"routetp\":\"마을버스\",\"arrprevstationcnt\":5,\"vehicletp\":\"저상버스\",\"arrtime\":5}],\"numOfRows\":100,\"pageNo\":1,\"totalCount\":1}}}";
 
             // when
-            ArrayList<TAGO_BusArrivalInfo> list = tagoService.convert(jsonBody);
+            ArrayList<TAGO_BusArrivalInfo> list = tagoService.convertArrivalInfo(jsonBody);
 
             // then
             assertEquals(1, list.size());
@@ -46,7 +47,7 @@ public class TAGOServiceTest {
             String jsonBody = "{\"response\":{\"header\":{\"resultCode\":\"00\",\"resultMsg\":\"NORMAL SERVICE.\"},\"body\":{\"items\":\"\",\"numOfRows\":100,\"pageNo\":1,\"totalCount\":0}}}";
 
             // when
-            ArrayList<TAGO_BusArrivalInfo> list = tagoService.convert(jsonBody);
+            ArrayList<TAGO_BusArrivalInfo> list = tagoService.convertArrivalInfo(jsonBody);
 
             // then
             assertEquals(0, list.size());
@@ -59,7 +60,7 @@ public class TAGOServiceTest {
             String jsonBody = "{\"response\":{\"header\":{\"resultCode\":\"30\",\"resultMsg\":\"SERVICE_KEY_IS_NOT_REGISTERED_ERROR.\"},\"body\":{\"items\":[{\"nodeid\":\"1\",\"nodenm\":\"name\",\"routeid\":\"1\",\"routetp\":\"마을버스\",\"arrprevstationcnt\":5,\"vehicletp\":\"저상버스\",\"arrtime\":5}],\"numOfRows\":100,\"pageNo\":1,\"totalCount\":1}}}";
 
             // when & then
-            RuntimeException exception = assertThrows(RuntimeException.class, () -> tagoService.convert(jsonBody));
+            RuntimeException exception = assertThrows(RuntimeException.class, () -> tagoService.convertArrivalInfo(jsonBody));
         }
     }
 
@@ -68,7 +69,7 @@ public class TAGOServiceTest {
     class filterKneelingBus {
         @Test
         @DisplayName("filterKneelingBus 테스트")
-        void filterKneelingBusTest() {
+        void filterKneelingBusTest() throws UnsupportedEncodingException {
             // given
             ArrayList<TAGO_BusArrivalInfo> items = new ArrayList<>();
             int i = 0;
@@ -80,7 +81,7 @@ public class TAGOServiceTest {
                         String.valueOf(i),
                         "마을버스",
                         i*5,
-                        "저상버스",
+                        new String( "저상버스".getBytes("utf-8"), "iso-8859-1"),
                         i*5*2
                 );
                 items.add(info);
@@ -92,7 +93,7 @@ public class TAGOServiceTest {
                     String.valueOf(i),
                     "좌석버스",
                     i*5,
-                    "일반차량",
+                    new String( "일반차량".getBytes("utf-8"), "iso-8859-1"),
                     i*5*2
             );
             items.add(info);

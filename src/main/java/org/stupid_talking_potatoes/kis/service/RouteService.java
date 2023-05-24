@@ -55,9 +55,9 @@ public class RouteService {
      * @return RealtimeBusLocationInfo
      */
     public RealtimeBusLocationInfo getBusRouteInfo(String routeId) {
-    
+
         List<PassingNode> passingNodeList = tagoService.getPassingNodeList(routeId);
-    
+
         Optional<Route> routeOp = routeRepository.findByRouteId(routeId);
     
         Route route = routeOp.orElseThrow(() -> new NoSuchElementException(routeId + "에 해당하는 노선을 찾을 수 없습니다"));
