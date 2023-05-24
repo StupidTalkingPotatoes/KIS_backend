@@ -6,7 +6,6 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_AroundNodeInfo;
 
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -27,14 +26,14 @@ public class Node extends NodeBase {
     
     @OneToMany(mappedBy = "node")
     @ToString.Exclude
-    private Set<RouteSeq> routeNodes=new HashSet<>();
-
+    private Set<RouteSeq> routeNodes;
+    
     public Node(String nodeId, String nodeName, String nodeNo, Double longitude, Double latitude) {
         super(nodeId, nodeName, nodeNo);
         this.longitude = longitude;
         this.latitude = latitude;
     }
-
+    
     public static Node of(TAGO_AroundNodeInfo aroundNodeInfo) {
         Node node = new Node(
                 aroundNodeInfo.getNodeId(),

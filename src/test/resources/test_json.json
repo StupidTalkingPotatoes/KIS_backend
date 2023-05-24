@@ -1,0 +1,4323 @@
+{
+  "res": {
+    "status": "CITY",
+    "context": {
+      "engineVersion": "1.5.0:3d06fc40-ae3c-49c5-ad94-be70fc0916b6",
+      "engineUrl": null,
+      "start": "128.41119125,36.138527,,,,,",
+      "goal": "128.332354,36.1288046,,,,,",
+      "departureTime": "2023-05-22T17:17:30",
+      "currentDateTime": "2023-05-22T17:17:31",
+      "serviceDay": {
+        "id": 1,
+        "name": "평일"
+      },
+      "recommendDirectionsType": "CITY",
+      "uuid": null
+    },
+    "paths": [
+      {
+        "idx": 0,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [
+          "최적"
+        ],
+        "departureTime": "2023-05-22T17:30:48",
+        "arrivalTime": "2023-05-22T18:08:40",
+        "duration": 38,
+        "intercityDuration": 0,
+        "distance": 11510,
+        "walkingDuration": 4,
+        "pathLabels": [
+          {
+            "labelCode": "BEST",
+            "labelText": "최적"
+          },
+          {
+            "labelCode": "MINIMUM_WALKING",
+            "labelText": "최소도보"
+          }
+        ],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530505,
+                  "name": "191",
+                  "longName": "191(옥계e편한세상.4공단.금오공대.형곡동.구미역)",
+                  "aliasName": "옥계e편한세상.4공단.금오공대.형곡동.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261834
+          },
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530431,
+                  "name": "140",
+                  "longName": "140(구미역.순천향병원.구미역)",
+                  "aliasName": "구미역.순천향병원.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530435,
+                  "name": "140-2",
+                  "longName": "140-2",
+                  "aliasName": null,
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530434,
+                  "name": "140-1",
+                  "longName": "140-1(청마루.구미역.순천향병원.구미역)",
+                  "aliasName": "청마루.구미역.순천향병원.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530528,
+                  "name": "23",
+                  "longName": "23",
+                  "aliasName": null,
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530503,
+                  "name": "190-3",
+                  "longName": "190-3(금오공대.구미역)",
+                  "aliasName": "금오공대.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530499,
+                  "name": "190",
+                  "longName": "190(옥계e편한세상.금오공대.신평중학교.구미역)",
+                  "aliasName": "옥계e편한세상.금오공대.신평중학교.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530432,
+                  "name": "140",
+                  "longName": "140(구미여고.구미역.순천향병원.구미역(학생차량))",
+                  "aliasName": "구미여고.구미역.순천향병원.구미역(학생차량)",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530433,
+                  "name": "140",
+                  "longName": "140",
+                  "aliasName": null,
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 260867
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T17:30:48",
+                "arrivalTime": "2023-05-22T17:34:32",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T17:34:32",
+                "arrivalTime": "2023-05-22T17:48:19",
+                "tripIdx": 261834,
+                "duration": 14,
+                "route": {
+                  "id": 1530505,
+                  "name": "191",
+                  "longName": "191(옥계e편한세상.4공단.금오공대.형곡동.구미역)",
+                  "aliasName": "옥계e편한세상.4공단.금오공대.형곡동.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 8
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418302,
+                    "routeId": 1530505,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418282,
+                    "placeId": null,
+                    "name": "비산사거리(금오공대아파트건너)",
+                    "longName": null,
+                    "displayName": "비산사거리(금오공대아파트건너)",
+                    "displayCode": "10354",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 110,
+                    "distance": 322,
+                    "pointIndex": 119
+                  }
+                ]
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T17:49:20",
+                "arrivalTime": "2023-05-22T18:08:40",
+                "tripIdx": 260867,
+                "duration": 19,
+                "route": {
+                  "id": 1530435,
+                  "name": "140-2",
+                  "longName": "140-2",
+                  "aliasName": null,
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 3
+                    }
+                  ],
+                  "arrival": {
+                    "status": "RUNNING",
+                    "stationId": 418282,
+                    "routeId": 1530435,
+                    "items": [
+                      {
+                        "status": "RUNNING",
+                        "plateNo": "경북70자5019",
+                        "lowFloor": false,
+                        "remainingTime": 304,
+                        "remainingStop": 4,
+                        "remainingSeat": null,
+                        "congestion": {
+                          "code": "NONE",
+                          "desc": "정보없음"
+                        },
+                        "last": false
+                      }
+                    ]
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [
+                  "140",
+                  "190-3",
+                  "140-1",
+                  "190",
+                  "23"
+                ],
+                "stations": [
+                  {
+                    "id": 418282,
+                    "placeId": null,
+                    "name": "비산사거리(금오공대아파트건너)",
+                    "longName": null,
+                    "displayName": "비산사거리(금오공대아파트건너)",
+                    "displayCode": "10354",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 112
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 1,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [
+          "최소환승"
+        ],
+        "departureTime": "2023-05-22T17:31:47",
+        "arrivalTime": "2023-05-22T18:12:19",
+        "duration": 41,
+        "intercityDuration": 0,
+        "distance": 12150,
+        "walkingDuration": 4,
+        "pathLabels": [
+          {
+            "labelCode": "MINIMUM_TRANSFER",
+            "labelText": "최소환승"
+          }
+        ],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530516,
+                  "name": "195",
+                  "longName": "195(아사히글라스.4공단입구.금오공대.공단본부.구미역)",
+                  "aliasName": "아사히글라스.4공단입구.금오공대.공단본부.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261818
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T17:31:47",
+                "arrivalTime": "2023-05-22T17:35:31",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T17:35:31",
+                "arrivalTime": "2023-05-22T18:12:19",
+                "tripIdx": 261818,
+                "duration": 37,
+                "route": {
+                  "id": 1530516,
+                  "name": "195",
+                  "longName": "195(아사히글라스.4공단입구.금오공대.공단본부.구미역)",
+                  "aliasName": "아사히글라스.4공단입구.금오공대.공단본부.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 11
+                    }
+                  ],
+                  "arrival": {
+                    "status": "RUNNING",
+                    "stationId": 418302,
+                    "routeId": 1530516,
+                    "items": [
+                      {
+                        "status": "RUNNING",
+                        "plateNo": "경북70자5542",
+                        "lowFloor": true,
+                        "remainingTime": 704,
+                        "remainingStop": 13,
+                        "remainingSeat": null,
+                        "congestion": {
+                          "code": "NONE",
+                          "desc": "정보없음"
+                        },
+                        "last": false
+                      }
+                    ]
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 177
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 2,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [
+          "최소시간"
+        ],
+        "departureTime": "2023-05-22T17:40:34",
+        "arrivalTime": "2023-05-22T18:10:48",
+        "duration": 30,
+        "intercityDuration": 0,
+        "distance": 9422,
+        "walkingDuration": 4,
+        "pathLabels": [
+          {
+            "labelCode": "MINIMUM_DURATION",
+            "labelText": "최소시간"
+          }
+        ],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 2802881,
+                  "name": "910-1",
+                  "longName": "910-1(중흥S클래스.골드클래스1차.옥계부영아파트.신평시장.구미역)",
+                  "aliasName": "중흥S클래스.골드클래스1차.옥계부영아파트.신평시장.구미역",
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 276699
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T17:40:34",
+                "arrivalTime": "2023-05-22T17:44:18",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T17:44:18",
+                "arrivalTime": "2023-05-22T18:10:48",
+                "tripIdx": 276699,
+                "duration": 27,
+                "route": {
+                  "id": 2802881,
+                  "name": "910-1",
+                  "longName": "910-1(중흥S클래스.골드클래스1차.옥계부영아파트.신평시장.구미역)",
+                  "aliasName": "중흥S클래스.골드클래스1차.옥계부영아파트.신평시장.구미역",
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 6
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418302,
+                    "routeId": 2802881,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 165
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 3,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T17:30:48",
+        "arrivalTime": "2023-05-22T18:26:13",
+        "duration": 56,
+        "intercityDuration": 0,
+        "distance": 15719,
+        "walkingDuration": 4,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530505,
+                  "name": "191",
+                  "longName": "191(옥계e편한세상.4공단.금오공대.형곡동.구미역)",
+                  "aliasName": "옥계e편한세상.4공단.금오공대.형곡동.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261834
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T17:30:48",
+                "arrivalTime": "2023-05-22T17:34:32",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T17:34:32",
+                "arrivalTime": "2023-05-22T18:26:13",
+                "tripIdx": 261834,
+                "duration": 52,
+                "route": {
+                  "id": 1530505,
+                  "name": "191",
+                  "longName": "191(옥계e편한세상.4공단.금오공대.형곡동.구미역)",
+                  "aliasName": "옥계e편한세상.4공단.금오공대.형곡동.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 8
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418302,
+                    "routeId": 1530505,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 300
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 4,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T17:30:48",
+        "arrivalTime": "2023-05-22T18:30:27",
+        "duration": 60,
+        "intercityDuration": 0,
+        "distance": 11531,
+        "walkingDuration": 8,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530505,
+                  "name": "191",
+                  "longName": "191(옥계e편한세상.4공단.금오공대.형곡동.구미역)",
+                  "aliasName": "옥계e편한세상.4공단.금오공대.형곡동.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530499,
+                  "name": "190",
+                  "longName": "190(옥계e편한세상.금오공대.신평중학교.구미역)",
+                  "aliasName": "옥계e편한세상.금오공대.신평중학교.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261834
+          },
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530648,
+                  "name": "57",
+                  "longName": "57(금오공대.5주공.김천)",
+                  "aliasName": "금오공대.5주공.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530613,
+                  "name": "51-1",
+                  "longName": "51-1(금오공대.의동.김천)",
+                  "aliasName": "금오공대.의동.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 262188
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T17:30:48",
+                "arrivalTime": "2023-05-22T17:34:32",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T17:34:32",
+                "arrivalTime": "2023-05-22T17:43:24",
+                "tripIdx": 261834,
+                "duration": 9,
+                "route": {
+                  "id": 1530505,
+                  "name": "191",
+                  "longName": "191(옥계e편한세상.4공단.금오공대.형곡동.구미역)",
+                  "aliasName": "옥계e편한세상.4공단.금오공대.형곡동.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 8
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418302,
+                    "routeId": 1530505,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [
+                  "190"
+                ],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418398,
+                    "placeId": null,
+                    "name": "예일베어링앞",
+                    "longName": null,
+                    "displayName": "예일베어링앞",
+                    "displayCode": "10580",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 47,
+                    "distance": 244,
+                    "pointIndex": 99
+                  }
+                ]
+              },
+              {
+                "type": "WALKING",
+                "instruction": "도보 251m",
+                "departureTime": "2023-05-22T17:43:24",
+                "arrivalTime": "2023-05-22T17:47:10",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:07:34",
+                "arrivalTime": "2023-05-22T18:30:27",
+                "tripIdx": 262188,
+                "duration": 23,
+                "route": {
+                  "id": 1530648,
+                  "name": "57",
+                  "longName": "57(금오공대.5주공.김천)",
+                  "aliasName": "금오공대.5주공.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 10
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418397,
+                    "routeId": 1530648,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [
+                  "51-1"
+                ],
+                "stations": [
+                  {
+                    "id": 418397,
+                    "placeId": null,
+                    "name": "엘지연수원앞",
+                    "longName": null,
+                    "displayName": "엘지연수원앞",
+                    "displayCode": "10564",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 89,
+                    "distance": 328,
+                    "pointIndex": 108
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 5,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T18:03:28",
+        "arrivalTime": "2023-05-22T18:42:34",
+        "duration": 39,
+        "intercityDuration": 0,
+        "distance": 11510,
+        "walkingDuration": 4,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530499,
+                  "name": "190",
+                  "longName": "190(옥계e편한세상.금오공대.신평중학교.구미역)",
+                  "aliasName": "옥계e편한세상.금오공대.신평중학교.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261827
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T18:03:28",
+                "arrivalTime": "2023-05-22T18:07:12",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:07:12",
+                "arrivalTime": "2023-05-22T18:42:34",
+                "tripIdx": 261827,
+                "duration": 35,
+                "route": {
+                  "id": 1530499,
+                  "name": "190",
+                  "longName": "190(옥계e편한세상.금오공대.신평중학교.구미역)",
+                  "aliasName": "옥계e편한세상.금오공대.신평중학교.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 10
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418302,
+                    "routeId": 1530499,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 78,
+                    "distance": 328,
+                    "pointIndex": 235
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 6,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T17:48:01",
+        "arrivalTime": "2023-05-22T18:45:11",
+        "duration": 57,
+        "intercityDuration": 0,
+        "distance": 15387,
+        "walkingDuration": 11,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530718,
+                  "name": "890",
+                  "longName": "890(해평.인동.구미역)",
+                  "aliasName": "해평.인동.구미역",
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261644
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 727m",
+                "departureTime": "2023-05-22T17:48:01",
+                "arrivalTime": "2023-05-22T17:59:08",
+                "tripIdx": null,
+                "duration": 11,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T17:59:08",
+                "arrivalTime": "2023-05-22T18:45:11",
+                "tripIdx": 261644,
+                "duration": 46,
+                "route": {
+                  "id": 1530718,
+                  "name": "890",
+                  "longName": "890(해평.인동.구미역)",
+                  "aliasName": "해평.인동.구미역",
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 15
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418269,
+                    "routeId": 1530718,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418269,
+                    "placeId": null,
+                    "name": "4공단입구건너(인동농협옥계지점)",
+                    "longName": null,
+                    "displayName": "4공단입구건너(인동농협옥계지점)",
+                    "displayCode": "10003",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 180
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 7,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T17:48:32",
+        "arrivalTime": "2023-05-22T18:45:11",
+        "duration": 57,
+        "intercityDuration": 0,
+        "distance": 15204,
+        "walkingDuration": 12,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530718,
+                  "name": "890",
+                  "longName": "890(해평.인동.구미역)",
+                  "aliasName": "해평.인동.구미역",
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261644
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 743m",
+                "departureTime": "2023-05-22T17:48:32",
+                "arrivalTime": "2023-05-22T18:00:50",
+                "tripIdx": null,
+                "duration": 12,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:00:50",
+                "arrivalTime": "2023-05-22T18:45:11",
+                "tripIdx": 261644,
+                "duration": 44,
+                "route": {
+                  "id": 1530718,
+                  "name": "890",
+                  "longName": "890(해평.인동.구미역)",
+                  "aliasName": "해평.인동.구미역",
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 15
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418270,
+                    "routeId": 1530718,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418270,
+                    "placeId": null,
+                    "name": "거상빌딩",
+                    "longName": null,
+                    "displayName": "거상빌딩",
+                    "displayCode": "10004",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 179
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 8,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T17:37:08",
+        "arrivalTime": "2023-05-22T18:30:27",
+        "duration": 53,
+        "intercityDuration": 0,
+        "distance": 9514,
+        "walkingDuration": 27,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530648,
+                  "name": "57",
+                  "longName": "57(금오공대.5주공.김천)",
+                  "aliasName": "금오공대.5주공.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530613,
+                  "name": "51-1",
+                  "longName": "51-1(금오공대.의동.김천)",
+                  "aliasName": "금오공대.의동.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 262188
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 1.7km",
+                "departureTime": "2023-05-22T17:37:08",
+                "arrivalTime": "2023-05-22T18:04:32",
+                "tripIdx": null,
+                "duration": 27,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:04:32",
+                "arrivalTime": "2023-05-22T18:30:27",
+                "tripIdx": 262188,
+                "duration": 26,
+                "route": {
+                  "id": 1530613,
+                  "name": "51-1",
+                  "longName": "51-1(금오공대.의동.김천)",
+                  "aliasName": "금오공대.의동.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": 280,
+                      "max": 280,
+                      "count": 2
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 97722,
+                    "routeId": 1530613,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [
+                  "57"
+                ],
+                "stations": [
+                  {
+                    "id": 97722,
+                    "placeId": null,
+                    "name": "일이삼철강 건너",
+                    "longName": null,
+                    "displayName": "일이삼철강 건너",
+                    "displayCode": "11105",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 89,
+                    "distance": 328,
+                    "pointIndex": 133
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 9,
+        "mode": "TIME",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T18:15:19",
+        "arrivalTime": "2023-05-22T18:49:45",
+        "duration": 34,
+        "intercityDuration": 0,
+        "distance": 10638,
+        "walkingDuration": 4,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530773,
+                  "name": "910",
+                  "longName": "910(중흥S클래스.골드클래스1차.옥계부영아파트.공단본부.구미역)",
+                  "aliasName": "중흥S클래스.골드클래스1차.옥계부영아파트.공단본부.구미역",
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 276705
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T18:15:19",
+                "arrivalTime": "2023-05-22T18:19:03",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:19:03",
+                "arrivalTime": "2023-05-22T18:49:45",
+                "tripIdx": 276705,
+                "duration": 31,
+                "route": {
+                  "id": 1530773,
+                  "name": "910",
+                  "longName": "910(중흥S클래스.골드클래스1차.옥계부영아파트.공단본부.구미역)",
+                  "aliasName": "중흥S클래스.골드클래스1차.옥계부영아파트.공단본부.구미역",
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 6
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418302,
+                    "routeId": 1530773,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 131
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 0,
+        "mode": "STATIC",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T18:23:51",
+        "arrivalTime": "2023-05-22T18:57:21",
+        "duration": 34,
+        "intercityDuration": 0,
+        "distance": 11036,
+        "walkingDuration": 4,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530518,
+                  "name": "196",
+                  "longName": "196",
+                  "aliasName": null,
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 262219
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T18:23:51",
+                "arrivalTime": "2023-05-22T18:27:35",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:27:35",
+                "arrivalTime": "2023-05-22T18:57:21",
+                "tripIdx": 262219,
+                "duration": 30,
+                "route": {
+                  "id": 1530518,
+                  "name": "196",
+                  "longName": "196",
+                  "aliasName": null,
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": 35,
+                      "max": 85,
+                      "count": 16
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418302,
+                    "routeId": 1530518,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 207
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 1,
+        "mode": "STATIC",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T18:18:53",
+        "arrivalTime": "2023-05-22T18:57:21",
+        "duration": 39,
+        "intercityDuration": 0,
+        "distance": 12080,
+        "walkingDuration": 6,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530739,
+                  "name": "93",
+                  "longName": "93(인동.금오공대.양호동)",
+                  "aliasName": "인동.금오공대.양호동",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530512,
+                  "name": "193-2",
+                  "longName": "193-2(장천터미널.경운대학교.산동농협경제사업소.4공단입구.금오공대.신평농협.구미역)",
+                  "aliasName": "장천터미널.경운대학교.산동농협경제사업소.4공단입구.금오공대.신평농협.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530516,
+                  "name": "195",
+                  "longName": "195(아사히글라스.4공단입구.금오공대.공단본부.구미역)",
+                  "aliasName": "아사히글라스.4공단입구.금오공대.공단본부.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530771,
+                  "name": "900",
+                  "longName": "900(아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역)",
+                  "aliasName": "아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530505,
+                  "name": "191",
+                  "longName": "191(옥계e편한세상.4공단.금오공대.형곡동.구미역)",
+                  "aliasName": "옥계e편한세상.4공단.금오공대.형곡동.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530499,
+                  "name": "190",
+                  "longName": "190(옥계e편한세상.금오공대.신평중학교.구미역)",
+                  "aliasName": "옥계e편한세상.금오공대.신평중학교.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530731,
+                  "name": "90",
+                  "longName": "90(해평.산동파출소.옥계대백.금오공대.인동)",
+                  "aliasName": "해평.산동파출소.옥계대백.금오공대.인동",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261248
+          },
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530518,
+                  "name": "196",
+                  "longName": "196",
+                  "aliasName": null,
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 262219
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T18:18:53",
+                "arrivalTime": "2023-05-22T18:22:37",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:22:37",
+                "arrivalTime": "2023-05-22T18:26:25",
+                "tripIdx": 261248,
+                "duration": 4,
+                "route": {
+                  "id": 1530771,
+                  "name": "900",
+                  "longName": "900(아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역)",
+                  "aliasName": "아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 12
+                    }
+                  ],
+                  "arrival": {
+                    "status": "RUNNING",
+                    "stationId": 418302,
+                    "routeId": 1530771,
+                    "items": [
+                      {
+                        "status": "RUNNING",
+                        "plateNo": "경북70자5523",
+                        "lowFloor": false,
+                        "remainingTime": 497,
+                        "remainingStop": 9,
+                        "remainingSeat": null,
+                        "congestion": {
+                          "code": "NONE",
+                          "desc": "정보없음"
+                        },
+                        "last": false
+                      }
+                    ]
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [
+                  "195",
+                  "191",
+                  "90",
+                  "190",
+                  "93",
+                  "193-2"
+                ],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 423780,
+                    "placeId": null,
+                    "name": "금오공대입구(옥계중학교방면)",
+                    "longName": null,
+                    "displayName": "금오공대입구(옥계중학교방면)",
+                    "displayCode": "10131",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 67,
+                    "distance": 478,
+                    "pointIndex": 53
+                  }
+                ]
+              },
+              {
+                "type": "WALKING",
+                "instruction": "도보 128m",
+                "departureTime": "2023-05-22T18:26:25",
+                "arrivalTime": "2023-05-22T18:28:21",
+                "tripIdx": null,
+                "duration": 2,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:29:29",
+                "arrivalTime": "2023-05-22T18:57:21",
+                "tripIdx": 262219,
+                "duration": 28,
+                "route": {
+                  "id": 1530518,
+                  "name": "196",
+                  "longName": "196",
+                  "aliasName": null,
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": 35,
+                      "max": 85,
+                      "count": 16
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 423779,
+                    "routeId": 1530518,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 423779,
+                    "placeId": null,
+                    "name": "금오공대입구(금오공대종점방면)",
+                    "longName": null,
+                    "displayName": "금오공대입구(금오공대종점방면)",
+                    "displayCode": "10130",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 175
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 2,
+        "mode": "STATIC",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T18:23:51",
+        "arrivalTime": "2023-05-22T19:12:03",
+        "duration": 49,
+        "intercityDuration": 0,
+        "distance": 11531,
+        "walkingDuration": 8,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530518,
+                  "name": "196",
+                  "longName": "196",
+                  "aliasName": null,
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 262219
+          },
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530648,
+                  "name": "57",
+                  "longName": "57(금오공대.5주공.김천)",
+                  "aliasName": "금오공대.5주공.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530613,
+                  "name": "51-1",
+                  "longName": "51-1(금오공대.의동.김천)",
+                  "aliasName": "금오공대.의동.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 262189
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T18:23:51",
+                "arrivalTime": "2023-05-22T18:27:35",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:27:35",
+                "arrivalTime": "2023-05-22T18:36:15",
+                "tripIdx": 262219,
+                "duration": 9,
+                "route": {
+                  "id": 1530518,
+                  "name": "196",
+                  "longName": "196",
+                  "aliasName": null,
+                  "type": {
+                    "id": 2,
+                    "name": "좌석",
+                    "shortName": "좌석",
+                    "longName": null,
+                    "iconName": "좌석",
+                    "color": "#386de8",
+                    "darkColor": "#386de8"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": 35,
+                      "max": 85,
+                      "count": 16
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418302,
+                    "routeId": 1530518,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418398,
+                    "placeId": null,
+                    "name": "예일베어링앞",
+                    "longName": null,
+                    "displayName": "예일베어링앞",
+                    "displayCode": "10580",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 46,
+                    "distance": 244,
+                    "pointIndex": 99
+                  }
+                ]
+              },
+              {
+                "type": "WALKING",
+                "instruction": "도보 251m",
+                "departureTime": "2023-05-22T18:36:15",
+                "arrivalTime": "2023-05-22T18:40:01",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T18:52:34",
+                "arrivalTime": "2023-05-22T19:12:03",
+                "tripIdx": 262189,
+                "duration": 19,
+                "route": {
+                  "id": 1530648,
+                  "name": "57",
+                  "longName": "57(금오공대.5주공.김천)",
+                  "aliasName": "금오공대.5주공.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 10
+                    }
+                  ],
+                  "arrival": {
+                    "status": "NO_RESULT",
+                    "stationId": 418397,
+                    "routeId": 1530648,
+                    "items": []
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [
+                  "51-1"
+                ],
+                "stations": [
+                  {
+                    "id": 418397,
+                    "placeId": null,
+                    "name": "엘지연수원앞",
+                    "longName": null,
+                    "displayName": "엘지연수원앞",
+                    "displayCode": "10564",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 84,
+                    "distance": 328,
+                    "pointIndex": 108
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 3,
+        "mode": "STATIC",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T19:06:40",
+        "arrivalTime": "2023-05-22T19:31:54",
+        "duration": 25,
+        "intercityDuration": 0,
+        "distance": 10586,
+        "walkingDuration": 4,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530771,
+                  "name": "900",
+                  "longName": "900(아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역)",
+                  "aliasName": "아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261809
+          },
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530417,
+                  "name": "11",
+                  "longName": "11(왜관남부정류장.약목.구미역)",
+                  "aliasName": "왜관남부정류장.약목.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530613,
+                  "name": "51-1",
+                  "longName": "51-1(금오공대.의동.김천)",
+                  "aliasName": "금오공대.의동.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530715,
+                  "name": "885",
+                  "longName": "885",
+                  "aliasName": null,
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530449,
+                  "name": "162",
+                  "longName": "162(지경리.구미역)",
+                  "aliasName": "지경리.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530633,
+                  "name": "55",
+                  "longName": "55(오태1동.구미역.김천)",
+                  "aliasName": "오태1동.구미역.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530710,
+                  "name": "884",
+                  "longName": "884",
+                  "aliasName": null,
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530512,
+                  "name": "193-2",
+                  "longName": "193-2(장천터미널.경운대학교.산동농협경제사업소.4공단입구.금오공대.신평농협.구미역)",
+                  "aliasName": "장천터미널.경운대학교.산동농협경제사업소.4공단입구.금오공대.신평농협.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530516,
+                  "name": "195",
+                  "longName": "195(아사히글라스.4공단입구.금오공대.공단본부.구미역)",
+                  "aliasName": "아사히글라스.4공단입구.금오공대.공단본부.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530706,
+                  "name": "883",
+                  "longName": "883(장천터미널.송학리.구미역)",
+                  "aliasName": "장천터미널.송학리.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530648,
+                  "name": "57",
+                  "longName": "57(금오공대.5주공.김천)",
+                  "aliasName": "금오공대.5주공.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530484,
+                  "name": "183",
+                  "longName": "183(황상동.인동.롯데마트.구미역)",
+                  "aliasName": "황상동.인동.롯데마트.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530430,
+                  "name": "12",
+                  "longName": "12",
+                  "aliasName": null,
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530482,
+                  "name": "182-2",
+                  "longName": "182-2(황상.신평시장.구미역)",
+                  "aliasName": "황상.신평시장.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530626,
+                  "name": "53",
+                  "longName": "53(구미터미널건너.5주공.김천)",
+                  "aliasName": "구미터미널건너.5주공.김천",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530486,
+                  "name": "184",
+                  "longName": "184(인동.공단본부.구미역(신설))",
+                  "aliasName": "인동.공단본부.구미역(신설)",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530406,
+                  "name": "10",
+                  "longName": "10(왜관.인동.구미역)",
+                  "aliasName": "왜관.인동.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530418,
+                  "name": "11",
+                  "longName": "11(왜관남부정류장.약목.현대아파트.구미역)",
+                  "aliasName": "왜관남부정류장.약목.현대아파트.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                },
+                {
+                  "id": 1530700,
+                  "name": "881",
+                  "longName": "881(천평.구미역)",
+                  "aliasName": "천평.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 262299
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T19:06:40",
+                "arrivalTime": "2023-05-22T19:10:24",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T19:10:24",
+                "arrivalTime": "2023-05-22T19:25:55",
+                "tripIdx": 261809,
+                "duration": 16,
+                "route": {
+                  "id": 1530771,
+                  "name": "900",
+                  "longName": "900(아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역)",
+                  "aliasName": "아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 12
+                    }
+                  ],
+                  "arrival": {
+                    "status": "RUNNING",
+                    "stationId": 418302,
+                    "routeId": 1530771,
+                    "items": [
+                      {
+                        "status": "RUNNING",
+                        "plateNo": "경북70자5523",
+                        "lowFloor": false,
+                        "remainingTime": 497,
+                        "remainingStop": 9,
+                        "remainingSeat": null,
+                        "congestion": {
+                          "code": "NONE",
+                          "desc": "정보없음"
+                        },
+                        "last": false
+                      }
+                    ]
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418285,
+                    "placeId": null,
+                    "name": "구미종합터미널건너",
+                    "longName": null,
+                    "displayName": "구미종합터미널건너",
+                    "displayCode": "10089",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 461,
+                    "distance": 2782,
+                    "pointIndex": 137
+                  }
+                ]
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T19:26:25",
+                "arrivalTime": "2023-05-22T19:31:54",
+                "tripIdx": 262299,
+                "duration": 5,
+                "route": {
+                  "id": 1530700,
+                  "name": "881",
+                  "longName": "881(천평.구미역)",
+                  "aliasName": "천평.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 14
+                    }
+                  ],
+                  "arrival": {
+                    "status": "RUNNING",
+                    "stationId": 418285,
+                    "routeId": 1530700,
+                    "items": [
+                      {
+                        "status": "RUNNING",
+                        "plateNo": "경북70자5031",
+                        "lowFloor": false,
+                        "remainingTime": 777,
+                        "remainingStop": 9,
+                        "remainingSeat": null,
+                        "congestion": {
+                          "code": "NONE",
+                          "desc": "정보없음"
+                        },
+                        "last": false
+                      }
+                    ]
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [
+                  "11",
+                  "10",
+                  "195",
+                  "55",
+                  "53",
+                  "12",
+                  "57",
+                  "885",
+                  "51-1",
+                  "183",
+                  "884",
+                  "184",
+                  "162",
+                  "193-2",
+                  "883",
+                  "182-2"
+                ],
+                "stations": [
+                  {
+                    "id": 418285,
+                    "placeId": null,
+                    "name": "구미종합터미널건너",
+                    "longName": null,
+                    "displayName": "구미종합터미널건너",
+                    "displayCode": "10089",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 75,
+                    "distance": 328,
+                    "pointIndex": 23
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "idx": 4,
+        "mode": "STATIC",
+        "type": "BUS",
+        "optimizationMethod": "RECOMMEND",
+        "labels": [],
+        "departureTime": "2023-05-22T19:06:40",
+        "arrivalTime": "2023-05-22T19:34:32",
+        "duration": 28,
+        "intercityDuration": 0,
+        "distance": 11060,
+        "walkingDuration": 4,
+        "pathLabels": [],
+        "fare": null,
+        "fares": [
+          {
+            "routes": [
+              [
+                {
+                  "id": 1530771,
+                  "name": "900",
+                  "longName": "900(아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역)",
+                  "aliasName": "아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operationType": "일반",
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busInterval": null,
+                  "extra": null,
+                  "exType": null,
+                  "flag": null,
+                  "canReserve": false
+                }
+              ]
+            ],
+            "fare": null,
+            "tripIdx": 261809
+          }
+        ],
+        "legs": [
+          {
+            "steps": [
+              {
+                "type": "WALKING",
+                "instruction": "도보 240m",
+                "departureTime": "2023-05-22T19:06:40",
+                "arrivalTime": "2023-05-22T19:10:24",
+                "tripIdx": null,
+                "duration": 4,
+                "route": null,
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": []
+              },
+              {
+                "type": "BUS",
+                "instruction": "버스 승차",
+                "departureTime": "2023-05-22T19:10:24",
+                "arrivalTime": "2023-05-22T19:34:32",
+                "tripIdx": 261809,
+                "duration": 24,
+                "route": {
+                  "id": 1530771,
+                  "name": "900",
+                  "longName": "900(아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역)",
+                  "aliasName": "아사히글라스.구미코.옥계휴먼시아.강변코오롱하늘채.구미역",
+                  "type": {
+                    "id": 1,
+                    "name": "일반",
+                    "shortName": "일반",
+                    "longName": null,
+                    "iconName": "일반",
+                    "color": "#87C700",
+                    "darkColor": "#6EA104"
+                  },
+                  "realtime": true,
+                  "useInterval": true,
+                  "operation": {
+                    "type": "NORMAL",
+                    "name": "일반",
+                    "shortName": "일"
+                  },
+                  "color": null,
+                  "platform": null,
+                  "headsign": null,
+                  "busIntervals": [
+                    {
+                      "name": "매일",
+                      "min": null,
+                      "max": null,
+                      "count": 12
+                    }
+                  ],
+                  "arrival": {
+                    "status": "RUNNING",
+                    "stationId": 418302,
+                    "routeId": 1530771,
+                    "items": [
+                      {
+                        "status": "RUNNING",
+                        "plateNo": "경북70자5523",
+                        "lowFloor": false,
+                        "remainingTime": 497,
+                        "remainingStop": 9,
+                        "remainingSeat": null,
+                        "congestion": {
+                          "code": "NONE",
+                          "desc": "정보없음"
+                        },
+                        "last": false
+                      }
+                    ]
+                  },
+                  "extra": null,
+                  "exType": null,
+                  "canReserve": false
+                },
+                "departureCity": null,
+                "subRouteNames": [],
+                "stations": [
+                  {
+                    "id": 418302,
+                    "placeId": null,
+                    "name": "옥계중학교앞",
+                    "longName": null,
+                    "displayName": "옥계중학교앞",
+                    "displayCode": "10626",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 0,
+                    "distance": 0,
+                    "pointIndex": 0
+                  },
+                  {
+                    "id": 418018,
+                    "placeId": null,
+                    "name": "구미역 전(국민은행)",
+                    "longName": null,
+                    "displayName": "구미역 전(국민은행)",
+                    "displayCode": "10119",
+                    "stop": true,
+                    "realtime": true,
+                    "aux": null,
+                    "busStopAux": {
+                      "centerStop": false
+                    },
+                    "duration": 75,
+                    "distance": 328,
+                    "pointIndex": 188
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

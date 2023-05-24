@@ -71,8 +71,8 @@ class NaverServiceTest {
             assertThat(paths).isNotNull();
             validatePaths(paths);
         }
-    
-
+        
+        
         void validatePaths(JSONArray paths) {
             for (Object path : paths) {
                 JSONObject pathObj = (JSONObject) path;
@@ -84,7 +84,7 @@ class NaverServiceTest {
             }
         }
         
-
+        
         void validateLegs(JSONArray legs) {
             for (Object leg : legs) {
                 JSONObject legObj = (JSONObject) leg;
@@ -94,8 +94,8 @@ class NaverServiceTest {
                 validateSteps(steps);
             }
         }
-    
-
+        
+        
         void validateSteps(JSONArray steps){
             for (Object step : steps) {
                 JSONObject stepObj = (JSONObject) step;
@@ -115,13 +115,13 @@ class NaverServiceTest {
                     log.info("arrivalTime: {}",arrivalTime );
                     log.info("departureTime: {}",departureTime);
                     log.info("route name: {}", routeName);
-            
+                    
                     JSONArray stations=stepObj.getJSONArray("stations");
                     validateStations(stations);
                 }
             }
         }
-
+        
         void validateStations(JSONArray stations) {
             for (Object station : stations) {
                 JSONObject stationObj = (JSONObject) station;

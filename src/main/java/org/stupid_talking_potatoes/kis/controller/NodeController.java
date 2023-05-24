@@ -11,7 +11,6 @@ import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
 import org.stupid_talking_potatoes.kis.dto.node.RealtimeBusArrivalInfo;
 import org.stupid_talking_potatoes.kis.service.NodeService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +24,7 @@ import java.util.List;
 @RequestMapping("/api/nodes")
 public class NodeController {
     private final NodeService nodeService;
-
+    
     @GetMapping("/search")
     public ResponseEntity getNodeList(
             @RequestParam(name="no", required = false) String nodeNo,
@@ -36,7 +35,7 @@ public class NodeController {
                 .status(HttpStatus.OK)
                 .body(response);
     }
-
+    
     @GetMapping("/arrive-info")
     public ResponseEntity getRealtimeBusArrivalInfo(
             @RequestParam(name="id") String nodeId
@@ -46,7 +45,7 @@ public class NodeController {
                 .status(HttpStatus.OK)
                 .body(response);
     }
-
+    
     @GetMapping("")
     public ResponseEntity getAroundNodeInfo(
             @RequestParam String longitude,

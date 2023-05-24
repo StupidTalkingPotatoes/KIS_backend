@@ -30,4 +30,9 @@ public class ArrivalRoute extends RouteBase {
         this.prevNodeCnt = prevNodeCnt;
         this.arrTime = arrTime;
     }
+    
+    @Override
+    public String getRouteId() {
+        return super.getRouteId();
+    }
 }

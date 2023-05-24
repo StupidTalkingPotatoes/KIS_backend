@@ -1,20 +1,16 @@
 package org.stupid_talking_potatoes.kis.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mysql.cj.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.stupid_talking_potatoes.kis.dto.node.PassingNode;
+import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
+import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_RealTimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.entity.Route;
 import org.stupid_talking_potatoes.kis.repository.RouteRepository;
-import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
-import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
 
-import java.io.UnsupportedEncodingException;
 import java.util.*;
-import org.stupid_talking_potatoes.kis.entity.Route;
-import org.stupid_talking_potatoes.kis.repository.RouteRepository;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.route.service
@@ -63,17 +59,16 @@ public class RouteService {
         List<PassingNode> passingNodeList = tagoService.getPassingNodeList(routeId);
 
         Optional<Route> routeOp = routeRepository.findByRouteId(routeId);
-
+    
         Route route = routeOp.orElseThrow(() -> new NoSuchElementException(routeId + "에 해당하는 노선을 찾을 수 없습니다"));
-
+    
         List<TAGO_RealTimeBusLocationInfo> realTimeBusLocationInfoList = tagoService.requestRealTimeBusLocationInfo(routeId);
-
+    
         // 저상버스 필터링
         List<Integer> realtimeNodeOrderList = getFilteredNodeOrderList(realTimeBusLocationInfoList);
-
+    
         return RealtimeBusLocationInfo.of(route, passingNodeList, realtimeNodeOrderList);
     }
-
     public String getArrivalName(String routeId){
         Route route = routeRepository.findByRouteId(routeId).orElseThrow(()-> new NoSuchElementException());
         return route.getEndNodeName();
