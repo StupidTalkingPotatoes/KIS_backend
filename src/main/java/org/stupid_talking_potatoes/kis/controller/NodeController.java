@@ -11,7 +11,6 @@ import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
 import org.stupid_talking_potatoes.kis.dto.node.RealtimeBusArrivalInfo;
 import org.stupid_talking_potatoes.kis.service.NodeService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,9 +46,23 @@ public class NodeController {
                 .body(response);
     }
 
-    @GetMapping("/")
-    public ArrayList<?> getAroundNodeInfo(Double longitude, Double latitude) {
-
-        return null;
+    @GetMapping("")
+    public ResponseEntity getAroundNodeInfo(
+            @RequestParam String longitude,
+            @RequestParam String latitude
+    ) {
+        // 데이터 타입을 Double로 해놓으면 다른 요청이 들어왔을 때 에러 반환하기 때문에 String으로 해놓고 처리
+        Double _longitude = 0.0, _latitude = 0.0;
+        try {
+            _longitude = Double.valueOf(longitude);
+            _latitude = Double.valueOf(latitude);
+        } catch (NumberFormatException e) {
+            // TODO: Handle exception
+            throw new RuntimeException();
+        }
+        List<NodeDto> response = nodeService.getAroundNodeInfo(_longitude, _latitude);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(response);
     }
 }
