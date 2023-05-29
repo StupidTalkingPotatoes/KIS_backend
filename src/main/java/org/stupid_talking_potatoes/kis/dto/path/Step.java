@@ -21,7 +21,10 @@ public class Step {
     private String departure;//이름
     private String arrival;//이름
     private List<ArrivalRoute> arrivalRouteList;
-
+    
+    public void setArrivalRouteList(List<ArrivalRoute> arrivalRouteList) {
+        this.arrivalRouteList = arrivalRouteList;
+    }
     
     public Step(String type, Integer duration) {
         this.type = type;
