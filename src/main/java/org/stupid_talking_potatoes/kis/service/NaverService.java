@@ -3,16 +3,16 @@ package org.stupid_talking_potatoes.kis.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import org.stupid_talking_potatoes.kis.dto.path.Path;
 import org.stupid_talking_potatoes.kis.dto.path.Step;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
-import org.stupid_talking_potatoes.kis.entity.Route;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
-import org.stupid_talking_potatoes.kis.repository.RouteRepository;
-import org.stupid_talking_potatoes.kis.repository.RouteSeqRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,10 +33,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class NaverService {
     private final NodeRepository nodeRepository;
-    private final RouteRepository routeRepository;
     
-    private final RouteSeqRepository routeSeqRepository;
-    private final TAGOService tagoService;
     /**
      * 최종적으로 완성된 Path List를 만드는 메서드
      *
@@ -50,12 +47,25 @@ public class NaverService {
     public ArrayList<Path> getTransportationInfo(Double departureLongitude, Double departureLatitude, Double arrivalLongitude, Double arrivalLatitude) {
         JSONObject ptMapJSON = getPtMapJSON(departureLongitude, departureLatitude, arrivalLongitude, arrivalLatitude);
         JSONArray paths = ptMapJSON.getJSONObject("res").getJSONArray("paths");
-        ArrayList<Path> pathList = new ArrayList<>();
+        JSONArray staticPaths = ptMapJSON.getJSONObject("res").getJSONArray("staticPaths");
         
+        ArrayList<Path> pathList = setPathList(paths);
+        ArrayList<Path> staticPathList = setPathList(staticPaths);
+        pathList.addAll(staticPathList);
+        filterPath(pathList);
+        return pathList;
+    }
+    
+    /**
+     * 각 path의 정보를 객체화
+     * @param paths
+     * @return
+     */
+    public ArrayList<Path> setPathList(JSONArray paths) {
+        ArrayList<Path> pathList = new ArrayList<>();
         for (Object pathObj : paths) {
             JSONObject pathJSON = (JSONObject) pathObj;
             Path path = Path.ofJSON(pathJSON);
-            //DB 데이터랑 검증해서 setStep
             setStepListByJSON(pathJSON, path);
             pathList.add(path);
         }
@@ -64,12 +74,12 @@ public class NaverService {
     
     /**
      * 각 path의 정보들을 기준으로 Step객체들을 생성하여 path에 저장
+     *
      * @param pathJSON
      * @param path
      */
     private void setStepListByJSON(JSONObject pathJSON, Path path) {
         List<Step> stepList = new ArrayList<>();
-        
         JSONArray legs = pathJSON.getJSONArray("legs");
         for (Object legObj : legs) {
             JSONObject leg = (JSONObject) legObj;
@@ -78,6 +88,11 @@ public class NaverService {
         path.setStepList(stepList);
     }
     
+    /**
+     * 각 step에 대한 check
+     * @param stepList
+     * @param leg
+     */
     private void setEachStep(List<Step> stepList, JSONObject leg) {
         JSONArray steps = leg.getJSONArray("steps");
         for (Object stepObj : steps) {
@@ -99,63 +114,56 @@ public class NaverService {
      * json의 step의 type이 BUS일때 Step객체 생성
      *
      * @param stepList stepList
-     * @param step step
+     * @param stepJSON stepJSON
      */
-    private void setBusToStepList(List<Step> stepList, JSONObject step) {
-        Step ofJSON = Step.ofJSON(step);
+    private void setBusToStepList(List<Step> stepList, JSONObject stepJSON) {
+        Step step = Step.ofJSON(stepJSON);
+        JSONArray stations = stepJSON.getJSONArray("stations");
+        JSONObject departureJSON = (JSONObject) stations.get(0);
+        JSONObject arrivalJSON = (JSONObject) stations.get(stations.toList().size() - 1);
+        String departureDisplayCode = (String) departureJSON.get("displayCode");
+        String arrivalDisplayCode = (String) arrivalJSON.get("displayCode");
         
-        JSONObject departure = (JSONObject) step.getJSONArray("stations").get(0);
-        JSONObject arrival = (JSONObject) step.getJSONArray("stations").get(1);
+        step.setDeparture(Objects.requireNonNull(getNode(departureDisplayCode)).getNodeName());
+        step.setArrival(Objects.requireNonNull(getNode(arrivalDisplayCode)).getNodeName());
         
-        String departureNodeNo = (String) departure.get("displayCode");
-        String arrivalNodeNo = (String) arrival.get("displayCode");
-        
-        Node departureNode = getNode(departureNodeNo);
-        Node arrivaNode = getNode(arrivalNodeNo);
-//        System.out.println("출발 정류장"+departureNode.getNodeName());
-//        System.out.println("도착 정류장"+arrivaNode.getNodeName());
-        ofJSON.setDeparture(Objects.requireNonNull(departureNode).getNodeName());
-        ofJSON.setArrival(Objects.requireNonNull(arrivaNode).getNodeName());
-        //TODO: setArrivalRouteList
-        String routeNo = (String) step.getJSONObject("route").get("name");
-        List<Route> routes = routeRepository.findByRouteNo(routeNo);
-        //TODO: 방면 확인
-        String nodeId = departureNode.getNodeId();
-
-//        ArrayList<ArrivalRoute> arrivalRoutes = tagoService.requestRealtimeBusArrivalInfo(nodeId);
-//        arrivalRoutes.stream()
-//                .map(ArrivalRoute::getRouteId)
-//                .filter(routeId -> routeSeqRepository.existsByRoute_RouteIdAndNode_NodeId(routeId, nodeId))
-//                .map(routeId -> arrivalRoutes)
-//                .forEach(ofJSON::setArrivalRouteList);
-        
-        stepList.add(ofJSON);
-    }
-    /**랜덤 ArrivalRouteList 생성*/
-    private List<ArrivalRoute> setRandomArrivalRouteList(JSONObject departure) {
         List<ArrivalRoute> arrivalRouteList = new ArrayList<>();
-        Random random = new Random();
-        List<Route> routes = routeRepository.findAll();
-        for (int i = 0; i < Math.random() * 3 +1; i++) {
-            ArrivalRoute arrivalRoute=new ArrivalRoute();
-            
-            Route route = routes.get(random.nextInt(routes.size() - 1));
-            arrivalRoute.setDepartureName((String) departure.get("name"));
-            arrivalRoute.setPrevNodeCnt((int) (Math.random() * 10 + 1));
-            arrivalRoute.setArrTime((int) (Math.random() * 10 + 1));
-            arrivalRoute.setRouteNo(route.getRouteNo());
-            arrivalRoute.setRouteId(route.getRouteId());
-            //TODO: filtering
-            arrivalRouteList.add(arrivalRoute);
+        JSONArray arrivals = stepJSON.getJSONArray("arrivals");
+        for (Object o : arrivals) {
+            JSONObject arrival = (JSONObject) o;
+            if (arrival.get("status").equals("RUNNING")) {
+                JSONArray items = arrival.getJSONArray("items");
+                for (Object o1 : items) {
+                    JSONObject item = (JSONObject) o1;
+                    if (item.get("lowFloor").equals(true)) {
+                        ArrivalRoute arrivalRoute = ArrivalRoute.builder()
+                                .prevNodeCnt((Integer) item.get("remainingStop"))
+                                .arrTime((Integer) item.get("remainingTime")).build();
+                        
+                        //routeId랑 routeNo를 넣어줘야하는데..
+                        Integer naverRouteIdByArrival = (Integer) arrival.get("routeId");
+                        JSONArray routes = stepJSON.getJSONArray("routes");
+                        for (Object o2 : routes) {
+                            JSONObject routeJSON = (JSONObject) o2;
+                            Integer naverRouteIdByRoute = (Integer) routeJSON.get("id");
+                            if(naverRouteIdByRoute.equals(naverRouteIdByArrival))
+                                arrivalRoute.setRouteNo((String) routeJSON.get("name"));
+                        }
+                        arrivalRouteList.add(arrivalRoute);
+                    }
+                }
+            }
         }
-        return arrivalRouteList;
+        if (arrivalRouteList.isEmpty())
+            arrivalRouteList = null;
+        step.setArrivalRouteList(arrivalRouteList);
+        stepList.add(step);
     }
     
     private Node getNode(String nodeNo) {
         Optional<Node> optional = nodeRepository.findByNodeNo(nodeNo);
         return optional.orElse(null);
     }
-    
     
     /**
      * 네이버 빠른길찾기로 요청하여 JSON 형식으로 받아옴
@@ -178,17 +186,21 @@ public class NaverService {
             if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
                 rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             } else {
-                rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
             }
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = rd.readLine()) != null) {
-                sb.append(line);
+            try {
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = rd.readLine()) != null) {
+                    sb.append(line);
+                }
+                rd.close();
+                conn.disconnect();
+                System.out.println(sb);
+                return new JSONObject(sb.toString());
+            } catch (JSONException e) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
             }
-            rd.close();
-            conn.disconnect();
-//            log.info("빠른길찾기 API 요청 결과: {}", sb);
-            return new JSONObject(sb.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -203,16 +215,36 @@ public class NaverService {
      * @param arrivalLatitude    arrivalLatitude
      * @return {@link String}
      */
-    private String buildUrl(Double departureLongitude, Double departureLatitude, Double arrivalLongitude, Double arrivalLatitude) {
-        String baseUrl = "https://pt.map.naver.com/api/pubtrans-search";
-        return baseUrl + "?" +
+    public static String buildUrl(Double departureLongitude, Double departureLatitude, Double arrivalLongitude, Double arrivalLatitude) {
+        String baseUrl = "https://pt.map.naver.com/api/pubtrans-route-search";
+//        String departureTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+        LocalDateTime departureTime = LocalDateTime.of(2023, 5, 29, 20, 35);
+        return baseUrl + "?phase=real" +
                 "&mode=TIME" +
-                "&departureTime=" + LocalDateTime.now() +
+                "&departureTime=" + departureTime +
                 "&departure=" + departureLongitude + "," + departureLatitude +
-                "&arrival=" + arrivalLongitude + "," + arrivalLatitude;
+                "&arrival=" + arrivalLongitude + "," + arrivalLatitude +
+                "&includeDetailOperation=true" +
+                "&caller=cs-pc-quick-path";
     }
     
-    private ArrayList<Path> filterPath(List<ArrivalRoute> arrivalRouteList) {
-        return null;
+    
+    /**
+     * 어떠한 step이라도 arrival route list에 아무것도 없으면 해당 path를 제거
+     * @param paths
+     */
+    private void filterPath(List<Path> paths) {
+        Iterator<Path> iterator = paths.iterator();
+        while (iterator.hasNext()) {
+            Path path = iterator.next();
+            List<Step> stepList = path.getStepList();
+            for (Step step : stepList) {
+                if (step.getType().equals("BUS") && step.getArrivalRouteList() == null) {
+                    iterator.remove();
+                    break;
+                }
+            }
+        }
     }
+
 }
