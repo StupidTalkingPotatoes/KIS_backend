@@ -1,7 +1,8 @@
 package org.stupid_talking_potatoes.kis.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import org.stupid_talking_potatoes.kis.dto.path.Path;
 
 import java.util.ArrayList;
@@ -13,10 +14,10 @@ import java.util.ArrayList;
  * date : 2023-04-23
  */
 @Service
+@RequiredArgsConstructor
 public class PathService {
-    @Autowired
-    private NaverService naverService;
-    public ArrayList<Path> getPathInfo(Double departureLongitude, Double departureLatitude, Double arrivalLongitude, Double arrivalLatitude){
+    private final NaverService naverService;
+    public ArrayList<Path> getPathInfo(Double departureLongitude, Double departureLatitude, Double arrivalLongitude, Double arrivalLatitude) throws ResponseStatusException {
         return naverService.getTransportationInfo(departureLongitude,departureLatitude,arrivalLongitude,arrivalLatitude);
     }
 }
