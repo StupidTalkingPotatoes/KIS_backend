@@ -24,5 +24,5 @@ public class RouteSeq {
     @JoinColumn(name = "node_id")
     private Node node;
     
-    private String nodeOrder;
+    private Integer nodeOrder;
 }
