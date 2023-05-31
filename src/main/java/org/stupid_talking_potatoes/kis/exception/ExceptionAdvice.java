@@ -8,19 +8,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionAdvice {
 
-    @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity badRequestException(BadRequestException e) {
+    @ExceptionHandler({BadRequestException.class, NotFoundException.class})
+    public ResponseEntity<ErrorResponse> notFoundException(BaseException e) {
         ErrorResponse response = new ErrorResponse(e.getMessage(), e.getContent());
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(response);
-    }
-
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ErrorResponse> notFoundException(NotFoundException e) {
-        ErrorResponse response = new ErrorResponse(e.getMessage(), e.getContent());
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
+                .status(HttpStatus.NOT_FOUND)
                 .body(response);
     }
 }

@@ -1,13 +1,12 @@
 package org.stupid_talking_potatoes.kis.exception;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class NotFoundException extends RuntimeException {
-    private String message;
-    private String content;
+public class NotFoundException extends BaseException {
+    @Builder
     public NotFoundException(String message, String content) {
-        this.message = message;
-        this.content = content;
+        super(message, content);
     }
 }
