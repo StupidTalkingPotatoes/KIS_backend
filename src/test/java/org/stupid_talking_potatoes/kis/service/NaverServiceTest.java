@@ -2,6 +2,9 @@ package org.stupid_talking_potatoes.kis.service;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -10,13 +13,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.json.BasicJsonTester;
+import org.stupid_talking_potatoes.kis.dto.path.Path;
+import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 /**
@@ -27,9 +37,16 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @Slf4j
 @ExtendWith(MockitoExtension.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class NaverServiceTest {
     private final BasicJsonTester json = new BasicJsonTester(getClass());
     JSONObject res;
+    @Autowired
+    private NodeRepository nodeRepository;
+    @InjectMocks
+    private NaverService naverService;
+    
     
     @BeforeEach
     @DisplayName("빠른 길찾기 api 연결")
@@ -40,6 +57,7 @@ class NaverServiceTest {
         log.setLevel(Level.INFO);
         //test_json파일 가져와서 테스트
         res = new JSONObject(Files.readString(Paths.get("src/test/resources/test_json.json")));
+        naverService=new NaverService(nodeRepository);
         //------실시간 정보 테스트
 //        NaverService naverService=new NaverService();
 //        Double departureLongitude = 126.9743832;
@@ -141,8 +159,11 @@ class NaverServiceTest {
     
     @Test
     @DisplayName("DTO로 변환 테스트")
-    void dataTransformTest() {
-//        log.info(res.getJSONObject("res").toString());
-//        log.info(res.getJSONObject("res").getJSONArray("paths").getJSONObject(0).get("departureTime").toString());
+    void dataTransformTest() throws JsonProcessingException {
+        ArrayList<Path> paths = naverService.setPathList(res.getJSONObject("res").getJSONArray("paths"));
+        ObjectMapper objectMapper=new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        String pathsJson = objectMapper.writeValueAsString(paths);
+        System.out.println(pathsJson);
     }
 }

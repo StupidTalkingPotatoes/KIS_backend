@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.stupid_talking_potatoes.kis.dto.path.Path;
 import org.stupid_talking_potatoes.kis.service.PathService;
 
@@ -34,7 +35,9 @@ public class PathController {
         try{
             ArrayList<Path> paths = pathService.getPathInfo(departureLongitude, departureLatitude, arrivalLongitude, arrivalLatitude);
             return ResponseEntity.status(HttpStatus.OK).body(paths);
-        }catch (Exception e){
+        } catch (ResponseStatusException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).header("error", String.valueOf(e)).body(new ArrayList<Path>());
+        } catch (Exception e){
             log.error("internal error :",e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("error", String.valueOf(e)).build();
         }
