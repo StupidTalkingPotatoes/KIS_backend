@@ -58,7 +58,7 @@ public class NodeServiceTest {
             when(nodeRepository.findByNodeNameContaining(name)).thenReturn(nodes);
             
             // when
-            ArrayList<NodeDto> response = nodeService.getNodeList(null, name);
+            List<NodeDto> response = nodeService.getNodeList(null, name);
             
             // then
             assertEquals(2, response.size());
@@ -74,7 +74,7 @@ public class NodeServiceTest {
             when (nodeRepository.findByNodeNo(no)).thenReturn(Optional.of(node));
             
             // when
-            ArrayList<NodeDto> response = nodeService.getNodeList(no, null);
+            List<NodeDto> response = nodeService.getNodeList(no, null);
             
             // then
             assertEquals(1, response.size());

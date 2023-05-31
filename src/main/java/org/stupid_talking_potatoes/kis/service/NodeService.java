@@ -10,6 +10,8 @@ import org.stupid_talking_potatoes.kis.exception.NotFoundException;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.node.service
@@ -23,36 +25,29 @@ public class NodeService {
     
     private final NodeRepository nodeRepository;
     private final TAGOService tagoService;
-    
     private final RouteService routeService;
     
     
     /**
-     * nodeNo와 nodeName을 기준으로 node테이블의 요소를 NodeDto에 담아 리스트형태로 반환
-     *
-     * @param nodeNo nodeNo
-     * @param nodeName nodeName
-     * @return {@link ArrayList}
-     * @see ArrayList
-     * @see NodeDto
+     * nodeNo와 nodeName을 기준으로 node 테이블의 요소를 NodeDto에 담아 리스트형태로 반환
+     * @param nodeNo 정류장 번호
+     * @param nodeName 정류장명
+     * @return 정류장 정보가 담긴 NodeDto 리스트
      */
-    public ArrayList<NodeDto> getNodeList(String nodeNo, String nodeName){
-        ArrayList<NodeDto> nodeList = new ArrayList<>();
-        
+    public List<NodeDto> getNodeList(String nodeNo, String nodeName){
+        List<NodeDto> list = Collections.emptyList();
+
         if (nodeNo != null) {
             Optional<Node> node = nodeRepository.findByNodeNo(nodeNo);
             if (node.isPresent()) { // if node exists
-                nodeList.add(new NodeDto(node.get()));
+                list.add(new NodeDto(node.get()));
             } // else, not error but empty list
         }
         else if (nodeName != null) {
             List<Node> nodes = nodeRepository.findByNodeNameContaining(nodeName);
-            for (Node node : nodes) {
-                nodeList.add(new NodeDto(node));
-            }
+            return nodes.stream().map(NodeDto::new).collect(Collectors.toList());
         }
-        
-        return nodeList;
+        return list;
     }
     
     public RealtimeBusArrivalInfo getRealtimeBusArrivalInfo(String nodeId){
