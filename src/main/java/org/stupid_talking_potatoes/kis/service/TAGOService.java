@@ -133,24 +133,6 @@ public class TAGOService {
         return this.filterBusArrivalInfo(arrivalInfoList);
     }
     
-    public List<ArrivalRoute> requestRealtimeSpecificBusArrivalInfo(String nodeId, String routeId) {
-        // set url
-        UriComponents uri = UriComponentsBuilder.newInstance()
-                .scheme("https")
-                .host("apis.data.go.kr")
-                .path("/1613000/ArvlInfoInqireService/getSttnAcctoSpcifyRouteBusArvlPrearngeInfoList")
-                .queryParam("serviceKey", this.serviceKey)
-                // if there is error, return type is always xml.
-                .queryParam("_type", "xml")
-                .queryParam("cityCode", this.cityCode)
-                .queryParam("pageNo", 1)
-                .queryParam("numOfRows", 100)
-                .queryParam("nodeId", nodeId)
-                .queryParam("routeId", routeId)
-                .build();
-        return this.requestAndFilterBusArrivalInfo(uri);
-    }
-    
     public List<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
         // set url
         UriComponents uri = UriComponentsBuilder.newInstance()
