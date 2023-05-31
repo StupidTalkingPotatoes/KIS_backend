@@ -6,6 +6,7 @@ import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
 import org.stupid_talking_potatoes.kis.dto.node.RealtimeBusArrivalInfo;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
+import org.stupid_talking_potatoes.kis.exception.NotFoundException;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 
 import java.util.*;
@@ -55,7 +56,7 @@ public class NodeService {
     }
     
     public RealtimeBusArrivalInfo getRealtimeBusArrivalInfo(String nodeId){
-        Node node = nodeRepository.findById(nodeId).orElseThrow(()-> new NoSuchElementException());
+        Node node = nodeRepository.findById(nodeId).orElseThrow(()-> new NotFoundException("Node is not found", nodeId));
         
         // get response from tago service
         List<ArrivalRoute> arrivalRoutes = tagoService.requestRealtimeBusArrivalInfo(nodeId);
