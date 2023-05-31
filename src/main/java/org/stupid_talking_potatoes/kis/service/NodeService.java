@@ -49,9 +49,17 @@ public class NodeService {
         }
         return list;
     }
-    
+
+    /**
+     * nodeId를 기준으로 외부 API로부터 해당 정류장의 실시간 버스 도착 정보를 받아와
+     * 해당 버스의 도착지를 추가하여 리턴
+     * @param nodeId 정류장 ID
+     * @return RealtimeBusArrivalInfo (노드 정보 및 버스 도착 정보 리스트)
+     */
     public RealtimeBusArrivalInfo getRealtimeBusArrivalInfo(String nodeId){
-        Node node = nodeRepository.findById(nodeId).orElseThrow(()-> new NotFoundException("Node is not found", nodeId));
+        Node node = nodeRepository.findById(nodeId).orElseThrow(
+                ()-> new NotFoundException("Node is not found", nodeId)
+        );
         
         // get response from tago service
         List<ArrivalRoute> arrivalRoutes = tagoService.requestRealtimeBusArrivalInfo(nodeId);
@@ -65,24 +73,21 @@ public class NodeService {
         // sort by arrTime
         arrivalRoutes.sort(Comparator.comparing(ArrivalRoute::getArrTime));
         
-        // set response
-        RealtimeBusArrivalInfo response = new RealtimeBusArrivalInfo(new NodeDto(node), arrivalRoutes);
-        return response;
+        // set and return response
+        return new RealtimeBusArrivalInfo(new NodeDto(node), arrivalRoutes);
     }
-    
+
+    /**
+     * 좌표 값을 바탕으로 외부 API로부터 주변 정류장 리스트를 받아와 dto로 매핑 후 반환하는 함수
+     * @param longitude 경도
+     * @param latitude 위도
+     * @return 주변 정류장 리스트
+     */
     public List<NodeDto> getAroundNodeInfo(Double longitude, Double latitude){
         // get response from tago service
         List<Node> aroundNodes = tagoService.requestAroundNodeInfo(longitude, latitude);
         
-        // map to NodeDto
-        List<NodeDto> aroundNodeDtos = new ArrayList<NodeDto>();
-        for (Node node: aroundNodes)
-            aroundNodeDtos.add(new NodeDto(node));
-        
-        return aroundNodeDtos;
-    }
-    
-    public  NodeDto getNodeByNaverId(String naverNodeId){
-        return null;
+        // map to NodeDto and return
+        return aroundNodes.stream().map(NodeDto::new).toList();
     }
 }
