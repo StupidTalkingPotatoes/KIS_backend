@@ -2,11 +2,7 @@ package org.stupid_talking_potatoes.kis.dto.node;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
-import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusLocationInfo;
-import org.stupid_talking_potatoes.kis.entity.NodeBase;
-
-import java.math.BigDecimal;
+import org.stupid_talking_potatoes.kis.entity.RouteSeq;
 
 
 @Getter
@@ -20,19 +16,19 @@ public class PassingNode {
     private Double latitude;
 
     /**
-     * TAGO_BusLocationInfo로 PassingNode를 만드는 Static Factory Method
-     * @param busLocationInfo busLocationInfo
+     * routeSeq(Entity)로 PassingNode를 만드는 Static Factory Method
+     * @param routeSeq routeSeq
      * @return passingNode
      */
-    public static PassingNode from(TAGO_BusLocationInfo busLocationInfo){
+    public static PassingNode fromRouteSeq(RouteSeq routeSeq){
         PassingNode passingNode = new PassingNode();
 
-        passingNode.setId(busLocationInfo.getNodeId());
-        passingNode.setName(busLocationInfo.getNodeNm());
-        passingNode.setNo(busLocationInfo.getNodeNo());
-        passingNode.setOrder(busLocationInfo.getNodeOrd());
-        passingNode.setLongitude(busLocationInfo.getGpsLong());
-        passingNode.setLatitude(busLocationInfo.getGpsLati());
+        passingNode.setId(routeSeq.getNode().getNodeId());
+        passingNode.setName(routeSeq.getNode().getNodeName());
+        passingNode.setNo(routeSeq.getNode().getNodeNo());
+        passingNode.setOrder(routeSeq.getNodeOrder());
+        passingNode.setLongitude(routeSeq.getNode().getLongitude());
+        passingNode.setLatitude(routeSeq.getNode().getLatitude());
 
         return passingNode;
     }
