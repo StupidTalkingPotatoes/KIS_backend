@@ -28,12 +28,17 @@ import java.util.ArrayList;
 @Service
 @RequiredArgsConstructor
 public abstract class TagoBaseService<T, U> {
+
     protected final String serviceKey = "1XxfhSdKbDyiLDzEHz5mnkYKHAfpwM9SBibMSvTaXf4ybFVKHkQbzGUM1PSPWVTNKK5tG8T9oepg4NcTjgmjGA==";
     protected final Integer cityCode = 37050; // Gumi City Code
 
     protected String encodeToUTF8(String rawString) {
         byte[] bytes = rawString.getBytes(StandardCharsets.ISO_8859_1);
         return new String(bytes, StandardCharsets.UTF_8);
+    }
+
+    protected int convertSecToMin(int min) {
+        return Math.round((float)min/60);
     }
 
     protected JSONObject request(String url) {

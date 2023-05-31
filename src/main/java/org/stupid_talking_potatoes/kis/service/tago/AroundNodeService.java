@@ -10,16 +10,18 @@ import org.stupid_talking_potatoes.kis.dto.tago.TAGO_AroundNodeInfo;
 import org.stupid_talking_potatoes.kis.entity.Node;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AroundNodeService extends TagoBaseService<TAGO_AroundNodeInfo, Node> {
+
     private String buildUri(Double longitude, Double latitude) {
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("apis.data.go.kr")
                 .path("/1613000/BusSttnInfoInqireService/getCrdntPrxmtSttnList")
-                .queryParam("serviceKey", this.serviceKey)
+                .queryParam("serviceKey", super.serviceKey)
                 // if there is error, return type is always xml.
                 .queryParam("_type", "xml")
                 .queryParam("pageNo", 1)
@@ -30,16 +32,17 @@ public class AroundNodeService extends TagoBaseService<TAGO_AroundNodeInfo, Node
         return uriComponents.toString();
     }
 
-    public ArrayList<Node> requestAroundNodeInfo(Double longitude, Double latitude) {
+    public List<Node> requestAroundNodeInfo(Double longitude, Double latitude) {
         String url = this.buildUri(longitude, latitude);
         JSONObject responseBody = super.request(url);
-        ArrayList<TAGO_AroundNodeInfo> aroundNodeList = super.convert(responseBody.toString(), new TypeReference<>() {});
-        return this.filter(aroundNodeList);
+        ArrayList<TAGO_AroundNodeInfo> list = super.convert(responseBody.toString(), new TypeReference<>() {});
+        return this.filter(list);
     }
 
-    public ArrayList<Node> filter(ArrayList<TAGO_AroundNodeInfo> aroundNodeList) {
+    protected ArrayList<Node> filter(ArrayList<TAGO_AroundNodeInfo> list) {
         ArrayList<Node> nodeList = new ArrayList<>();
-        for (TAGO_AroundNodeInfo arrivalInfo: aroundNodeList) {
+
+        for (TAGO_AroundNodeInfo arrivalInfo: list) {
             // filter by city code
             if (arrivalInfo.getCityCode().equals(super.cityCode)) {
                 // encode name to utf-8

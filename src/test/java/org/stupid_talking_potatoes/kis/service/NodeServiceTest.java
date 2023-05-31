@@ -14,6 +14,7 @@ import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 import org.stupid_talking_potatoes.kis.service.tago.AroundNodeService;
+import org.stupid_talking_potatoes.kis.service.tago.BusArrivalInfoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public class NodeServiceTest {
     private static RouteService routeService;
     private static TAGOService tagoService;
     private static AroundNodeService aroundNodeService;
+    private static BusArrivalInfoService busArrivalInfoService;
     
     @BeforeAll
     public static void set() {
@@ -38,7 +40,8 @@ public class NodeServiceTest {
         tagoService = Mockito.mock(TAGOService.class);
         routeService = Mockito.mock(RouteService.class);
         aroundNodeService = Mockito.mock(AroundNodeService.class);
-        nodeService = new NodeService(nodeRepository, tagoService, routeService, aroundNodeService);
+        busArrivalInfoService = Mockito.mock(BusArrivalInfoService.class);
+        nodeService = new NodeService(nodeRepository, tagoService, routeService, aroundNodeService, busArrivalInfoService);
     }
     
     @Nested

@@ -9,6 +9,7 @@ import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.exception.NotFoundException;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 import org.stupid_talking_potatoes.kis.service.tago.AroundNodeService;
+import org.stupid_talking_potatoes.kis.service.tago.BusArrivalInfoService;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ public class NodeService {
     private final TAGOService tagoService;
     private final RouteService routeService;
     private final AroundNodeService aroundNodeService;
+    private final BusArrivalInfoService busArrivalInfoService;
     
     
     /**
@@ -63,7 +65,7 @@ public class NodeService {
         );
         
         // get response from tago service
-        List<ArrivalRoute> arrivalRoutes = tagoService.requestRealtimeBusArrivalInfo(nodeId);
+        List<ArrivalRoute> arrivalRoutes = busArrivalInfoService.requestRealtimeBusArrivalInfo(nodeId);
         
         // set name of departure
         for (ArrivalRoute arrivalRoute: arrivalRoutes) {
