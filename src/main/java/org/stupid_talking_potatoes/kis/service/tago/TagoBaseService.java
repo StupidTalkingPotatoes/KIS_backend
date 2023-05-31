@@ -32,15 +32,30 @@ public abstract class TagoBaseService<T, U> {
     protected final String serviceKey = "1XxfhSdKbDyiLDzEHz5mnkYKHAfpwM9SBibMSvTaXf4ybFVKHkQbzGUM1PSPWVTNKK5tG8T9oepg4NcTjgmjGA==";
     protected final Integer cityCode = 37050; // Gumi City Code
 
+    /**
+     * ISO_8859_1 문자열을 UTF8로 인코딩
+     * @param rawString ISO_8859_1로 인코딩된 문자열
+     * @return UTF8로 인코딩된 문자열
+     */
     protected String encodeToUTF8(String rawString) {
         byte[] bytes = rawString.getBytes(StandardCharsets.ISO_8859_1);
         return new String(bytes, StandardCharsets.UTF_8);
     }
 
-    protected int convertSecToMin(int min) {
-        return Math.round((float)min/60);
+    /**
+     * 초 단위를 분 단위로 변경 (나머지는 절삭)
+     * @param sec 초
+     * @return minute
+     */
+    protected int convertSecToMin(int sec) {
+        return Math.round((float)sec/60);
     }
 
+    /**
+     * url에 요청하고 status code를 검사한 후 응답의 xml object를 json object로 변경하여 반환
+     * @param url 외부 api에 요청할 url
+     * @return 요청에 대한 응답의 json body
+     */
     protected JSONObject request(String url) {
         // request
         RestTemplate restTemplate = new RestTemplate();
@@ -58,6 +73,12 @@ public abstract class TagoBaseService<T, U> {
         return XML.toJSONObject(responseXmlBody); // xml to json
     }
 
+    /**
+     * Json body를 T가 담긴 리스트로 변환
+     * @param body Json body
+     * @param typeReference 바꿀 타입 레퍼런스
+     * @return body에서 추출한 T 리스트
+     */
     protected ArrayList<T> convert(String body, TypeReference<ArrayList<T>> typeReference) {
         ObjectMapper objectMapper = new ObjectMapper()
                 // fields of dto are camelCase, but fields of TAGO api are lowercase
@@ -105,5 +126,11 @@ public abstract class TagoBaseService<T, U> {
         }
     }
 
+    /**
+     * TAGO API의 응답을 조건에 맞게 필터링한다.
+     * API 별로 필터링할 조건이 다르기 때문에 상속받는 클래스에서 구현하게 강제한다.
+     * @param list 조건에 맞게 필터링할 리스트
+     * @return 필터링 결과
+     */
     protected abstract ArrayList<U> filter(ArrayList<T> list);
 }
