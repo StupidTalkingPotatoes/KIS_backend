@@ -20,6 +20,8 @@ import org.stupid_talking_potatoes.kis.dto.node.PassingNode;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.dto.tago.*;
 import org.stupid_talking_potatoes.kis.entity.Node;
+import org.stupid_talking_potatoes.kis.exception.InternalServerException;
+import org.stupid_talking_potatoes.kis.exception.ThirdPartyAPIException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -59,8 +61,10 @@ public class TAGOService {
             // get header -> check resultCode
             JsonNode responseHeader = jsonNode.get("response").get("header");
             if (!responseHeader.get("resultCode").asText().equals("00")) { // when there is error
-                String errorMsg = responseHeader.get("resultMsg").asText();
-                throw new RuntimeException(errorMsg); // TODO: Exception Handling
+                throw ThirdPartyAPIException.builder()
+                        .message("TAGO API Error")
+                        .content(responseHeader.get("resultMsg").asText())
+                        .build();
             }
             
             // get body -> check items count
@@ -71,13 +75,24 @@ public class TAGOService {
             
             // convert items to object list & return
             ArrayNode arrayNode = (ArrayNode) responseBody.get("items").get("item");
-            ArrayList<TAGO_AroundNodeInfo> aroundNodeList = objectMapper.convertValue(arrayNode, new TypeReference<ArrayList<TAGO_AroundNodeInfo>>() {});
+            ArrayList<TAGO_AroundNodeInfo> aroundNodeList = objectMapper.convertValue(arrayNode, new TypeReference<>() {});
             return aroundNodeList;
             
-        } catch (JsonMappingException e) { // TODO: Exception Handling
-            throw new RuntimeException(e);
-        } catch (JsonProcessingException e) { // TODO: Exception Handling
-            throw new RuntimeException(e);
+        } catch (JsonMappingException e) {
+            throw InternalServerException.builder()
+                    .message("Json Mapping Exception")
+                    .content(e.getMessage())
+                    .build();
+        } catch (JsonProcessingException e) {
+            throw InternalServerException.builder()
+                    .message("Json Processing Exception")
+                    .content(e.getMessage())
+                    .build();
+        } catch (NullPointerException e) {
+            throw InternalServerException.builder()
+                    .message("Null Pointer Exception")
+                    .content(e.getMessage())
+                    .build();
         }
     }
     
@@ -132,7 +147,12 @@ public class TAGOService {
         // Filtering and return
         return this.filterBusArrivalInfo(arrivalInfoList);
     }
-    
+
+    /**
+     * nodeId를 바탕으로 실시간 버스 도착 정보를 조회하기 위한 uri를 빌드하는 함수
+     * @param nodeId 정류장 ID
+     * @return 빌드된 uri로 보낸 요청에 대한 응답을 필터링한 결과
+     */
     public List<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
         // set url
         UriComponents uri = UriComponentsBuilder.newInstance()

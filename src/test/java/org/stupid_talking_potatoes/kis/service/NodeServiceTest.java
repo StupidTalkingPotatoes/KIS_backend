@@ -13,6 +13,7 @@ import org.stupid_talking_potatoes.kis.dto.node.RealtimeBusArrivalInfo;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
+import org.stupid_talking_potatoes.kis.service.tago.AroundNodeService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,19 +27,18 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class NodeServiceTest {
     private static NodeService nodeService;
-    
     private static NodeRepository nodeRepository;
-    
     private static RouteService routeService;
-    
     private static TAGOService tagoService;
+    private static AroundNodeService aroundNodeService;
     
     @BeforeAll
     public static void set() {
         nodeRepository = Mockito.mock(NodeRepository.class);
         tagoService = Mockito.mock(TAGOService.class);
         routeService = Mockito.mock(RouteService.class);
-        nodeService = new NodeService(nodeRepository, tagoService, routeService);
+        aroundNodeService = Mockito.mock(AroundNodeService.class);
+        nodeService = new NodeService(nodeRepository, tagoService, routeService, aroundNodeService);
     }
     
     @Nested

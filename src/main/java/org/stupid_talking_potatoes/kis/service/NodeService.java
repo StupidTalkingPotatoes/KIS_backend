@@ -8,6 +8,7 @@ import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.exception.NotFoundException;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
+import org.stupid_talking_potatoes.kis.service.tago.AroundNodeService;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class NodeService {
     private final NodeRepository nodeRepository;
     private final TAGOService tagoService;
     private final RouteService routeService;
+    private final AroundNodeService aroundNodeService;
     
     
     /**
@@ -84,7 +86,7 @@ public class NodeService {
      */
     public List<NodeDto> getAroundNodeInfo(Double longitude, Double latitude){
         // get response from tago service
-        List<Node> aroundNodes = tagoService.requestAroundNodeInfo(longitude, latitude);
+        List<Node> aroundNodes = aroundNodeService.requestAroundNodeInfo(longitude, latitude);
         
         // map to NodeDto and return
         return aroundNodes.stream().map(NodeDto::new).toList();

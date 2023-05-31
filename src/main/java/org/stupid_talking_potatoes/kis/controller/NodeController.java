@@ -77,7 +77,7 @@ public class NodeController {
         } catch (NumberFormatException e) {
             throw BadRequestException.builder()
                     .message("longitude, latitude must be Double type")
-                    .content(e.getMessage().replace("\"", "'")) // 에러 메시지에 \"가 있어 작은 따옴표로 변경
+                    .content(e.getMessage())
                     .build();
         }
         List<NodeDto> response = nodeService.getAroundNodeInfo(_longitude, _latitude);
