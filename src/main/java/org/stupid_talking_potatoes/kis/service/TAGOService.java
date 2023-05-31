@@ -231,63 +231,6 @@ public class TAGOService {
     }
     
     /**
-     * routeId에 해당하는 경로를 지나는 nodeList를 API로 조회
-     * @param routeId routeId
-     * @return 경로를 지나는 nodeList
-     */
-    public List<PassingNode> getPassingNodeList(String routeId) {
-        
-        ResponseEntity<TAGO_BusLocationInfoResponse> responseEntity = requestBusLocationInfo(routeId);
-        
-        if (responseEntity.getStatusCode() != HttpStatusCode.valueOf(200)) {
-            throw new RuntimeException();
-        }
-        
-        TAGO_BusLocationInfoResponse responseBody = responseEntity.getBody();
-        TAGO_ApiResponse<TAGO_BusLocationInfo> TAGOApiResponse = Objects.requireNonNull(responseBody).getResponse();
-        TAGO_ApiResponse.Header header = TAGOApiResponse.getHeader();
-        
-        if (!header.getResultCode().equals("00")) {
-            String resultMsg = header.getResultMsg();
-            throw new RuntimeException(resultMsg);
-        }
-        
-        TAGO_ApiResponse.Body<TAGO_BusLocationInfo> body = TAGOApiResponse.getBody();
-        TAGO_ApiResponse.Body.Items<TAGO_BusLocationInfo> items = body.getItems();
-        List<TAGO_BusLocationInfo> item = items.getItem();
-        
-        List<PassingNode> passingNodeList = new ArrayList<>();
-        
-        for (TAGO_BusLocationInfo busLocationInfo : item) {
-            passingNodeList.add(PassingNode.from(busLocationInfo));
-        }
-        
-        return passingNodeList;
-    }
-    
-    /**
-     * nodeList 조회 API
-     * @param routeId routeId
-     * @return TAGO_BusLocationInfoResponse
-     */
-    private ResponseEntity<TAGO_BusLocationInfoResponse> requestBusLocationInfo(String routeId) {
-        UriComponents uriComponents = UriComponentsBuilder.newInstance()
-                .scheme("https")
-                .host("apis.data.go.kr")
-                .path("/1613000/BusRouteInfoInqireService/getRouteAcctoThrghSttnList")
-                .queryParam("serviceKey", this.serviceKey)
-                .queryParam("_type", "json")
-                .queryParam("cityCode", this.cityCode)
-                .queryParam("pageNo", String.valueOf(1))
-                .queryParam("numOfRows", String.valueOf(100))
-                .queryParam("routeId", routeId)
-                .build();
-        
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForEntity(uriComponents.toString(), TAGO_BusLocationInfoResponse.class);
-    }
-    
-    /**
      * RealTimeBusLocationInfo를 API로 조회
      * @param routeId routeId
      * @return List<realTimeBusLocationInfo>
