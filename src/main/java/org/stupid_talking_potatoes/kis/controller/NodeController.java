@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
 import org.stupid_talking_potatoes.kis.dto.node.RealtimeBusArrivalInfo;
+import org.stupid_talking_potatoes.kis.exception.BadRequestException;
 import org.stupid_talking_potatoes.kis.service.NodeService;
 
 import java.util.List;
@@ -24,7 +25,13 @@ import java.util.List;
 @RequestMapping("/api/nodes")
 public class NodeController {
     private final NodeService nodeService;
-    
+
+    /**
+     * 정류장 번호, 이름으로 검색하여 정류장 리스트를 응답하는 API
+     * @param nodeNo 검색할 정류장 번호
+     * @param nodeName 검색할 정류장 이름
+     * @return 검색 결과 List
+     */
     @GetMapping("/search")
     public ResponseEntity getNodeList(
             @RequestParam(name="no", required = false) String nodeNo,
@@ -35,7 +42,12 @@ public class NodeController {
                 .status(HttpStatus.OK)
                 .body(response);
     }
-    
+
+    /**
+     * 정류장 ID로 검색하여 해당 정류장에 대한 버스 도착 정보를 응답하는 API
+     * @param nodeId 정류장 ID
+     * @return 정류장 정보 및 해당 정류장의 버스 도착 정보 List
+     */
     @GetMapping("/arrive-info")
     public ResponseEntity getRealtimeBusArrivalInfo(
             @RequestParam(name="id") String nodeId
@@ -45,7 +57,13 @@ public class NodeController {
                 .status(HttpStatus.OK)
                 .body(response);
     }
-    
+
+    /**
+     * 좌표를 중심으로 반경 500m 내의 버스 정류장을 응답하는 API
+     * @param longitude 경도
+     * @param latitude 위도
+     * @return 버스 정류장 List
+     */
     @GetMapping("")
     public ResponseEntity getAroundNodeInfo(
             @RequestParam String longitude,
@@ -57,8 +75,10 @@ public class NodeController {
             _longitude = Double.valueOf(longitude);
             _latitude = Double.valueOf(latitude);
         } catch (NumberFormatException e) {
-            // TODO: Handle exception
-            throw new RuntimeException();
+            throw BadRequestException.builder()
+                    .message("longitude, latitude must be Double type")
+                    .content(e.getMessage())
+                    .build();
         }
         List<NodeDto> response = nodeService.getAroundNodeInfo(_longitude, _latitude);
         return ResponseEntity

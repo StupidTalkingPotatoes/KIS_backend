@@ -13,6 +13,8 @@ import org.stupid_talking_potatoes.kis.dto.node.RealtimeBusArrivalInfo;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
+import org.stupid_talking_potatoes.kis.service.tago.AroundNodeService;
+import org.stupid_talking_potatoes.kis.service.tago.BusArrivalInfoService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,19 +28,20 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class NodeServiceTest {
     private static NodeService nodeService;
-    
     private static NodeRepository nodeRepository;
-    
     private static RouteService routeService;
-    
     private static TAGOService tagoService;
+    private static AroundNodeService aroundNodeService;
+    private static BusArrivalInfoService busArrivalInfoService;
     
     @BeforeAll
     public static void set() {
         nodeRepository = Mockito.mock(NodeRepository.class);
         tagoService = Mockito.mock(TAGOService.class);
         routeService = Mockito.mock(RouteService.class);
-        nodeService = new NodeService(nodeRepository, tagoService, routeService);
+        aroundNodeService = Mockito.mock(AroundNodeService.class);
+        busArrivalInfoService = Mockito.mock(BusArrivalInfoService.class);
+        nodeService = new NodeService(nodeRepository, tagoService, routeService, aroundNodeService, busArrivalInfoService);
     }
     
     @Nested
@@ -58,7 +61,7 @@ public class NodeServiceTest {
             when(nodeRepository.findByNodeNameContaining(name)).thenReturn(nodes);
             
             // when
-            ArrayList<NodeDto> response = nodeService.getNodeList(null, name);
+            List<NodeDto> response = nodeService.getNodeList(null, name);
             
             // then
             assertEquals(2, response.size());
@@ -74,7 +77,7 @@ public class NodeServiceTest {
             when (nodeRepository.findByNodeNo(no)).thenReturn(Optional.of(node));
             
             // when
-            ArrayList<NodeDto> response = nodeService.getNodeList(no, null);
+            List<NodeDto> response = nodeService.getNodeList(no, null);
             
             // then
             assertEquals(1, response.size());
