@@ -38,7 +38,7 @@ public class NodeService {
      * @return 정류장 정보가 담긴 NodeDto 리스트
      */
     public List<NodeDto> getNodeList(String nodeNo, String nodeName){
-        List<NodeDto> list = Collections.emptyList();
+        List<NodeDto> list = new ArrayList<>();
 
         if (nodeNo != null) {
             Optional<Node> node = nodeRepository.findByNodeNo(nodeNo);
