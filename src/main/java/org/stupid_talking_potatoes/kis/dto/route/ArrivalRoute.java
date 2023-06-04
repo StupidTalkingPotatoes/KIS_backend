@@ -10,8 +10,6 @@ import org.stupid_talking_potatoes.kis.entity.RouteBase;
  * date : 2023-04-23
  */
 @Getter
-@Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArrivalRoute extends RouteBase {
@@ -29,5 +27,9 @@ public class ArrivalRoute extends RouteBase {
         super(routeId, routeNo);
         this.prevNodeCnt = prevNodeCnt;
         this.arrTime = arrTime;
+    }
+
+    public void setDepartureName(String departureName) {
+        this.departureName = departureName;
     }
 }
