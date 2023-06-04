@@ -35,12 +35,12 @@ public class BusArrivalInfoService extends TagoBaseService<TAGO_BusArrivalInfo, 
     public List<ArrivalRoute> requestRealtimeBusArrivalInfo(String nodeId) {
         String url = this.buildUri(nodeId);
         JSONObject responseBody = super.request(url);
-        ArrayList<TAGO_BusArrivalInfo> list = super.convert(responseBody.toString(), new TypeReference<>() {});
+        List<TAGO_BusArrivalInfo> list = super.convert(responseBody.toString(), new TypeReference<>() {});
         return this.filter(list);
     }
 
-    protected ArrayList<ArrivalRoute> filter(ArrayList<TAGO_BusArrivalInfo> list) {
-        ArrayList<ArrivalRoute> arrivalRoutes = new ArrayList<>();
+    protected List<ArrivalRoute> filter(List<TAGO_BusArrivalInfo> list) {
+        List<ArrivalRoute> arrivalRoutes = new ArrayList<>();
 
         for (TAGO_BusArrivalInfo busArrivalInfo: list) {
             // encode vehicleTp to utf-8

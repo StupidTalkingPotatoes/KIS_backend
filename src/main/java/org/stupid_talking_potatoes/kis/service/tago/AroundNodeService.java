@@ -35,12 +35,12 @@ public class AroundNodeService extends TagoBaseService<TAGO_AroundNodeInfo, Node
     public List<Node> requestAroundNodeInfo(Double longitude, Double latitude) {
         String url = this.buildUri(longitude, latitude);
         JSONObject responseBody = super.request(url);
-        ArrayList<TAGO_AroundNodeInfo> list = super.convert(responseBody.toString(), new TypeReference<>() {});
+        List<TAGO_AroundNodeInfo> list = super.convert(responseBody.toString(), new TypeReference<>() {});
         return this.filter(list);
     }
 
-    protected ArrayList<Node> filter(ArrayList<TAGO_AroundNodeInfo> list) {
-        ArrayList<Node> nodeList = new ArrayList<>();
+    protected List<Node> filter(List<TAGO_AroundNodeInfo> list) {
+        List<Node> nodeList = new ArrayList<>();
 
         for (TAGO_AroundNodeInfo arrivalInfo: list) {
             // filter by city code
