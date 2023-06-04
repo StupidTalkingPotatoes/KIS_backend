@@ -47,7 +47,7 @@ public abstract class TagoBaseService<T, U> {
      * @param sec 초
      * @return minute
      */
-    protected int convertSecToMin(int sec) {
+    public static int convertSecToMin(int sec) {
         return Math.round((float)sec/60);
     }
 

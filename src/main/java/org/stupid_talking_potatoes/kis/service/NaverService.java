@@ -13,6 +13,7 @@ import org.stupid_talking_potatoes.kis.dto.path.Step;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.repository.NodeRepository;
+import org.stupid_talking_potatoes.kis.service.tago.TagoBaseService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -138,7 +139,8 @@ public class NaverService {
                     if (item.get("lowFloor").equals(true)) {
                         ArrivalRoute arrivalRoute = ArrivalRoute.builder()
                                 .prevNodeCnt((Integer) item.get("remainingStop"))
-                                .arrTime((Integer) item.get("remainingTime")).build();
+                                .arrTime(TagoBaseService.convertSecToMin((Integer) item.get("remainingTime")))
+                                .build();
                         
                         //routeId랑 routeNo를 넣어줘야하는데..
                         Integer naverRouteIdByArrival = (Integer) arrival.get("routeId");
@@ -181,7 +183,7 @@ public class NaverService {
             HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-type", "application/json");
-            log.info("Response code: " + conn.getResponseCode());
+//            log.info("Response code: " + conn.getResponseCode());
             BufferedReader rd;
             if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
                 rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -196,7 +198,7 @@ public class NaverService {
                 }
                 rd.close();
                 conn.disconnect();
-                System.out.println(sb);
+                
                 return new JSONObject(sb.toString());
             } catch (JSONException e) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
