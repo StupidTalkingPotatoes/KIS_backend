@@ -3,8 +3,8 @@ package org.stupid_talking_potatoes.kis.service.tago;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeType;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.json.XML;
@@ -12,12 +12,11 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.stupid_talking_potatoes.kis.dto.tago.TAGO_RealTimeBusLocationInfo;
+import org.stupid_talking_potatoes.kis.config.TagoServiceConfig;
 import org.stupid_talking_potatoes.kis.exception.InternalServerException;
 import org.stupid_talking_potatoes.kis.exception.ThirdPartyAPIException;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,11 +26,17 @@ import java.util.List;
  * @param <U> API의 응답을 필터링한 후 반환되는 List 원소 클래스
  */
 @Service
+@Getter
 @RequiredArgsConstructor
 public abstract class TagoBaseService<T, U> {
 
-    protected final String serviceKey = "1XxfhSdKbDyiLDzEHz5mnkYKHAfpwM9SBibMSvTaXf4ybFVKHkQbzGUM1PSPWVTNKK5tG8T9oepg4NcTjgmjGA==";
-    protected final Integer cityCode = 37050; // Gumi City Code
+    private String serviceKey;
+    private Integer cityCode;
+
+    protected TagoBaseService(TagoServiceConfig config) {
+        this.serviceKey = config.getServiceKey();
+        this.cityCode = config.getCityCode();
+    }
 
     /**
      * ISO_8859_1 문자열을 UTF8로 인코딩
