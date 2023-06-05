@@ -2,11 +2,9 @@ package org.stupid_talking_potatoes.kis.service.tago;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.node.JsonNodeType;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.json.XML;
@@ -15,10 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.stupid_talking_potatoes.kis.config.TagoServiceConfig;
 import org.stupid_talking_potatoes.kis.exception.InternalServerException;
 import org.stupid_talking_potatoes.kis.exception.ThirdPartyAPIException;
 
 import java.nio.charset.StandardCharsets;
+
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +29,17 @@ import java.util.List;
  * @param <U> API의 응답을 필터링한 후 반환되는 List 원소 클래스
  */
 @Service
+@Getter
 @RequiredArgsConstructor
 public abstract class TagoBaseService<T, U> {
 
-    protected final String serviceKey = "1XxfhSdKbDyiLDzEHz5mnkYKHAfpwM9SBibMSvTaXf4ybFVKHkQbzGUM1PSPWVTNKK5tG8T9oepg4NcTjgmjGA==";
-    protected final Integer cityCode = 37050; // Gumi City Code
+    private String serviceKey;
+    private Integer cityCode;
+
+    protected TagoBaseService(TagoServiceConfig config) {
+        this.serviceKey = config.getServiceKey();
+        this.cityCode = config.getCityCode();
+    }
 
     /**
      * ISO_8859_1 문자열을 UTF8로 인코딩
@@ -79,10 +86,11 @@ public abstract class TagoBaseService<T, U> {
     /**
      * Json body를 T가 담긴 리스트로 변환
      * @param body Json body
-     * @param typeReference 바꿀 타입 레퍼런스
+     * @param singleReference 바꿀 타입 레퍼런스 (T)
+     * @param listReference 바꿀 타입 레퍼런스 (List<T>)
      * @return body에서 추출한 T 리스트
      */
-    protected List<T> convert(String body, TypeReference<ArrayList<T>> typeReference) {
+    protected List<T> convert(String body, TypeReference<T> singleReference, TypeReference<List<T>> listReference) {
         ObjectMapper objectMapper = new ObjectMapper()
                 // fields of dto are camelCase, but fields of TAGO api are lowercase
                 .setPropertyNamingStrategy(PropertyNamingStrategy.LOWER_CASE);
@@ -102,14 +110,22 @@ public abstract class TagoBaseService<T, U> {
             // get body -> check items count
             JsonNode responseBody = jsonNode.get("response").get("body");
             if (responseBody.get("totalCount").asInt() == 0) { // when items is empty
-                return new ArrayList<>();
+                return Collections.emptyList();
             }
 
-            // convert items to object list & return
-            ArrayNode arrayNode = (ArrayNode) responseBody.get("items").get("item");
+            // convert items to object list
+            JsonNode items = responseBody.get("items");
+            JsonNode item = items.get("item");
+            JsonNodeType nodeType = item.getNodeType();
 
-            ArrayList<T> aroundNodeList = objectMapper.convertValue(arrayNode, typeReference);
-            return aroundNodeList;
+            if (nodeType.equals(JsonNodeType.OBJECT)) {
+                T info = objectMapper.convertValue(item, singleReference);
+                return Collections.singletonList(info);
+            } else if (nodeType.equals(JsonNodeType.ARRAY)) {
+                return objectMapper.convertValue(item, listReference);
+            }
+
+            return Collections.emptyList();
 
         } catch (JsonMappingException e) {
             throw InternalServerException.builder()
