@@ -1,5 +1,6 @@
 package org.stupid_talking_potatoes.kis.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.stupid_talking_potatoes.kis.dto.path.Path;
 import org.stupid_talking_potatoes.kis.service.PathService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -23,23 +25,17 @@ import java.util.ArrayList;
 @Slf4j
 @RestController
 @RequestMapping("/paths")
+@RequiredArgsConstructor
 public class PathController {
-    @Autowired
-    PathService pathService;
+    private final PathService pathService;
+    
     @GetMapping("")
     public ResponseEntity<?> getPathInfo(@RequestParam Double departureLongitude,
                                          @RequestParam Double departureLatitude,
                                          @RequestParam Double arrivalLongitude,
                                          @RequestParam Double arrivalLatitude
-    ){
-        try{
-            ArrayList<Path> paths = pathService.getPathInfo(departureLongitude, departureLatitude, arrivalLongitude, arrivalLatitude);
-            return ResponseEntity.status(HttpStatus.OK).body(paths);
-        } catch (ResponseStatusException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).header("error", String.valueOf(e)).body(new ArrayList<Path>());
-        } catch (Exception e){
-            log.error("internal error :",e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).header("error", String.valueOf(e)).build();
-        }
+    ) throws IOException {
+        ArrayList<Path> paths = pathService.getPathInfo(departureLongitude, departureLatitude, arrivalLongitude, arrivalLatitude);
+        return ResponseEntity.status(HttpStatus.OK).body(paths);
     }
 }
