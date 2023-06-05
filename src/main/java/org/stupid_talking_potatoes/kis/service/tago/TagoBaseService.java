@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.stupid_talking_potatoes.kis.exception.InternalServerException;
@@ -19,6 +20,7 @@ import org.stupid_talking_potatoes.kis.exception.ThirdPartyAPIException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * TAGO API에 접근하는 Base 서비스
@@ -59,6 +61,7 @@ public abstract class TagoBaseService<T, U> {
     protected JSONObject request(String url) {
         // request
         RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
         // check status code
@@ -79,7 +82,7 @@ public abstract class TagoBaseService<T, U> {
      * @param typeReference 바꿀 타입 레퍼런스
      * @return body에서 추출한 T 리스트
      */
-    protected ArrayList<T> convert(String body, TypeReference<ArrayList<T>> typeReference) {
+    protected List<T> convert(String body, TypeReference<ArrayList<T>> typeReference) {
         ObjectMapper objectMapper = new ObjectMapper()
                 // fields of dto are camelCase, but fields of TAGO api are lowercase
                 .setPropertyNamingStrategy(PropertyNamingStrategy.LOWER_CASE);
@@ -132,5 +135,5 @@ public abstract class TagoBaseService<T, U> {
      * @param list 조건에 맞게 필터링할 리스트
      * @return 필터링 결과
      */
-    protected abstract ArrayList<U> filter(ArrayList<T> list);
+    protected abstract List<U> filter(List<T> list);
 }
