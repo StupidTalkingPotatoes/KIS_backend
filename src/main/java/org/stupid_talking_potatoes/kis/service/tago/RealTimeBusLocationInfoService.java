@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.stupid_talking_potatoes.kis.config.TagoServiceConfig;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_RealTimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.entity.Node;
 import org.stupid_talking_potatoes.kis.exception.InternalServerException;
@@ -24,18 +25,22 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class RealTimeBusLocationInfoService extends TagoBaseService<TAGO_RealTimeBusLocationInfo, Integer> {
-    private final KneelingBusService kneelingBusService;
+    private KneelingBusService kneelingBusService;
+
+    public RealTimeBusLocationInfoService(TagoServiceConfig config, KneelingBusService kneelingBusService) {
+        super(config);
+        this.kneelingBusService = kneelingBusService;
+    }
 
     private String buildUri(String routeId) {
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("apis.data.go.kr")
                 .path("/1613000/BusLcInfoInqireService/getRouteAcctoBusLcList")
-                .queryParam("serviceKey", this.serviceKey)
+                .queryParam("serviceKey", super.getServiceKey())
                 .queryParam("_type", "xml")
-                .queryParam("cityCode", this.cityCode)
+                .queryParam("cityCode", super.getServiceKey())
                 .queryParam("routeId", routeId)
                 .build();
         return uriComponents.toString();
@@ -48,14 +53,12 @@ public class RealTimeBusLocationInfoService extends TagoBaseService<TAGO_RealTim
         JSONObject responseBody = super.request(url);
         // 내가 원하는 객체리스트로 convert하기
         List<TAGO_RealTimeBusLocationInfo> realTimeBusLocationInfoList =
-                convert(responseBody.toString(), new TypeReference<>() {});
+                convert(responseBody.toString(), new TypeReference<>(){}, new TypeReference<>(){});
         // 현재 저상버스 실시간 위치 반환
         return filter(realTimeBusLocationInfoList);
     }
 
-
-    @Override
-    protected List<TAGO_RealTimeBusLocationInfo> convert(String body, TypeReference<ArrayList<TAGO_RealTimeBusLocationInfo>> typeReference) {
+    protected List<TAGO_RealTimeBusLocationInfo> convertTemp(String body, TypeReference<ArrayList<TAGO_RealTimeBusLocationInfo>> typeReference) {
         ObjectMapper objectMapper = new ObjectMapper()
                 // fields of dto are camelCase, but fields of TAGO api are lowercase
                 .setPropertyNamingStrategy(PropertyNamingStrategy.LOWER_CASE);

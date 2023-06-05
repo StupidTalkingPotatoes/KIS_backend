@@ -42,16 +42,6 @@ public abstract class TagoBaseService<T, U> {
     }
 
     /**
-     * ISO_8859_1 문자열을 UTF8로 인코딩
-     * @param rawString ISO_8859_1로 인코딩된 문자열
-     * @return UTF8로 인코딩된 문자열
-     */
-    protected String encodeToUTF8(String rawString) {
-        byte[] bytes = rawString.getBytes(StandardCharsets.ISO_8859_1);
-        return new String(bytes, StandardCharsets.UTF_8);
-    }
-
-    /**
      * 초 단위를 분 단위로 변경 (나머지는 절삭)
      * @param sec 초
      * @return minute

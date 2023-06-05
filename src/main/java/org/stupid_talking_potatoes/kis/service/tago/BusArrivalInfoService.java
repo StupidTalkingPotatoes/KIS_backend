@@ -47,10 +47,8 @@ public class BusArrivalInfoService extends TagoBaseService<TAGO_BusArrivalInfo, 
         List<ArrivalRoute> arrivalRoutes = new ArrayList<>();
 
         for (TAGO_BusArrivalInfo busArrivalInfo: list) {
-            // encode vehicleTp to utf-8
-            String encodedVehicleTp = this.encodeToUTF8(busArrivalInfo.getVehicleTp());
             // check kneeling bus
-            if (encodedVehicleTp.equals("저상버스")) {
+            if (busArrivalInfo.getVehicleTp().equals("저상버스")) {
                 // convert time from sec to min
                 int arrTimeSec = busArrivalInfo.getArrTime();
                 int arrTimeMin = this.convertSecToMin(arrTimeSec);
