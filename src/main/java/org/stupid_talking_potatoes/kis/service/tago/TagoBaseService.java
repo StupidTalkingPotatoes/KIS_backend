@@ -20,7 +20,6 @@ import org.stupid_talking_potatoes.kis.exception.ThirdPartyAPIException;
 import java.nio.charset.StandardCharsets;
 
 import java.util.Collections;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,16 +38,6 @@ public abstract class TagoBaseService<T, U> {
     protected TagoBaseService(TagoServiceConfig config) {
         this.serviceKey = config.getServiceKey();
         this.cityCode = config.getCityCode();
-    }
-
-    /**
-     * ISO_8859_1 문자열을 UTF8로 인코딩
-     * @param rawString ISO_8859_1로 인코딩된 문자열
-     * @return UTF8로 인코딩된 문자열
-     */
-    protected String encodeToUTF8(String rawString) {
-        byte[] bytes = rawString.getBytes(StandardCharsets.ISO_8859_1);
-        return new String(bytes, StandardCharsets.UTF_8);
     }
 
     /**

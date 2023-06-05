@@ -49,7 +49,7 @@ public class AroundNodeService extends TagoBaseService<TAGO_AroundNodeInfo, Node
             // filter by city code
             if (arrivalInfo.getCityCode().equals(super.getCityCode())) {
                 // encode name to utf-8
-                arrivalInfo.setNodeNm(super.encodeToUTF8(arrivalInfo.getNodeNm()));
+                arrivalInfo.setNodeNm(arrivalInfo.getNodeNm());
                 nodeList.add(Node.of(arrivalInfo));
             }
         }
