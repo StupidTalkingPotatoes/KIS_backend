@@ -9,7 +9,9 @@ import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
 import org.stupid_talking_potatoes.kis.dto.tago.TAGO_RealTimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.entity.Route;
 import org.stupid_talking_potatoes.kis.entity.RouteSeq;
+import org.stupid_talking_potatoes.kis.exception.NotFoundException;
 import org.stupid_talking_potatoes.kis.repository.RouteRepository;
+import org.stupid_talking_potatoes.kis.service.tago.RealTimeBusLocationInfoService;
 
 import java.util.*;
 
@@ -25,10 +27,7 @@ import static java.util.Comparator.comparingInt;
 @RequiredArgsConstructor
 public class RouteService {
     private final RouteRepository routeRepository;
-
-    private final KneelingBusService kneelingBusService;
-
-    private final TAGOService tagoService;
+    private final RealTimeBusLocationInfoService realTimeBusLocationInfoService;
 
     /**
      * searchApi: routeNo를 가지고 Route 검색
@@ -55,7 +54,7 @@ public class RouteService {
     public RealtimeBusLocationInfo getRealtimeBusLocationInfo(String routeId) {
         Optional<Route> routeOp = routeRepository.findByRouteId(routeId);
 
-        Route route = routeOp.orElseThrow(() -> new NoSuchElementException(routeId + "에 해당하는 노선을 찾을 수 없습니다"));
+        Route route = routeOp.orElseThrow(() -> new NotFoundException("Route is not found", routeId));
 
         Set<RouteSeq> routeNodes = route.getRouteNodes();
 
@@ -63,12 +62,9 @@ public class RouteService {
                 .map(PassingNode::fromRouteSeq)
                 .sorted(comparingInt(PassingNode::getOrder))
                 .toList();
-
-        List<TAGO_RealTimeBusLocationInfo> realTimeBusLocationInfoList = tagoService.requestRealTimeBusLocationInfo(routeId);
-    
-        // 저상버스 필터링
-        List<Integer> realtimeNodeOrderList = getFilteredNodeOrderList(realTimeBusLocationInfoList);
-    
+        
+        // 실시간 저상버스 위치 리스트
+        List<Integer> realtimeNodeOrderList = realTimeBusLocationInfoService.getRealtimeNodeOrderList(routeId);
         return RealtimeBusLocationInfo.of(route, passingNodeList, realtimeNodeOrderList);
     }
 
@@ -77,17 +73,6 @@ public class RouteService {
         return route.getEndNodeName();
     }
 
-    /**
-     * 현재 운행 중인 저상버스 필터링
-     * @param realTimeBusLocationInfoList realTimeBusLocationInfoList(현재 운행 중인 버스 정보)
-     * @return realtimeNodeOrderList(현재 운행 중인 저상버스 위치 리스트)
-     */
-    private List<Integer> getFilteredNodeOrderList(List<TAGO_RealTimeBusLocationInfo> realTimeBusLocationInfoList) {
-        return realTimeBusLocationInfoList.stream()
-                .filter(realTimeBusLocationInfo -> kneelingBusService.isKneelingBus(realTimeBusLocationInfo.getVehicleNo()))
-                .map(TAGO_RealTimeBusLocationInfo::getNodeOrd)
-                .toList();
-    }
 
     public String getDeparture(String routeId){
         return null;

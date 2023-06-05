@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface KneelingBusRepository extends JpaRepository<KneelingBus, String> {
-    List<KneelingBus> findAll();
+    List<KneelingBus> findByVehicleNo(String vehicleNo);
 }

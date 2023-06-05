@@ -26,7 +26,7 @@ public class KneelingBusService {
      * @return 저상버스 여부(boolean)
      */
     public boolean isKneelingBus(String vehicleNo){
-        List<KneelingBus> kneelingBusAll = kneelingBusRepository.findAll();
+        List<KneelingBus> kneelingBusAll = kneelingBusRepository.findByVehicleNo(vehicleNo);
         List<String> vehicleNoList = kneelingBusAll.stream()
                 .map(KneelingBus::getVehicleNo)
                 .toList();
