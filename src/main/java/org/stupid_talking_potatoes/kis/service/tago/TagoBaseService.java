@@ -20,7 +20,6 @@ import org.stupid_talking_potatoes.kis.exception.ThirdPartyAPIException;
 import java.nio.charset.StandardCharsets;
 
 import java.util.Collections;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

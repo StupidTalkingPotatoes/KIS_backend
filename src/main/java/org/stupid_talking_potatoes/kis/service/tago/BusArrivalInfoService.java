@@ -1,7 +1,6 @@
 package org.stupid_talking_potatoes.kis.service.tago;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponents;
