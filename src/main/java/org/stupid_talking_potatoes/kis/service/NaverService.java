@@ -1,21 +1,16 @@
 package org.stupid_talking_potatoes.kis.service;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import org.stupid_talking_potatoes.kis.dto.path.Path;
 import org.stupid_talking_potatoes.kis.dto.path.Step;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.entity.Node;
-import org.stupid_talking_potatoes.kis.exception.InvalidUrlException;
-import org.stupid_talking_potatoes.kis.exception.NoContentException;
 import org.stupid_talking_potatoes.kis.exception.NotFoundException;
 import org.stupid_talking_potatoes.kis.exception.ThirdPartyAPIException;
-import org.stupid_talking_potatoes.kis.repository.NodeRepository;
 import org.stupid_talking_potatoes.kis.service.tago.TagoBaseService;
 
 import java.io.BufferedReader;
@@ -26,10 +21,8 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class NaverService {
     private final NodeService nodeService;
