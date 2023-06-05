@@ -40,7 +40,7 @@ public class RealTimeBusLocationInfoService extends TagoBaseService<TAGO_RealTim
                 .path("/1613000/BusLcInfoInqireService/getRouteAcctoBusLcList")
                 .queryParam("serviceKey", super.getServiceKey())
                 .queryParam("_type", "xml")
-                .queryParam("cityCode", super.getServiceKey())
+                .queryParam("cityCode", super.getCityCode())
                 .queryParam("routeId", routeId)
                 .build();
         return uriComponents.toString();
