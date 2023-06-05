@@ -15,7 +15,7 @@ public class TAGO_RealTimeBusLocationInfo {
     @JsonProperty("nodeord")
     private Integer nodeOrd;
     @JsonProperty("routenm")
-    private Integer routeNm;
+    private String routeNm;
     @JsonProperty("routetp")
     private String routeTp;
     @JsonProperty("vehicleno")
