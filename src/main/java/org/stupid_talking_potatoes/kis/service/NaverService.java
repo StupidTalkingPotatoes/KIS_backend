@@ -5,6 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
 import org.stupid_talking_potatoes.kis.dto.path.Path;
 import org.stupid_talking_potatoes.kis.dto.path.Step;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
@@ -82,12 +83,12 @@ public class NaverService {
         return path;
     }
 
-    private String getNodeNameFromJson(JSONObject json) {
-        // getNodeNameFromJson: 정류장 json에서 no를 찾아 name을 구하고 반환
+    private Node getNodeFromJson(JSONObject json) {
+        // getNodeNameFromJson: 정류장 json에서 no를 찾아 node를 구하고 반환
 
         String displayCode = json.get("displayCode").toString();
         Node node = nodeService.getNodeByNodeNo(displayCode);
-        return node.getNodeName();
+        return node;
     }
 
     private Step getStepByJson(JSONObject stepJson) {
@@ -102,9 +103,11 @@ public class NaverService {
         JSONObject departureJSON = (JSONObject) stations.get(0);
         JSONObject arrivalJSON = (JSONObject) stations.get(stations.toList().size() - 1);
 
-        // get & set node name
-        step.setDeparture(getNodeNameFromJson(departureJSON));
-        step.setArrival(getNodeNameFromJson(arrivalJSON));
+        // get & set node
+        Node departure = getNodeFromJson(departureJSON);
+        Node arrival = getNodeFromJson(arrivalJSON);
+        step.setDeparture(new NodeDto(departure));
+        step.setArrival(new NodeDto(arrival));
 
         // 버스 도착 예정 정보를 담아서 반환
         step.setArrivalRouteList(createArrivalRouteList(stepJson));

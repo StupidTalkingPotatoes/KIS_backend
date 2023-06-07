@@ -2,6 +2,7 @@ package org.stupid_talking_potatoes.kis.dto.path;
 
 import lombok.*;
 import org.json.JSONObject;
+import org.stupid_talking_potatoes.kis.dto.node.NodeDto;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 
 import java.util.List;
@@ -18,8 +19,8 @@ import java.util.List;
 public class Step {
     private String type;
     private Integer duration;
-    private String departure;//이름
-    private String arrival;//이름
+    private NodeDto departure;
+    private NodeDto arrival;
     private List<ArrivalRoute> arrivalRouteList;
     
     public void setArrivalRouteList(List<ArrivalRoute> arrivalRouteList) {
@@ -31,12 +32,12 @@ public class Step {
         this.duration = duration;
     }
     
-    public void setDeparture(String departure) {
-        this.departure = departure;
+    public void setDeparture(NodeDto node) {
+        this.departure = node;
     }
     
-    public void setArrival(String arrival) {
-        this.arrival = arrival;
+    public void setArrival(NodeDto node) {
+        this.arrival = node;
     }
     
     public static Step ofJSON(JSONObject step) {
