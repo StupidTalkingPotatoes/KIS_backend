@@ -2,12 +2,11 @@ package org.stupid_talking_potatoes.kis.dto.tago;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class TAGO_RealTimeBusLocationInfo {
+public class TAGO_TimeBusLocationInfo {
     @JsonProperty("nodeid")
     private String nodeId;
     @JsonProperty("nodenm")

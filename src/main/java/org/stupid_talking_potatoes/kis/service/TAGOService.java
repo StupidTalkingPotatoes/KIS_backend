@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.stupid_talking_potatoes.kis.dto.node.PassingNode;
 import org.stupid_talking_potatoes.kis.dto.route.ArrivalRoute;
 import org.stupid_talking_potatoes.kis.dto.tago.*;
 import org.stupid_talking_potatoes.kis.entity.Node;
@@ -27,7 +26,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * package :  org.stupid_talking_potatoes.kis.tago.service
@@ -235,7 +233,7 @@ public class TAGOService {
      * @param routeId routeId
      * @return List<realTimeBusLocationInfo>
      */
-    public List<TAGO_RealTimeBusLocationInfo> requestRealTimeBusLocationInfo(String routeId) {
+    public List<TAGO_TimeBusLocationInfo> requestRealTimeBusLocationInfo(String routeId) {
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("apis.data.go.kr")
@@ -260,7 +258,7 @@ public class TAGOService {
      * @param body body
      * @return List<realTimeBusLocationInfo>
      */
-    public List<TAGO_RealTimeBusLocationInfo> convertRealTimeBusLocationInfo(String body) {
+    public List<TAGO_TimeBusLocationInfo> convertRealTimeBusLocationInfo(String body) {
         ObjectMapper objectMapper = new ObjectMapper()
                 .setPropertyNamingStrategy(PropertyNamingStrategy.LOWER_CASE);
         try {
@@ -282,7 +280,7 @@ public class TAGOService {
             JsonNodeType nodeType = item.getNodeType();
             
             if (nodeType.equals(JsonNodeType.OBJECT)) {
-                TAGO_RealTimeBusLocationInfo realTimeBusLocationInfo = objectMapper.convertValue(item, TAGO_RealTimeBusLocationInfo.class);
+                TAGO_TimeBusLocationInfo realTimeBusLocationInfo = objectMapper.convertValue(item, TAGO_TimeBusLocationInfo.class);
                 return Collections.singletonList(realTimeBusLocationInfo);
             } else if (nodeType.equals(JsonNodeType.ARRAY)) {
                 return objectMapper.convertValue(item, new TypeReference<>(){});
