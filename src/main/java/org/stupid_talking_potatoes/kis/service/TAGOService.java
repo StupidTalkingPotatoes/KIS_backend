@@ -233,7 +233,7 @@ public class TAGOService {
      * @param routeId routeId
      * @return List<realTimeBusLocationInfo>
      */
-    public List<TAGO_TimeBusLocationInfo> requestRealTimeBusLocationInfo(String routeId) {
+    public List<TAGO_BusLocationInfo> requestRealTimeBusLocationInfo(String routeId) {
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("apis.data.go.kr")
@@ -258,7 +258,7 @@ public class TAGOService {
      * @param body body
      * @return List<realTimeBusLocationInfo>
      */
-    public List<TAGO_TimeBusLocationInfo> convertRealTimeBusLocationInfo(String body) {
+    public List<TAGO_BusLocationInfo> convertRealTimeBusLocationInfo(String body) {
         ObjectMapper objectMapper = new ObjectMapper()
                 .setPropertyNamingStrategy(PropertyNamingStrategy.LOWER_CASE);
         try {
@@ -280,7 +280,7 @@ public class TAGOService {
             JsonNodeType nodeType = item.getNodeType();
             
             if (nodeType.equals(JsonNodeType.OBJECT)) {
-                TAGO_TimeBusLocationInfo realTimeBusLocationInfo = objectMapper.convertValue(item, TAGO_TimeBusLocationInfo.class);
+                TAGO_BusLocationInfo realTimeBusLocationInfo = objectMapper.convertValue(item, TAGO_BusLocationInfo.class);
                 return Collections.singletonList(realTimeBusLocationInfo);
             } else if (nodeType.equals(JsonNodeType.ARRAY)) {
                 return objectMapper.convertValue(item, new TypeReference<>(){});

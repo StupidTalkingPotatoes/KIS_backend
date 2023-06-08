@@ -114,7 +114,7 @@ public class NaverService {
         return step;
     }
 
-    private ArrivalRoute getArrivalRouteByItemJson(JSONObject itemJson) {
+    private ArrivalRoute getArrivalRouteByJson(JSONObject itemJson) {
         Integer arrTimeSec = (Integer) itemJson.get("remainingTime");
         Integer arrTimeMin = TagoBaseService.convertSecToMin(arrTimeSec);
         ArrivalRoute arrivalRoute = ArrivalRoute.builder()
@@ -144,7 +144,7 @@ public class NaverService {
                 if (!item.get("lowFloor").equals(true)) continue;
 
                 // get & add arrival Route
-                ArrivalRoute arrivalRoute = getArrivalRouteByItemJson(item); // base arrival route
+                ArrivalRoute arrivalRoute = getArrivalRouteByJson(item); // base arrival route
 
                 // set route's id and no
                 Integer routeIdOfArrival = (Integer) arrival.get("routeId");

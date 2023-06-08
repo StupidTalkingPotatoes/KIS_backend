@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TAGO_TimeBusLocationInfo {
+public class TAGO_BusLocationInfo {
     @JsonProperty("nodeid")
     private String nodeId;
     @JsonProperty("nodenm")

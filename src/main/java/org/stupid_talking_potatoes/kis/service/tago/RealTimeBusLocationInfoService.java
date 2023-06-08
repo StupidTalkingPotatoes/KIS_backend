@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.stupid_talking_potatoes.kis.config.TagoServiceConfig;
-import org.stupid_talking_potatoes.kis.dto.tago.TAGO_TimeBusLocationInfo;
+import org.stupid_talking_potatoes.kis.dto.tago.TAGO_BusLocationInfo;
 import org.stupid_talking_potatoes.kis.service.KneelingBusService;
 
 import java.util.List;
 
 @Service
-public class RealTimeBusLocationInfoService extends TagoBaseService<TAGO_TimeBusLocationInfo, Integer> {
+public class RealTimeBusLocationInfoService extends TagoBaseService<TAGO_BusLocationInfo, Integer> {
     private KneelingBusService kneelingBusService;
 
     public RealTimeBusLocationInfoService(TagoServiceConfig config, KneelingBusService kneelingBusService) {
@@ -39,7 +39,7 @@ public class RealTimeBusLocationInfoService extends TagoBaseService<TAGO_TimeBus
         // TAGO API 요청하여 JSON 응답 받아오기
         JSONObject responseBody = super.request(url);
         // 내가 원하는 객체리스트로 convert하기
-        List<TAGO_TimeBusLocationInfo> realTimeBusLocationInfoList =
+        List<TAGO_BusLocationInfo> realTimeBusLocationInfoList =
                 convert(responseBody.toString(), new TypeReference<>(){}, new TypeReference<>(){});
         // 현재 저상버스 실시간 위치 반환
         return filter(realTimeBusLocationInfoList);
@@ -51,10 +51,10 @@ public class RealTimeBusLocationInfoService extends TagoBaseService<TAGO_TimeBus
      * @return realtimeNodeOrderList(현재 운행 중인 저상버스 위치 리스트)
      */
     @Override
-    protected List<Integer> filter(List<TAGO_TimeBusLocationInfo> realTimeBusLocationInfoList) {
+    protected List<Integer> filter(List<TAGO_BusLocationInfo> realTimeBusLocationInfoList) {
         return realTimeBusLocationInfoList.stream()
                 .filter(realTimeBusLocationInfo -> kneelingBusService.isKneelingBus(realTimeBusLocationInfo.getVehicleNo()))
-                .map(TAGO_TimeBusLocationInfo::getNodeOrd)
+                .map(TAGO_BusLocationInfo::getNodeOrd)
                 .toList();
     }
 

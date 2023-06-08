@@ -71,10 +71,4 @@ public class RouteService {
         Route route = routeRepository.findByRouteId(routeId).orElseThrow(NoSuchElementException::new);
         return route.getEndNodeName();
     }
-
-
-    public String getDeparture(String routeId){
-        return null;
-    }
-
 }
