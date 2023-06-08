@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class NodeService {
     
     private final NodeRepository nodeRepository;
-    private final TAGOService tagoService;
+    private final TAGOService tagoService; // 테스트 코드 용으로 필요
     private final RouteService routeService;
     private final AroundNodeService aroundNodeService;
     private final BusArrivalInfoService busArrivalInfoService;
@@ -61,7 +61,7 @@ public class NodeService {
      */
     public RealtimeBusArrivalInfo getRealtimeBusArrivalInfo(String nodeId){
         Node node = nodeRepository.findById(nodeId).orElseThrow(
-                ()-> new NotFoundException("Node is not found", nodeId)
+                ()-> new NotFoundException("Node is not found (by nodeId)", nodeId)
         );
         
         // get response from tago service
@@ -92,5 +92,12 @@ public class NodeService {
         
         // map to NodeDto and return
         return aroundNodes.stream().map(NodeDto::new).toList();
+    }
+    
+    public Node getNodeByNodeNo(String nodeNo) {
+        Node node = nodeRepository.findByNodeNo(nodeNo).orElseThrow(
+                ()-> new NotFoundException("Node is not found (by nodeNo)", nodeNo)
+        );
+        return node;
     }
 }

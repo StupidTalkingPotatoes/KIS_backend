@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.stupid_talking_potatoes.kis.dto.node.PassingNode;
 import org.stupid_talking_potatoes.kis.dto.route.RealtimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.dto.route.SearchedRoute;
-import org.stupid_talking_potatoes.kis.dto.tago.TAGO_RealTimeBusLocationInfo;
 import org.stupid_talking_potatoes.kis.entity.Route;
 import org.stupid_talking_potatoes.kis.entity.RouteSeq;
 import org.stupid_talking_potatoes.kis.exception.NotFoundException;
@@ -72,10 +71,4 @@ public class RouteService {
         Route route = routeRepository.findByRouteId(routeId).orElseThrow(NoSuchElementException::new);
         return route.getEndNodeName();
     }
-
-
-    public String getDeparture(String routeId){
-        return null;
-    }
-
 }
